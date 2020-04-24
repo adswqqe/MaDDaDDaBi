@@ -6,9 +6,11 @@ using UnityEngine;
 public class XMLManager : MonoBehaviour
 {
     string xmlFileName = "ITEMLIST_TEST";
+    XmlNodeList all_nodes;
+
     void Start()
     {
-        LoadXML(xmlFileName);
+        //LoadXML(xmlFileName);
     }
 
     void LoadXML(string _fileName)
@@ -19,23 +21,55 @@ public class XMLManager : MonoBehaviour
         xmlDoc.LoadXml(textAsset.text);
 
         // 하나씩 가져오기
-        XmlNodeList name_Table = xmlDoc.GetElementsByTagName("NAME");
-        foreach (XmlNode name in name_Table)
-        {
-            Debug.Log("[one by one] name : " + name.InnerText);
-        }
+        //XmlNodeList name_Table = xmlDoc.GetElementsByTagName("NAME");
+        //foreach (XmlNode name in name_Table)
+        //{
+        //    Debug.Log("[one by one] name : " + name.InnerText);
+        //}
 
-        // 전체 가져오기
-        XmlNodeList all_nodes = xmlDoc.SelectNodes("ITEMLIST/text");
+        //// 전체 가져오기
+        all_nodes = xmlDoc.SelectNodes("ITEMLIST/text");
+        //foreach (XmlNode node in all_nodes)
+        //{
+        //    Debug.Log("[at once] id : " + node.SelectSingleNode("ID").InnerText);
+        //    Debug.Log("[at once] SORT : " + node.SelectSingleNode("SORT").InnerText);
+        //    Debug.Log("[at once] NAME : " + node.SelectSingleNode("NAME").InnerText);
+        //    Debug.Log("[at once] ICON : " + node.SelectSingleNode("ICON").InnerText);
+        //    Debug.Log("[at once] BUYCOST : " + node.SelectSingleNode("BUYCOST").InnerText);
+        //    Debug.Log("[at once] SELLCOST : " + node.SelectSingleNode("SELLCOST").InnerText);
+        //    Debug.Log("[at once] DESCRIPTION : " + node.SelectSingleNode("DESCRIPTION").InnerText);
+        //}
+    }
+
+    public List<ItemInfo> GetOrderMaterial(string sortName)
+    {
+        TextAsset textAsset = (TextAsset)Resources.Load("XML/" + xmlFileName);
+        XmlDocument xmlDoc = new XmlDocument();
+        Debug.Log(textAsset.text);
+        xmlDoc.LoadXml(textAsset.text);
+        all_nodes = xmlDoc.SelectNodes("ITEMLIST/text");
+
+        List<ItemInfo> materialItems = new List<ItemInfo>();
+
         foreach (XmlNode node in all_nodes)
         {
-            Debug.Log("[at once] id : " + node.SelectSingleNode("ID").InnerText);
-            Debug.Log("[at once] SORT : " + node.SelectSingleNode("SORT").InnerText);
-            Debug.Log("[at once] NAME : " + node.SelectSingleNode("NAME").InnerText);
-            Debug.Log("[at once] ICON : " + node.SelectSingleNode("ICON").InnerText);
-            Debug.Log("[at once] BUYCOST : " + node.SelectSingleNode("BUYCOST").InnerText);
-            Debug.Log("[at once] SELLCOST : " + node.SelectSingleNode("SELLCOST").InnerText);
-            Debug.Log("[at once] DESCRIPTION : " + node.SelectSingleNode("DESCRIPTION").InnerText);
+            if(node.SelectSingleNode("SORT").InnerText == "재료")
+            {
+                ItemInfo item = new ItemInfo(
+                    int.Parse(node.SelectSingleNode("ID").InnerText),
+                    node.SelectSingleNode("SORT").InnerText,
+                    node.SelectSingleNode("NAME").InnerText,
+                    node.SelectSingleNode("ICON").InnerText,
+                    int.Parse(node.SelectSingleNode("BUYCOST").InnerText),
+                    0,      //재료이기 때문에 sellCost가 없다.
+                    node.SelectSingleNode("DESCRIPTION").InnerText
+                    );
+
+                materialItems.Add(item);
+            }
         }
+
+
+        return materialItems;
     }
 }
