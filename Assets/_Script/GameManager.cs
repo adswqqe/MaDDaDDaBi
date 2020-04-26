@@ -15,7 +15,12 @@ public class GameManager : MonoBehaviour
     Text materialName;
     [SerializeField]
     Image materialImage;
-    
+    [SerializeField]
+    Button buyBtn;
+    [SerializeField]
+    Transform shoppingBaskeContentTr;
+    [SerializeField]
+    CountManager shoppingBakeCountManger;
 
     XMLManager xmlManager;
     OrderMaterialManager orderMaterialManager;
@@ -25,7 +30,19 @@ public class GameManager : MonoBehaviour
         xmlManager = gameObject.AddComponent<XMLManager>();
         orderMaterialManager = gameObject.AddComponent<OrderMaterialManager>();
 
-        orderMaterialManager.Initialization(UIitemPrefabs, contentTr, xmlManager.GetOrderMaterial("재료"), description, materialName, materialImage);
+        orderMaterialManager.Initialization(UIitemPrefabs, contentTr, xmlManager.GetOrderMaterial("재료"), description, materialName, materialImage, buyBtn, shoppingBaskeContentTr);
+
+        Bind();
+    }
+
+    void Bind()
+    {
+        shoppingBakeCountManger.clickAddSoppingBaskeBtn += orderMaterialManager.OnAddShoppingBaskeBtn;
+    }
+
+    void UnBind()
+    {
+        shoppingBakeCountManger.clickAddSoppingBaskeBtn -= orderMaterialManager.OnAddShoppingBaskeBtn;
     }
 
 
