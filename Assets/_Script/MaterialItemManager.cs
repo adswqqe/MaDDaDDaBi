@@ -1,32 +1,34 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class MaterialItemManager : MonoBehaviour
 {
+    public Action<ItemInfo> ClickMaterial;
+
     Text descriptionText;
     ItemInfo itemInfo;
     Button m_bt;
 
-    public void Initialization(Text descriptionText, ItemInfo itemInfo)
+    public void Initialization(ItemInfo itemInfo)
     {
-        this.descriptionText = descriptionText;
         this.itemInfo = itemInfo;
         setContent();
 
         m_bt = GetComponent<Button>();
-        m_bt.onClick.AddListener(OnClick);
+        m_bt.onClick.AddListener(onClickMaterial);
     }
 
     void setContent()
     {
-        GetComponentInChildren<Image>().sprite = Resources.Load<Sprite>("ICON/" + 1.ToString());
+        GetComponentInChildren<Image>().sprite = Resources.Load<Sprite>("ICON/" + itemInfo.ICON_INDEX.ToString());
         GetComponentInChildren<Text>().text = itemInfo.NAME + " " + itemInfo.BUYCOST + "골드";
     }
 
-    void OnClick()
+    void onClickMaterial()
     {
-        descriptionText.text = itemInfo.DESCRIPTION;
+        ClickMaterial?.Invoke(this.itemInfo);
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -9,7 +10,12 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     Transform contentTr;
     [SerializeField]
-    GameObject description;
+    Text description;
+    [SerializeField]
+    Text materialName;
+    [SerializeField]
+    Image materialImage;
+    
 
     XMLManager xmlManager;
     OrderMaterialManager orderMaterialManager;
@@ -19,7 +25,7 @@ public class GameManager : MonoBehaviour
         xmlManager = gameObject.AddComponent<XMLManager>();
         orderMaterialManager = gameObject.AddComponent<OrderMaterialManager>();
 
-        orderMaterialManager.Initialization(UIitemPrefabs, contentTr, xmlManager.GetOrderMaterial("재료"), description);
+        orderMaterialManager.Initialization(UIitemPrefabs, contentTr, xmlManager.GetOrderMaterial("재료"), description, materialName, materialImage);
     }
 
 
