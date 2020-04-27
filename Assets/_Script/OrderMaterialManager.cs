@@ -1,10 +1,13 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class OrderMaterialManager : MonoBehaviour
 {
+    public Action<int> buyButtonPress;
+
     Image materialImage;
     Text materialName;
     GameObject itemprefabs;
@@ -13,12 +16,13 @@ public class OrderMaterialManager : MonoBehaviour
     List<ItemInfo> materialList;
     ItemInfo selectMaterialItem;
     Button buyBtn;
+    Button choiceBtn;
     Transform shoppingBaskeContentTr;
     List<MaterialItemManager> curShoppingBaskeList;
 
     bool isAlreadyAdded = false;
 
-    public void Initialization(GameObject itemprefabs, Transform contentTr, List<ItemInfo> materialList, Text description, Text materialName, Image materialImage, Button buyBtn, Transform shoppingBaskeContentTr)
+    public void Initialization(GameObject itemprefabs, Transform contentTr, List<ItemInfo> materialList, Text description, Text materialName, Image materialImage, Button buyBtn, Transform shoppingBaskeContentTr, Button choiceBtn)
     {
         this.itemprefabs = itemprefabs;
         this.contentTr = contentTr;
@@ -28,15 +32,18 @@ public class OrderMaterialManager : MonoBehaviour
         this.materialImage = materialImage;
         this.buyBtn = buyBtn;
         this.shoppingBaskeContentTr = shoppingBaskeContentTr;
+        this.choiceBtn = choiceBtn;
 
         SetAddContent();
 
         materialName.enabled = false;       // 처음엔 아무것도 선택되지 않았기 떄문에 fasle;
         materialImage.enabled = false;
         materialDescription.enabled = false;
+        this.choiceBtn.gameObject.SetActive(false);
 
         curShoppingBaskeList = new List<MaterialItemManager>();
         buyBtn.onClick.AddListener(OnbuyBtn);
+        Debug.Log(buyBtn.name);
     }
 
     void SetAddContent()
@@ -57,7 +64,8 @@ public class OrderMaterialManager : MonoBehaviour
 
     private void OnDestroyMaterial(MaterialItemManager item)
     {
-        item.ClickMaterial -= this.OnMaterialClick;
+        item.ClickMaterialInShoppingBaske -= this.OnDestroyMaterial;
+        curShoppingBaskeList.Remove(item);
     }
 
     void OnMaterialClick(ItemInfo item)
@@ -68,6 +76,7 @@ public class OrderMaterialManager : MonoBehaviour
         materialName.enabled = true;
         materialImage.enabled = true;
         materialDescription.enabled = true;
+        choiceBtn.gameObject.SetActive(true);
 
         materialImage.sprite = Resources.Load<Sprite>("ICON/" + item.ICON_INDEX.ToString());
         materialName.text = item.NAME;
@@ -94,6 +103,7 @@ public class OrderMaterialManager : MonoBehaviour
             instance.GetComponent<MaterialItemManager>().InitializationShoppingBaske(selectMaterialItem, number);
             instance.transform.SetParent(shoppingBaskeContentTr);
             curShoppingBaskeList.Add(temp);
+            temp.ClickMaterialInShoppingBaske += OnDestroyMaterial;
         }
 
         isAlreadyAdded = false;
@@ -101,9 +111,35 @@ public class OrderMaterialManager : MonoBehaviour
 
     void OnbuyBtn()     // 각 재료의 갯수가 저장되어 있으니 각 재료가 얼만지 계산해서 합산 한 뒤 결제하면 될 듯.
     {
+        if (curShoppingBaskeList.Count == 0)
+        {
+            Debug.Log("아무것도 없음 예외처리 해야함");
+            return;
+        }
+
+        int sumCost = 0;
         foreach (var item in curShoppingBaskeList)
         {
-            Debug.Log(item.AMOUNTNUMBER);
+            sumCost += item.BUYCOST * item.AMOUNTNUMBER;
         }
+        Debug.Log(sumCost);
+
+        buyButtonPress?.Invoke(sumCost);
+
+    }
+
+    public void OnbuySuccessMatreial(bool isResult)
+    {
+        if(isResult)
+        {
+            foreach (var item in curShoppingBaskeList)
+            {
+                item.ClickMaterialInShoppingBaske -= OnDestroyMaterial;
+                Destroy(item.gameObject);
+            }
+            curShoppingBaskeList.Clear();
+        }
+
+        Debug.Log("isResult : " + isResult);
     }
 }

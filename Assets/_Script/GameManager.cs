@@ -18,19 +18,23 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     Button buyBtn;
     [SerializeField]
+    Button choiceBtn;
+    [SerializeField]
     Transform shoppingBaskeContentTr;
     [SerializeField]
     CountManager shoppingBakeCountManger;
 
     XMLManager xmlManager;
     OrderMaterialManager orderMaterialManager;
+    DataManager dataManager;
     // Start is called before the first frame update
     void Start()
     {
         xmlManager = gameObject.AddComponent<XMLManager>();
         orderMaterialManager = gameObject.AddComponent<OrderMaterialManager>();
+        dataManager = gameObject.AddComponent<DataManager>();
 
-        orderMaterialManager.Initialization(UIitemPrefabs, contentTr, xmlManager.GetOrderMaterial("재료"), description, materialName, materialImage, buyBtn, shoppingBaskeContentTr);
+        orderMaterialManager.Initialization(UIitemPrefabs, contentTr, xmlManager.GetOrderMaterial("재료"), description, materialName, materialImage, buyBtn, shoppingBaskeContentTr, choiceBtn);
 
         Bind();
     }
@@ -38,11 +42,15 @@ public class GameManager : MonoBehaviour
     void Bind()
     {
         shoppingBakeCountManger.clickAddSoppingBaskeBtn += orderMaterialManager.OnAddShoppingBaskeBtn;
+        orderMaterialManager.buyButtonPress += dataManager.CalcGold;
+        dataManager.resultCalcGold += orderMaterialManager.OnbuySuccessMatreial;
     }
 
     void UnBind()
     {
         shoppingBakeCountManger.clickAddSoppingBaskeBtn -= orderMaterialManager.OnAddShoppingBaskeBtn;
+        orderMaterialManager.buyButtonPress -= dataManager.CalcGold;
+        dataManager.resultCalcGold -= orderMaterialManager.OnbuySuccessMatreial;
     }
 
 

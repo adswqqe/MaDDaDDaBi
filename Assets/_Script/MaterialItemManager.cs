@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class MaterialItemManager : MonoBehaviour
 {
     public Action<ItemInfo> ClickMaterial;
+    public Action<MaterialItemManager> ClickMaterialInShoppingBaske;
 
     Text descriptionText;
     ItemInfo itemInfo;
@@ -21,6 +22,11 @@ public class MaterialItemManager : MonoBehaviour
     public int AMOUNTNUMBER
     {
         get { return amountNumber; }
+    }
+
+    public int BUYCOST
+    {
+        get { return itemInfo.BUYCOST; }
     }
 
     public void Initialization(ItemInfo itemInfo)
@@ -38,6 +44,8 @@ public class MaterialItemManager : MonoBehaviour
         this.itemInfo = iteminfo;
 
         setShoppingBaske(number);
+        m_bt = GetComponent<Button>();
+        m_bt.onClick.AddListener(onClickMaterialInShoppingBaske);
     }
 
     public void setShoppingBaske(int number)
@@ -57,5 +65,11 @@ public class MaterialItemManager : MonoBehaviour
     void onClickMaterial()
     {
         ClickMaterial?.Invoke(this.itemInfo);
+    }
+
+    void onClickMaterialInShoppingBaske()
+    {
+        ClickMaterialInShoppingBaske?.Invoke(this);
+        Destroy(this.gameObject);
     }
 }
