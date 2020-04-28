@@ -9,7 +9,6 @@ public class MaterialItemManager : MonoBehaviour
     public Action<ItemInfo> ClickMaterial;
     public Action<MaterialItemManager> ClickMaterialInShoppingBaske;
 
-    Text descriptionText;
     ItemInfo itemInfo;
     Button m_bt;
     int amountNumber = 0;

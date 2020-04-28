@@ -6,28 +6,53 @@ using UnityEngine;
 public class DataManager : MonoBehaviour
 {
     public Action<bool> resultCalcGold;
-    int lever;
-    int exe;
-    int gold = 20;
+    public Action<Data> changeData;
+
+    Data data;
     // Start is called before the first frame update
     void Start()
     {
-        
+        dataSet();       // 향후 세이브 로드로 수정해야함
+
+        changeData?.Invoke(data);
+    }
+
+    void dataSet()
+    {
+        data = new Data(1, 0, 100, 0, 0, 10);
     }
 
 
-    public void CalcGold(int cost)
+    public void CalcBuy(List<MaterialItemManager> curMatrialShoppingBaske)
     {
         bool isResult = false;
-        if ((gold - cost) < 0)
+
+        int sumCost = 0;
+        int itemAmonts = 0;
+        foreach (var item in curMatrialShoppingBaske)
+        {
+            sumCost += item.BUYCOST * item.AMOUNTNUMBER;
+            itemAmonts += item.AMOUNTNUMBER;
+        }
+
+        // 인벤토리의 공간이 부족했을 경우의 예외처리를 해야함.
+
+        if ((data.GOLD - sumCost) < 0)
             Debug.Log("머니가 머니머니부족해");
         else
         {
-            Debug.Log("구매구매성공");
-            isResult = true;
-            gold -= cost;
+            if (data.BAGSPACE + itemAmonts < data.MAX_BAGSPCE)
+            {
+                Debug.Log("구매구매성공");
+                isResult = true;
+                data.GOLD -= sumCost;
+                data.BAGSPACE += itemAmonts;
+            }
+            else
+                Debug.Log("공간이 부족해~");
         }
 
         resultCalcGold?.Invoke(isResult);
+        changeData?.Invoke(data);
     }
 }

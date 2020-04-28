@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class OrderMaterialManager : MonoBehaviour
 {
-    public Action<int> buyButtonPress;
+    public Action<List<MaterialItemManager>> buyButtonPress;
 
     Image materialImage;
     Text materialName;
@@ -124,7 +124,7 @@ public class OrderMaterialManager : MonoBehaviour
         }
         Debug.Log(sumCost);
 
-        buyButtonPress?.Invoke(sumCost);
+        buyButtonPress?.Invoke(curShoppingBaskeList);
 
     }
 
