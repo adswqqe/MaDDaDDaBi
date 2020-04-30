@@ -10,8 +10,10 @@ public class Data
     int reputation;
     int bagSpace;
     int max_bagSpace;
+    List<MaterialItemManager> curMaterialItmList;
+    List<MaterialItemManager> addMaterialItmList;
 
-    public Data(int lever, int exp, int gold, int reputation, int bagSpace, int max_bagSpace)
+    public Data(int lever, int exp, int gold, int reputation, int bagSpace, int max_bagSpace, List<MaterialItemManager> curMaterialItemList)
     {
         this.lever = lever;
         this.exp = exp;
@@ -19,6 +21,19 @@ public class Data
         this.reputation = reputation;
         this.bagSpace = bagSpace;
         this.max_bagSpace = max_bagSpace;
+        this.curMaterialItmList = curMaterialItemList;
+        addMaterialItmList = new List<MaterialItemManager>();
+    }
+    public Data(Data data)
+    {
+        this.lever = data.lever;
+        this.exp = data.exp;
+        this.gold = data.gold;
+        this.reputation = data.reputation;
+        this.bagSpace = data.bagSpace;
+        this.max_bagSpace = data.max_bagSpace;
+        this.curMaterialItmList = data.CURMATERIALITELIST;
+        addMaterialItmList = new List<MaterialItemManager>();
     }
 
     public int Level
@@ -55,5 +70,15 @@ public class Data
     {
         set { max_bagSpace = value; }
         get { return max_bagSpace; }
+    }
+
+    public List<MaterialItemManager> CURMATERIALITELIST
+    {
+        get { return curMaterialItmList; }
+    }
+
+    public List<MaterialItemManager> ADDMATERIALLIST
+    {
+        get { return addMaterialItmList; }
     }
 }

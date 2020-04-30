@@ -43,7 +43,6 @@ public class OrderMaterialManager : MonoBehaviour
 
         curShoppingBaskeList = new List<MaterialItemManager>();
         buyBtn.onClick.AddListener(OnbuyBtn);
-        Debug.Log(buyBtn.name);
     }
 
     void SetAddContent()
@@ -53,7 +52,7 @@ public class OrderMaterialManager : MonoBehaviour
         foreach (var item in materialList)
         {
             var instance = Instantiate(itemprefabs);
-            instance.GetComponent<MaterialItemManager>().Initialization(item);
+            instance.GetComponent<MaterialItemManager>().Initialization(item, true);
             instance.GetComponent<MaterialItemManager>().ClickMaterial += OnMaterialClick;
             instance.transform.SetParent(contentTr);
             //instance.GetComponentInChildren<Image>().sprite = Resources.Load<Sprite>("ICON/" + 1.ToString());
@@ -120,7 +119,7 @@ public class OrderMaterialManager : MonoBehaviour
         int sumCost = 0;
         foreach (var item in curShoppingBaskeList)
         {
-            sumCost += item.BUYCOST * item.AMOUNTNUMBER;
+            sumCost += item.BUYCOST * item.ITEMINFO.AMOUNTNUMBER;
         }
         Debug.Log(sumCost);
 

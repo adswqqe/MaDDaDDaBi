@@ -49,6 +49,7 @@ public class GameManager : MonoBehaviour
         orderMaterialManager.buyButtonPress += dataManager.CalcBuy;
         dataManager.resultCalcGold += orderMaterialManager.OnbuySuccessMatreial;
         dataManager.changeData += uiManager.OnChangeValueUI;
+        dataManager.changeData += bagManaer.OnAddBagItem;
     }
 
     void UnBind()
@@ -57,6 +58,7 @@ public class GameManager : MonoBehaviour
         orderMaterialManager.buyButtonPress -= dataManager.CalcBuy;
         dataManager.resultCalcGold -= orderMaterialManager.OnbuySuccessMatreial;
         dataManager.changeData -= uiManager.OnChangeValueUI;
+        dataManager.changeData += bagManaer.OnAddBagItem;
     }
 
 

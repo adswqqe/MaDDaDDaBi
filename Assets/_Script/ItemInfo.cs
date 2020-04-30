@@ -10,6 +10,7 @@ public class ItemInfo
     int buycost;
     int sellcost;
     string description;
+    int amountNumber = 0;
 
     public ItemInfo(int id, string sort, string name, string icon_index, int buycost, int sellcost, string description)
     {
@@ -20,6 +21,29 @@ public class ItemInfo
         this.buycost = buycost;
         this.sellcost = sellcost;
         this.description = description;
+    }
+
+    public ItemInfo(ItemInfo itemInfo)
+    {
+        this.id = itemInfo.ID;
+        this.sort = itemInfo.SORT;
+        this.name = itemInfo.NAME;
+        this.icon_index = itemInfo.ICON_INDEX;
+        this.buycost = itemInfo.BUYCOST;
+        this.sellcost = itemInfo.SELLCOST;
+        this.description = itemInfo.DESCRIPTION;
+        this.amountNumber = itemInfo.AMOUNTNUMBER;
+    }
+
+    public string SORT
+    {
+        get { return sort; }
+    }
+
+    public int AMOUNTNUMBER
+    {
+        set { amountNumber = value; }
+        get { return amountNumber; }
     }
 
     public int ID

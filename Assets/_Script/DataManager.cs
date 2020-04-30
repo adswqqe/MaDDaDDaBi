@@ -19,7 +19,7 @@ public class DataManager : MonoBehaviour
 
     void dataSet()
     {
-        data = new Data(1, 0, 100, 0, 0, 10);
+        data = new Data(1, 0, 100, 0, 0, 10, new List<MaterialItemManager>());
     }
 
 
@@ -31,8 +31,8 @@ public class DataManager : MonoBehaviour
         int itemAmonts = 0;
         foreach (var item in curMatrialShoppingBaske)
         {
-            sumCost += item.BUYCOST * item.AMOUNTNUMBER;
-            itemAmonts += item.AMOUNTNUMBER;
+            sumCost += item.BUYCOST * item.ITEMINFO.AMOUNTNUMBER;
+            itemAmonts += item.ITEMINFO.AMOUNTNUMBER;
         }
 
         // 인벤토리의 공간이 부족했을 경우의 예외처리를 해야함.
@@ -47,6 +47,27 @@ public class DataManager : MonoBehaviour
                 isResult = true;
                 data.GOLD -= sumCost;
                 data.BAGSPACE += itemAmonts;
+                bool isHave = false;
+
+                foreach (var item in curMatrialShoppingBaske)
+                {
+                    data.ADDMATERIALLIST.Add(item);
+                }
+
+                foreach (var item in data.ADDMATERIALLIST)
+                {
+                    foreach (var curItem in data.CURMATERIALITELIST)
+                    {
+                        if (item.NAME == curItem.NAME)
+                        {
+                            curItem.ITEMINFO.AMOUNTNUMBER += item.ITEMINFO.AMOUNTNUMBER;
+                            isHave = true;
+                        }
+                    }
+                    if (!isHave)
+                        data.CURMATERIALITELIST.Add(item);
+                }
+                
             }
             else
                 Debug.Log("공간이 부족해~");

@@ -11,36 +11,58 @@ public class MaterialItemManager : MonoBehaviour
 
     ItemInfo itemInfo;
     Button m_bt;
-    int amountNumber = 0;
+
+    bool isOrderMenu = false;
 
     public string NAME
     {
         get { return itemInfo.NAME; }
     }
 
-    public int AMOUNTNUMBER
+    public bool ISORDERMENU
     {
-        get { return amountNumber; }
+        get { return isOrderMenu; }
     }
+
+    //public int AMOUNTNUMBER
+    //{
+    //    set { amountNumber = value; }
+    //    get { return amountNumber; }
+    //}
 
     public int BUYCOST
     {
         get { return itemInfo.BUYCOST; }
     }
 
-    public void Initialization(ItemInfo itemInfo)
+    public ItemInfo ITEMINFO
     {
-        this.itemInfo = itemInfo;
+        get { return itemInfo;}
+    }
 
+    public void Initialization(ItemInfo itemInfo, bool isOrderMenu)
+    {
+        this.itemInfo = new ItemInfo(itemInfo);
+        this.isOrderMenu = isOrderMenu;
 
         setContent(); 
         m_bt = GetComponent<Button>();
         m_bt.onClick.AddListener(onClickMaterial);
     }
 
+    public void Initialization(MaterialItemManager materialItemManager, bool isOrderMenu)
+    {
+        this.itemInfo = materialItemManager.itemInfo;
+        this.isOrderMenu = isOrderMenu;
+
+        setContent();
+        m_bt = GetComponent<Button>();
+        m_bt.onClick.AddListener(onClickMaterial);
+    }
+
     public void InitializationShoppingBaske(ItemInfo iteminfo, int number)
     {
-        this.itemInfo = iteminfo;
+        this.itemInfo = new ItemInfo(iteminfo);
 
         setShoppingBaske(number);
         m_bt = GetComponent<Button>();
@@ -49,16 +71,17 @@ public class MaterialItemManager : MonoBehaviour
 
     public void setShoppingBaske(int number)
     {
-        amountNumber += number;
-        Debug.Log(itemInfo);
+        Debug.Log(number);
+        itemInfo.AMOUNTNUMBER += number;
         GetComponentInChildren<Image>().sprite = Resources.Load<Sprite>("ICON/" + itemInfo.ICON_INDEX.ToString());
-        GetComponentInChildren<Text>().text = itemInfo.NAME + "    " + amountNumber + "개";
+        GetComponentInChildren<Text>().text = itemInfo.NAME + "    " + itemInfo.AMOUNTNUMBER + "개";
     }
 
     void setContent()
     {
         GetComponentInChildren<Image>().sprite = Resources.Load<Sprite>("ICON/" + itemInfo.ICON_INDEX.ToString());
-        GetComponentInChildren<Text>().text = itemInfo.NAME + " " + itemInfo.BUYCOST + "골드";
+        if (isOrderMenu)
+            GetComponentInChildren<Text>().text = itemInfo.NAME + " " + itemInfo.BUYCOST + "골드";
     }
 
     void onClickMaterial()
