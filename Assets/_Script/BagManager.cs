@@ -42,6 +42,7 @@ public class BagManager : MonoBehaviour
         {
             foreach (var item in data.ADDMATERIALLIST)
             {
+                isHaved = false;
                 foreach (var curItem in curMaterialItems)
                 {
                     if (item.NAME == curItem.NAME)
@@ -53,6 +54,7 @@ public class BagManager : MonoBehaviour
                         curItem.ITEMINFO.AMOUNTNUMBER += item.ITEMINFO.AMOUNTNUMBER;
                         isHaved = true;
                     }
+                    Debug.Log(item.NAME);
                 }
                 if (!isHaved)
                 {

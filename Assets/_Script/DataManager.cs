@@ -41,7 +41,7 @@ public class DataManager : MonoBehaviour
             Debug.Log("머니가 머니머니부족해");
         else
         {
-            if (data.BAGSPACE + itemAmonts < data.MAX_BAGSPCE)
+            if (data.BAGSPACE + itemAmonts <= data.MAX_BAGSPCE)
             {
                 Debug.Log("구매구매성공");
                 isResult = true;

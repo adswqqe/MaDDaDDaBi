@@ -24,6 +24,7 @@ public class Data
         this.curMaterialItmList = curMaterialItemList;
         addMaterialItmList = new List<MaterialItemManager>();
     }
+
     public Data(Data data)
     {
         this.lever = data.lever;

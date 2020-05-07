@@ -27,6 +27,12 @@ public class CameraManager : MonoBehaviour
     Text debugText5;
     [SerializeField]
     Text debugText6;
+    [SerializeField]
+    Text debugText7;
+    [SerializeField]
+    Text debugText8;
+    [SerializeField]
+    Text debugText9;
 
     const float minPanDistance = 0;
     public float turnAngleDelta;
@@ -35,17 +41,41 @@ public class CameraManager : MonoBehaviour
     const float minTurnAngle = 2;
 
     float oldAngle = 0f;
+    float moveSpeed = 500.0f;
 
     Vector2 startVector;
     float rotGestureWidth;
     public const float TOUCH_ROTATION_WIDTH = 1; // Always3
     public const float TOUCH_ROTATION_MINIMUM = 1;
+
+    public float dragSpeed = 2;
+    private Vector3 dragOrigin;
+    //void update()
+    //{
+    //    if (input.getmousebuttondown(0))
+    //    {
+    //        dragorigin = input.mouseposition;
+    //        return;
+    //    }
+
+    //    if (!input.getmousebutton(0)) return;
+
+    //    vector3 pos = camera.main.screentoviewportpoint(input.mouseposition - dragorigin);
+    //    vector3 move = new vector3(pos.x * dragspeed, 0, pos.y * dragspeed);
+
+    //    transform.translate(move, space.world);
+//    }
+
+
     // Update is called once per frame
     void LateUpdate()
     {
         Quaternion desiredRotation = transform.rotation;
 
         DetectTouchMovement.Calculate();
+
+        //debugText8.text = "eulerAngles : " + transform.localRotation.eulerAngles;
+        debugText9.text = "position : " + transform.position;
 
         if (Input.touchCount == 0 && (isZooming || isRotating))
         {
@@ -60,8 +90,14 @@ public class CameraManager : MonoBehaviour
                 if (Input.GetTouch(0).phase == TouchPhase.Moved)
                 {
                     Vector2 NewPosition = GetWorldPosition();
-                    Vector2 PositionDifference = NewPosition - StartPosition;
-                    transform.Translate(-PositionDifference);
+                    Vector3 PositionDifference = NewPosition - StartPosition;
+                    //Vector2 PositionDifference = (NewPosition - StartPosition).normalized;
+                    Vector3 vec = new Vector3(PositionDifference.x, PositionDifference.y, 0);
+                    //transform.Translate(-PositionDifference);
+                    transform.Translate(-PositionDifference * moveSpeed * Time.deltaTime);
+                    //transform.position -= vec * moveSpeed * Time.deltaTime;
+                    debugText7.text = "NewPosition : " + NewPosition;
+                    debugText8.text = "StartPosition : " + StartPosition;
                 }
                 StartPosition = GetWorldPosition();
             }
@@ -78,7 +114,7 @@ public class CameraManager : MonoBehaviour
                 isRotating = true;
                 debugText.text = "isRotating  : " + isRotating;
             }
-            if (Mathf.Abs(DetectTouchMovement.pinchDistanceDelta) > 5 && !isRotating)
+            if (Mathf.Abs(DetectTouchMovement.pinchDistanceDelta) > 5 && !isRotating)   //zoom
             {
 
                 isZooming = true;
@@ -157,7 +193,6 @@ public class CameraManager : MonoBehaviour
 
         //뒤 각도에서 앞 각도빼기.
         var deltaAngle = Mathf.DeltaAngle(newAngle, oldAngle);
-
         //비교할 old값 셋팅
         oldAngle = newAngle;
 
@@ -191,7 +226,7 @@ public class CameraManager : MonoBehaviour
 
     Vector2 GetWorldPosition()
     {
-        return GetComponent<Camera>().ScreenToWorldPoint(Input.mousePosition);
+        return GetComponent<Camera>().ScreenToViewportPoint(Input.mousePosition);
     }
 
     Vector2 GetWorldPositionOfFinger(int FingerIndex)
