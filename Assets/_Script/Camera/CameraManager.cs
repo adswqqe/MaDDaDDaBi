@@ -50,6 +50,13 @@ public class CameraManager : MonoBehaviour
 
     public float dragSpeed = 2;
     private Vector3 dragOrigin;
+
+    //카메라 회전 및 축소 확대 제한
+    [SerializeField]
+    float maxRotate;
+    [SerializeField]
+    float maxZoom;
+
     //void update()
     //{
     //    if (input.getmousebuttondown(0))
@@ -64,7 +71,7 @@ public class CameraManager : MonoBehaviour
     //    vector3 move = new vector3(pos.x * dragspeed, 0, pos.y * dragspeed);
 
     //    transform.translate(move, space.world);
-//    }
+    //    }
 
 
     // Update is called once per frame
@@ -122,12 +129,12 @@ public class CameraManager : MonoBehaviour
                 DragNewPosition = GetWorldPositionOfFinger(1);
                 Vector2 PositionDifference = DragNewPosition - DragStartPosition;
                 float tempMagnitude;
-                debugText5.text = "PositionDifference.magnitude? : " + PositionDifference.magnitude;
+                debugText5.text = "DistanceBetweenFingers.magnitude? : " + (Vector2.Distance(DragNewPosition, Finger0Position) < DistanceBetweenFingers);
                     tempMagnitude = Mathf.Clamp(PositionDifference.magnitude, 0.01f, 1);
                 debugText6.text = "tempMagnitude? : " + tempMagnitude;
-                if (tempMagnitude > 0.5)
+                if (tempMagnitude > 0.8)
                 {
-                    tempMagnitude = 0.0f;
+                    tempMagnitude = Mathf.Clamp(tempMagnitude, 0.01f, 0.5f);
                     //return;
                 }
                 if (Vector2.Distance(DragNewPosition, Finger0Position) < DistanceBetweenFingers)
