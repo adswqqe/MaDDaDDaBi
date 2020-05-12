@@ -3825,7 +3825,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 2.75508e-40, w: -3.11e-43}
+  m_BoundingSphereOverride: {x: 6.64e-43, y: 1.22154e-40, z: 6.64e-43, w: -6.103183e+33}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -5415,7 +5415,10 @@ MonoBehaviour:
   turnAngle: 0
   dragSpeed: 2
   maxRotate: 0
-  maxZoom: 0
+  maxZoom: 10
+  minRotate: 0
+  minZoom: 2
+  orthoZoomSpeed: 0.005
 --- !u!114 &963194230
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 //https://blog.naver.com/PostView.nhn?blogId=cheeryca&logNo=220799350908&proxyReferer=https%3A%2F%2Fwww.google.com%2F
 //https://www.youtube.com/watch?v=qbl38iPitVY
+//https://cyoungesuno.tistory.com/entry/Unity-C%EC%9C%A0%EB%8B%88%ED%8B%B0-%EC%B9%B4%EB%A9%94%EB%9D%BC-%EC%A4%8C%EC%9D%B8-%EC%A4%8C%EC%95%84%EC%9B%83-Pinch-Zoom-in-out 확대 축소
 public class CameraManager : MonoBehaviour
 {
     Vector2 StartPosition;
@@ -56,6 +58,15 @@ public class CameraManager : MonoBehaviour
     float maxRotate;
     [SerializeField]
     float maxZoom;
+    [SerializeField]
+    float minRotate;
+    [SerializeField]
+    float minZoom;
+
+    //[SerializeField]
+    //float perspectiveZoomSpeed = 0.5f;
+    [SerializeField]
+    float orthoZoomSpeed = 0.5f;
 
     //void update()
     //{
@@ -77,6 +88,8 @@ public class CameraManager : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
+        if (EventSystem.current.IsPointerOverGameObject() == true)
+            return;
         Quaternion desiredRotation = transform.rotation;
 
         DetectTouchMovement.Calculate();
@@ -126,27 +139,57 @@ public class CameraManager : MonoBehaviour
 
                 isZooming = true;
 
-                DragNewPosition = GetWorldPositionOfFinger(1);
-                Vector2 PositionDifference = DragNewPosition - DragStartPosition;
-                float tempMagnitude;
-                debugText5.text = "DistanceBetweenFingers.magnitude? : " + (Vector2.Distance(DragNewPosition, Finger0Position) < DistanceBetweenFingers);
-                    tempMagnitude = Mathf.Clamp(PositionDifference.magnitude, 0.01f, 1);
-                debugText6.text = "tempMagnitude? : " + tempMagnitude;
-                if (tempMagnitude > 0.8)
+                Touch touchZero = Input.GetTouch(0);
+                Touch touchOne = Input.GetTouch(1);
+
+                Vector2 touchZeroPrevPos = touchZero.position - touchZero.deltaPosition;
+                Vector2 touchOnePrevPos = touchOne.position - touchOne.deltaPosition;
+
+                float prevTouchDeltaMag = (touchZeroPrevPos - touchOnePrevPos).magnitude;
+                float touchDeltaMag = (touchZero.position - touchOne.position).magnitude;
+
+                float deltaMagnitudeDiff = prevTouchDeltaMag - touchDeltaMag;
+
+                debugText5.text = "deltaMagnitudeDiff : " + GetComponent<Camera>().orthographicSize;
+
+                if (maxZoom <= GetComponent<Camera>().orthographicSize && deltaMagnitudeDiff > 0)
                 {
-                    tempMagnitude = Mathf.Clamp(tempMagnitude, 0.01f, 0.5f);
-                    //return;
+                    debugText6.text = "true bigger";
+                    deltaMagnitudeDiff = 0;
                 }
-                if (Vector2.Distance(DragNewPosition, Finger0Position) < DistanceBetweenFingers)
-                    GetComponent<Camera>().orthographicSize += (tempMagnitude);
 
-                if (Vector2.Distance(DragNewPosition, Finger0Position) >= DistanceBetweenFingers)
-                    GetComponent<Camera>().orthographicSize -= (tempMagnitude);
+                if (minZoom >= GetComponent<Camera>().orthographicSize && deltaMagnitudeDiff < 0)
+                {
+                    deltaMagnitudeDiff = 0;
+                }
 
-                DistanceBetweenFingers = Vector2.Distance(DragNewPosition, Finger0Position);
+                GetComponent<Camera>().orthographicSize += deltaMagnitudeDiff * orthoZoomSpeed;
+                GetComponent<Camera>().orthographicSize = Mathf.Max(GetComponent<Camera>().orthographicSize, 0.1f);
+                
 
-                DragStartPosition = GetWorldPositionOfFinger(1);
-                Finger0Position = GetWorldPositionOfFinger(0);
+                //DragNewPosition = GetWorldPositionOfFinger(1);
+                //Vector2 PositionDifference = DragNewPosition - DragStartPosition;
+                //float tempMagnitude;
+                //    tempMagnitude = Mathf.Clamp(PositionDifference.magnitude, 0.01f, 1);
+                //debugText5.text = "move.magnitude? : ";
+                //debugText6.text = "tempMagnitude? : " + tempMagnitude;
+                //if (tempMagnitude > 0.8)
+                //{
+                //    tempMagnitude = Mathf.Clamp(tempMagnitude, 0.01f, 0.5f);
+                //    //return;
+                //}
+                //if (Input.GetTouch(0).phase == TouchPhase.Moved && Input.GetTouch(1).phase == TouchPhase.Moved)
+                //{
+                //    if (Vector2.Distance(DragNewPosition, Finger0Position) < DistanceBetweenFingers)
+                //        GetComponent<Camera>().orthographicSize += (tempMagnitude);
+
+                //    if (Vector2.Distance(DragNewPosition, Finger0Position) >= DistanceBetweenFingers)
+                //        GetComponent<Camera>().orthographicSize -= (tempMagnitude);
+                //}
+                //DistanceBetweenFingers = Vector2.Distance(DragNewPosition, Finger0Position);
+
+                //DragStartPosition = GetWorldPositionOfFinger(1);
+                //Finger0Position = GetWorldPositionOfFinger(0);
             }
 
             if (isRotating)
