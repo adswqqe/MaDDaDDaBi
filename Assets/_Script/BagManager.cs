@@ -1,10 +1,13 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 
 public class BagManager : MonoBehaviour
 {
+    public Action<List<MaterialItemManager>> ChageBag;
+
     [SerializeField]
     GameObject materialPrefab;
     [SerializeField]
@@ -68,8 +71,9 @@ public class BagManager : MonoBehaviour
             }
             data.ADDMATERIALLIST.Clear();
         }
-    }
 
+        ChageBag?.Invoke(curMaterialItems);
+    }
     void OnClickBagMatrial(ItemInfo item)
     {
        description.text = item.AMOUNTNUMBER.ToString() + "개\n" + item.DESCRIPTION.ToString();

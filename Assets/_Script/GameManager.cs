@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour
     DataManager dataManager;
     UIManager uiManager;
     BagManager bagManaer;
+    ProductionMenuManager productionMenuManager;
     // Start is called before the first frame update
     void Start()
     {
@@ -37,9 +38,10 @@ public class GameManager : MonoBehaviour
         dataManager = gameObject.AddComponent<DataManager>();
         uiManager = GetComponent<UIManager>();
         bagManaer = GetComponent<BagManager>();
+        productionMenuManager = GetComponent<ProductionMenuManager>();
 
         orderMaterialManager.Initialization(UIitemPrefabs, contentTr, xmlManager.GetOrderMaterial("재료"), description, materialName, materialImage, buyBtn, shoppingBaskeContentTr, choiceBtn);
-
+        productionMenuManager.Initialization(xmlManager.GetProductionObjInfo());
         Bind();
     }
 
@@ -50,6 +52,8 @@ public class GameManager : MonoBehaviour
         dataManager.resultCalcGold += orderMaterialManager.OnbuySuccessMatreial;
         dataManager.changeData += uiManager.OnChangeValueUI;
         dataManager.changeData += bagManaer.OnAddBagItem;
+        bagManaer.ChageBag += productionMenuManager.OnAddMatrialViewPort;
+
     }
 
     void UnBind()
@@ -58,7 +62,8 @@ public class GameManager : MonoBehaviour
         orderMaterialManager.buyButtonPress -= dataManager.CalcBuy;
         dataManager.resultCalcGold -= orderMaterialManager.OnbuySuccessMatreial;
         dataManager.changeData -= uiManager.OnChangeValueUI;
-        dataManager.changeData += bagManaer.OnAddBagItem;
+        dataManager.changeData -= bagManaer.OnAddBagItem;
+        bagManaer.ChageBag -= productionMenuManager.OnAddMatrialViewPort;
     }
 
 

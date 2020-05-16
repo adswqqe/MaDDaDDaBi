@@ -6,7 +6,9 @@ using UnityEngine;
 public class XMLManager : MonoBehaviour
 {
     string xmlFileName = "ITEMLIST_TEST";
+    string productionObjXmlFileName = "CRAFTLIST_TEST";
     XmlNodeList all_nodes;
+    XmlNodeList productionAllnodes;
 
     void Start()
     {
@@ -71,5 +73,40 @@ public class XMLManager : MonoBehaviour
 
 
         return materialItems;
+    }
+
+    public List<ProductionObjInfo> GetProductionObjInfo()
+    {
+        TextAsset textAsset = (TextAsset)Resources.Load("XML/" + productionObjXmlFileName);
+        XmlDocument xmlDoc = new XmlDocument();
+        Debug.Log(textAsset.text);
+        xmlDoc.LoadXml(textAsset.text);
+        productionAllnodes = xmlDoc.SelectNodes("CRAFTLIST/text");
+
+        List<ProductionObjInfo> productionObjs = new List<ProductionObjInfo>();
+
+        foreach (XmlNode node in productionAllnodes)
+        {
+
+            ProductionObjInfo item = new ProductionObjInfo(
+                int.Parse(node.SelectSingleNode("ID").InnerText),
+                node.SelectSingleNode("SORT").InnerText,
+                node.SelectSingleNode("NAME").InnerText,
+                node.SelectSingleNode("ICON").InnerText,
+                node.SelectSingleNode("DESCRIPTION").InnerText,
+                node.SelectSingleNode("FIRSTMATERIAL").InnerText,
+                node.SelectSingleNode("SECONDMATERIAL").InnerText,
+                node.SelectSingleNode("THIRDMATERIAL").InnerText,
+                "0",    //four Material
+                "0",    //five Material
+                "0"     //six Material
+                );
+
+            productionObjs.Add(item);
+
+        }
+
+
+        return productionObjs;
     }
 }

@@ -52,7 +52,7 @@ public class MaterialItemManager : MonoBehaviour
 
     public void Initialization(MaterialItemManager materialItemManager, bool isOrderMenu)
     {
-        this.itemInfo = materialItemManager.itemInfo;
+        this.itemInfo = new ItemInfo(materialItemManager.itemInfo);
         this.isOrderMenu = isOrderMenu;
 
         setContent();
@@ -93,5 +93,11 @@ public class MaterialItemManager : MonoBehaviour
     {
         ClickMaterialInShoppingBaske?.Invoke(this);
         Destroy(this.gameObject);
+    }
+
+    public void setContetntProduction()
+    {
+        GetComponentInChildren<Image>().sprite = Resources.Load<Sprite>("ICON/" + itemInfo.ICON_INDEX.ToString());
+        GetComponentInChildren<Text>().text = itemInfo.NAME + "    " + itemInfo.AMOUNTNUMBER + "개";
     }
 }

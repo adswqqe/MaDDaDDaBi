@@ -90,6 +90,7 @@ public class CameraManager : MonoBehaviour
     {
         if (EventSystem.current.IsPointerOverGameObject() == true)
             return;
+
         Quaternion desiredRotation = transform.rotation;
 
         DetectTouchMovement.Calculate();
