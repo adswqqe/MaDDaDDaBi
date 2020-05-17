@@ -12,6 +12,7 @@ public class Data
     int max_bagSpace;
     List<MaterialItemManager> curMaterialItmList;
     List<MaterialItemManager> addMaterialItmList;
+    List<ProductionObjInfo> curProductionItemList;
 
     public Data(int lever, int exp, int gold, int reputation, int bagSpace, int max_bagSpace, List<MaterialItemManager> curMaterialItemList)
     {
@@ -23,6 +24,7 @@ public class Data
         this.max_bagSpace = max_bagSpace;
         this.curMaterialItmList = curMaterialItemList;
         addMaterialItmList = new List<MaterialItemManager>();
+        curProductionItemList = new List<ProductionObjInfo>();
     }
 
     public Data(Data data)
@@ -35,6 +37,7 @@ public class Data
         this.max_bagSpace = data.max_bagSpace;
         this.curMaterialItmList = data.CURMATERIALITELIST;
         addMaterialItmList = new List<MaterialItemManager>();
+        curProductionItemList = new List<ProductionObjInfo>();
     }
 
     public int Level

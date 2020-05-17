@@ -94,12 +94,7 @@ public class XMLManager : MonoBehaviour
                 node.SelectSingleNode("NAME").InnerText,
                 node.SelectSingleNode("ICON").InnerText,
                 node.SelectSingleNode("DESCRIPTION").InnerText,
-                node.SelectSingleNode("FIRSTMATERIAL").InnerText,
-                node.SelectSingleNode("SECONDMATERIAL").InnerText,
-                node.SelectSingleNode("THIRDMATERIAL").InnerText,
-                "0",    //four Material
-                "0",    //five Material
-                "0"     //six Material
+                node.SelectSingleNode("needMaterial").InnerText
                 );
 
             productionObjs.Add(item);

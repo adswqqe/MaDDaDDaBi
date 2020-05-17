@@ -76,4 +76,6 @@ public class DataManager : MonoBehaviour
         resultCalcGold?.Invoke(isResult);
         changeData?.Invoke(data);
     }
+
+
 }
