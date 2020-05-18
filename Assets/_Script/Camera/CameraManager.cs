@@ -88,7 +88,7 @@ public class CameraManager : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
-        if (EventSystem.current.IsPointerOverGameObject() == true)
+        if (IsPointerOverUIObject())
             return;
 
         Quaternion desiredRotation = transform.rotation;
@@ -283,5 +283,14 @@ public class CameraManager : MonoBehaviour
     Vector2 GetWorldPositionOfFinger(int FingerIndex)
     {
         return GetComponent<Camera>().ScreenToWorldPoint(Input.GetTouch(FingerIndex).position);
+    }
+
+    private bool IsPointerOverUIObject()
+    {
+        PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
+        eventDataCurrentPosition.position = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+        List<RaycastResult> results = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
+        return results.Count > 0;
     }
 }
