@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class ProductionMenuManager : MonoBehaviour
 {
-    
+    public Action<List<ItemInfo>, ProductionObjInfo> CreateProduction;
 
     List<ProductionObjInfo> productionList;
 
@@ -41,16 +41,22 @@ public class ProductionMenuManager : MonoBehaviour
             tempGO.transform.SetParent(viewPort);
             contents.Add(tempGO);
             tempGO.GetComponent<ContentObjInfo>().ClickMaterial += OnClickMatrial;
-            tempGO.SetActive(true);
+            //tempGO.SetActive(true);
         }
     }
 
     public void OnAddMatrialViewPort(List<MaterialItemManager> curMaterialItems)
     {
+        for (int k = 0; k < contents.Count; k++)
+        {
+            contents[k].SetActive(false);
+        }
+
         int i = 0;
         foreach (var item in curMaterialItems)
         {
             contents[i].GetComponent<ContentObjInfo>().Initialization(item.ITEMINFO);
+            contents[i].SetActive(true);
             i++;
             Debug.Log(item.NAME);
 
@@ -76,9 +82,9 @@ public class ProductionMenuManager : MonoBehaviour
         }
     }
 
-    public void CreateProduction()
+    public void OnClickCreateProduction()
     {
-        string comId = "";
+        ProductionObjInfo production = null;
         bool isFind = false;
 
         List<string> tempIdList = new List<string>();
@@ -94,8 +100,6 @@ public class ProductionMenuManager : MonoBehaviour
             //if (isFind)
             //    break;
 
-            Debug.Log(item.NAME);
-
             if (item.COMBINATIONLIST.Count != tempIdList.Count)
             {
                 continue;
@@ -103,7 +107,6 @@ public class ProductionMenuManager : MonoBehaviour
 
             if (item.COMBINATIONLIST.Contains(tempIdList[0]))
             {
-                Debug.Log(item.NAME);
                 for (int i = 0; i < item.COMBINATIONLIST.Count; i++)
                 {
                     if(item.COMBINATIONLIST.Contains(tempIdList[i]))
@@ -114,12 +117,12 @@ public class ProductionMenuManager : MonoBehaviour
                     if (item.COMBINATIONLIST.Count == conter)
                     {
                         isFind = true;
-                        comId = item.NAME;
+                        production = new ProductionObjInfo(item);
                     }
                 }
             }
         }
 
-        Debug.Log(comId);
+        CreateProduction?.Invoke(selectObj, production);
     }
 }

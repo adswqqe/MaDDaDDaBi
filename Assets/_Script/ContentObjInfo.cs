@@ -28,7 +28,10 @@ public class ContentObjInfo : MonoBehaviour
     void Start()
     {
         if (GetComponentInChildren<Image>().sprite == null)
+        {
             GetComponentInChildren<Image>().enabled = false;
+            gameObject.SetActive(false);
+        }
         btn = GetComponent<Button>();
         btn.onClick.AddListener(onClickMaterial);
     }

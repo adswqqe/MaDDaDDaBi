@@ -63,8 +63,8 @@ public class CameraManager : MonoBehaviour
     [SerializeField]
     float minZoom;
 
-    //[SerializeField]
-    //float perspectiveZoomSpeed = 0.5f;
+    [SerializeField]
+    float perspectiveZoomSpeed = 0.5f;
     [SerializeField]
     float orthoZoomSpeed = 0.5f;
 
@@ -151,22 +151,30 @@ public class CameraManager : MonoBehaviour
 
                 float deltaMagnitudeDiff = prevTouchDeltaMag - touchDeltaMag;
 
-                debugText5.text = "deltaMagnitudeDiff : " + GetComponent<Camera>().orthographicSize;
+                debugText5.text = "fieldOfView : " + GetComponent<Camera>().fieldOfView;
+                debugText8.text = "deltaMagnitudeDiff" + deltaMagnitudeDiff;
 
-                if (maxZoom <= GetComponent<Camera>().orthographicSize && deltaMagnitudeDiff > 0)
+                if (maxZoom >= GetComponent<Camera>().fieldOfView && deltaMagnitudeDiff < 0)
                 {
                     debugText6.text = "true bigger";
                     deltaMagnitudeDiff = 0;
                 }
 
-                if (minZoom >= GetComponent<Camera>().orthographicSize && deltaMagnitudeDiff < 0)
+                if (minZoom <= GetComponent<Camera>().fieldOfView && deltaMagnitudeDiff > 0)
                 {
                     deltaMagnitudeDiff = 0;
                 }
 
-                GetComponent<Camera>().orthographicSize += deltaMagnitudeDiff * orthoZoomSpeed;
-                GetComponent<Camera>().orthographicSize = Mathf.Max(GetComponent<Camera>().orthographicSize, 0.1f);
-                
+                if (GetComponent<Camera>().orthographic)
+                {
+                    GetComponent<Camera>().orthographicSize += deltaMagnitudeDiff * orthoZoomSpeed;
+                    GetComponent<Camera>().orthographicSize = Mathf.Max(GetComponent<Camera>().orthographicSize, 0.1f);
+                }
+                else
+                {
+                    GetComponent<Camera>().fieldOfView += deltaMagnitudeDiff * perspectiveZoomSpeed;
+                    GetComponent<Camera>().fieldOfView = Mathf.Clamp(GetComponent<Camera>().fieldOfView, 0.1f, 179.9f);
+                }
 
                 //DragNewPosition = GetWorldPositionOfFinger(1);
                 //Vector2 PositionDifference = DragNewPosition - DragStartPosition;

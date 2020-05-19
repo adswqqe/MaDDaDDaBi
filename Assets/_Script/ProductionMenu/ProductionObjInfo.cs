@@ -9,10 +9,11 @@ public class ProductionObjInfo
     string name;
     string icon_index;
     string description;
+    int amountNumber;
 
     List<string> combinationList;
 
-    string combinationId;
+    ItemInfo ItemInfo;
 
     public ProductionObjInfo(int id, string sort, string name, string icon_index, string description, string combinationString)
     {
@@ -30,6 +31,33 @@ public class ProductionObjInfo
         {
             combinationList.Add(temp[i]);
         }
+
+        ItemInfo = new ItemInfo(id, sort, name, icon_index, 0, 0, description);
+
+        amountNumber = 0;
+    }
+
+    public ProductionObjInfo(ProductionObjInfo info)
+    {
+        this.id = info.ID;
+        this.sort = info.SORT;
+        this.name = info.NAME;
+        this.icon_index = info.ICON_INDEX;
+        this.description = info.DESCRIPTION;
+
+        combinationList = new List<string>();
+        foreach (var item in info.COMBINATIONLIST)
+        {
+            combinationList.Add(item);
+        }
+        amountNumber = info.AMOUNTNUMBER;
+
+        ItemInfo = new ItemInfo(id, sort, name, icon_index, 0, 0, description);
+    }
+
+    public int AMOUNTNUMBER
+    {
+        get { return amountNumber; }
     }
 
     public string NAME
@@ -37,13 +65,33 @@ public class ProductionObjInfo
         get { return name; }
     }
 
-    public string COMVINATIONID
+    public string SORT
     {
-        get { return combinationId; }
+        get { return sort; }
+    }
+
+    public int ID
+    {
+        get { return id; }
+    }
+
+    public string ICON_INDEX
+    {
+        get { return icon_index; }
+    }
+
+    public string DESCRIPTION
+    {
+        get { return description; }
     }
 
     public List<string> COMBINATIONLIST
     {
         get { return combinationList; }
+    }
+
+    public ItemInfo ITEMINFO
+    {
+        get { return ItemInfo; }
     }
 }

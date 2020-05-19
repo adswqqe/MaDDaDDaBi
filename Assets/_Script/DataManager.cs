@@ -56,6 +56,7 @@ public class DataManager : MonoBehaviour
 
                 foreach (var item in data.ADDMATERIALLIST)
                 {
+                    Debug.Log(item.NAME);
                     foreach (var curItem in data.CURMATERIALITELIST)
                     {
                         if (item.NAME == curItem.NAME)
@@ -65,7 +66,10 @@ public class DataManager : MonoBehaviour
                         }
                     }
                     if (!isHave)
+                    {
                         data.CURMATERIALITELIST.Add(item);
+                        Debug.Log(item.NAME);
+                    }
                 }
                 
             }
@@ -74,8 +78,47 @@ public class DataManager : MonoBehaviour
         }
 
         resultCalcGold?.Invoke(isResult);
+
         changeData?.Invoke(data);
+        data.ADDMATERIALLIST.Clear();   // 재사용을 위한 초기화
     }
 
+    public void OnCreateProduction(List<ItemInfo> materials, ProductionObjInfo production)
+    {
+        // null이라면 아무것도 조합되지 않았다는 뜻이므로 쓰레기를 던져야함.
+        if (production == null)
+            production = new ProductionObjInfo(999, "테스트", "쓰레기", "998", "실패한 연금술", "NONE");
+
+        data.CURPRODUCTIONITEMLIST.Add(production);
+
+        MaterialItemManager tempItem = null;
+        foreach (var item in materials)
+        {
+            foreach (var dataItem in data.CURMATERIALITELIST)
+            {
+                if (item.NAME == dataItem.NAME)
+                {
+                    Debug.Log(item.AMOUNTNUMBER + " 갯수");
+                    dataItem.ITEMINFO.AMOUNTNUMBER -= 1;
+                    if (dataItem.ITEMINFO.AMOUNTNUMBER <= 0)
+                    {
+                        //         tempItem = dataItem;
+                        data.CURMATERIALITELIST.Remove(dataItem);
+                        Debug.Log(dataItem.NAME +"이게 왜 NULL?");
+                        break;
+                    }
+                }
+            }
+            //if (tempItem.NAME != null)
+            //{
+            //    data.CURMATERIALITELIST.Remove(tempItem);
+            //    Debug.Log("진입");
+            //}
+        }
+
+        data.BAGSPACE = data.CURMATERIALITELIST.Count + data.CURPRODUCTIONITEMLIST.Count;
+        changeData?.Invoke(data);
+
+    }
 
 }

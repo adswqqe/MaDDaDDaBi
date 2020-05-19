@@ -85,4 +85,10 @@ public class Data
     {
         get { return addMaterialItmList; }
     }
+
+    public List<ProductionObjInfo> CURPRODUCTIONITEMLIST
+    {
+        get { return curProductionItemList; }
+    }
+        
 }
