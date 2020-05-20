@@ -33,8 +33,8 @@ public class ProductionObjInfo
         }
 
         ItemInfo = new ItemInfo(id, sort, name, icon_index, 0, 0, description);
-
-        amountNumber = 0;
+        ItemInfo.AMOUNTNUMBER = 1;
+        //amountNumber = 1;
     }
 
     public ProductionObjInfo(ProductionObjInfo info)
@@ -53,11 +53,12 @@ public class ProductionObjInfo
         amountNumber = info.AMOUNTNUMBER;
 
         ItemInfo = new ItemInfo(id, sort, name, icon_index, 0, 0, description);
+        ItemInfo.AMOUNTNUMBER = info.AMOUNTNUMBER;
     }
 
     public int AMOUNTNUMBER
     {
-        get { return amountNumber; }
+        get { return ItemInfo.AMOUNTNUMBER; }
     }
 
     public string NAME

@@ -85,26 +85,43 @@ public class DataManager : MonoBehaviour
 
     public void OnCreateProduction(List<ItemInfo> materials, ProductionObjInfo production)
     {
+        bool isHave = false;
+
         // null이라면 아무것도 조합되지 않았다는 뜻이므로 쓰레기를 던져야함.
         if (production == null)
             production = new ProductionObjInfo(999, "테스트", "쓰레기", "998", "실패한 연금술", "NONE");
 
-        data.CURPRODUCTIONITEMLIST.Add(production);
+
+        foreach (var curItem in data.CURPRODUCTIONITEMLIST)
+        {
+            if (production.NAME == curItem.NAME)
+            {
+                Debug.Log(production.NAME);
+                curItem.ITEMINFO.AMOUNTNUMBER += production.ITEMINFO.AMOUNTNUMBER;
+                isHave = true;
+            }
+        }
+
+        if (!isHave)
+        {
+            data.CURPRODUCTIONITEMLIST.Add(production);
+            Debug.Log("isHaved" + production.AMOUNTNUMBER);
+        }
 
         MaterialItemManager tempItem = null;
-        foreach (var item in materials)
+        foreach (var item in materials)     // 소지 재료 감소
         {
             foreach (var dataItem in data.CURMATERIALITELIST)
             {
                 if (item.NAME == dataItem.NAME)
                 {
-                    Debug.Log(item.AMOUNTNUMBER + " 갯수");
+                    //Debug.Log(item.AMOUNTNUMBER + " 갯수");
                     dataItem.ITEMINFO.AMOUNTNUMBER -= 1;
                     if (dataItem.ITEMINFO.AMOUNTNUMBER <= 0)
                     {
                         //         tempItem = dataItem;
                         data.CURMATERIALITELIST.Remove(dataItem);
-                        Debug.Log(dataItem.NAME +"이게 왜 NULL?");
+                        //Debug.Log(dataItem.NAME +"이게 왜 NULL?");
                         break;
                     }
                 }

@@ -52,7 +52,7 @@ public class GameManager : MonoBehaviour
         dataManager.resultCalcGold += orderMaterialManager.OnbuySuccessMatreial;
         dataManager.changeData += uiManager.OnChangeValueUI;
         dataManager.changeData += bagManaer.OnAddBagItem;
-        bagManaer.ChageBag += productionMenuManager.OnAddMatrialViewPort;
+        dataManager.changeData += productionMenuManager.OnAddMatrialViewPort;
         productionMenuManager.CreateProduction += dataManager.OnCreateProduction;
 
     }
@@ -64,7 +64,7 @@ public class GameManager : MonoBehaviour
         dataManager.resultCalcGold -= orderMaterialManager.OnbuySuccessMatreial;
         dataManager.changeData -= uiManager.OnChangeValueUI;
         dataManager.changeData -= bagManaer.OnAddBagItem;
-        bagManaer.ChageBag -= productionMenuManager.OnAddMatrialViewPort;
+        dataManager.changeData -= productionMenuManager.OnAddMatrialViewPort;
         productionMenuManager.CreateProduction -= dataManager.OnCreateProduction;
     }
 

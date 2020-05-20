@@ -68,24 +68,23 @@ public class BagManager : MonoBehaviour
         int i = 0;
         foreach (var item in data.CURMATERIALITELIST)
         {
-            materialContents[i].GetComponent<BagItemInfo>().Initialization(item.ITEMINFO);
+            materialContents[i].GetComponent<BagItemInfo>().Initialization(item.ITEMINFO, item.ITEMINFO.AMOUNTNUMBER);
             materialContents[i].SetActive(true);
-            Debug.Log(item.NAME);
             i++;
         }
 
-        i = 0;
+        int j = 0;
         foreach (var item in data.CURPRODUCTIONITEMLIST)
         {
-            Debug.Log(i + " 번 째");
-            Debug.Log(item.ITEMINFO.NAME + "??");
-            equipmentContents[i].GetComponent<BagItemInfo>().Initialization(item.ITEMINFO);
-            Debug.Log(item.ITEMINFO + "??");
-            equipmentContents[i].SetActive(true);
-            i++;
+            //Debug.Log(i + " 번 째");
+            //Debug.Log(item.ITEMINFO.NAME + "??");
+            Debug.Log(item.AMOUNTNUMBER + "??");
+            equipmentContents[j].GetComponent<BagItemInfo>().Initialization(item.ITEMINFO, item.ITEMINFO.AMOUNTNUMBER);
+            equipmentContents[j].SetActive(true);
+            j++;
         }
 
-        ChageBag?.Invoke(data.CURMATERIALITELIST);
+        //ChageBag?.Invoke(data.CURMATERIALITELIST);
 
 
         //materialViewPort.GetComponent<GridLayoutGroup>().constraintCount = data.CURMATERIALITELIST.Count;
@@ -141,5 +140,10 @@ public class BagManager : MonoBehaviour
     void OnClickItem(ItemInfo item)
     {
        description.text = item.AMOUNTNUMBER.ToString() + "개\n" + item.DESCRIPTION.ToString();
+    }
+
+    public void OnClickExitBtn()
+    {
+        description.text = "";
     }
 }

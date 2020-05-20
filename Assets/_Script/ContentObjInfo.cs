@@ -23,6 +23,8 @@ public class ContentObjInfo : MonoBehaviour
         GetComponentInChildren<Image>().enabled = true;
         GetComponentInChildren<Image>().sprite = Resources.Load<Sprite>("ICON/" + item.ICON_INDEX.ToString());
         GetComponentInChildren<Text>().text = item.NAME + "    " + amountNumber + "개";
+
+        clickCount = 0;
     }
     // Start is called before the first frame update
     void Start()
@@ -58,6 +60,18 @@ public class ContentObjInfo : MonoBehaviour
             amountNumber = this.item.AMOUNTNUMBER;
             clickCount = 0;
             GetComponentInChildren<Text>().text = item.NAME + "    " + amountNumber + "개";
+        }
+    }
+
+    public void OnClickSlot(int id)
+    {
+        if (item == null)
+            return;
+
+        if (item.ID == id)
+        {
+            clickCount -= 1;
+            GetComponentInChildren<Text>().text = item.NAME + "    " + (amountNumber - clickCount) + "개";
         }
     }
 }

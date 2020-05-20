@@ -12,14 +12,16 @@ public class BagItemInfo : MonoBehaviour
     Button btn;
     Image img;
 
-    public void Initialization(ItemInfo itemInfo)
+    public void Initialization(ItemInfo itemInfo, int amo)
     {
+        Debug.Log("갯수 : " + itemInfo.AMOUNTNUMBER);
+        Debug.Log("이름 : " + itemInfo.NAME);
+        Debug.Log("amo : " + amo+ " NAME : " + itemInfo.NAME);
         this.itemInfo = new ItemInfo(itemInfo);
-
         img = GetComponentInChildren<Image>();
 
         img.enabled = true;
-        img.sprite = Resources.Load<Sprite>("ICON/" + itemInfo.ICON_INDEX.ToString());
+        img.sprite = Resources.Load<Sprite>("ICON/" + this.itemInfo.ICON_INDEX.ToString());
     }
 
     void Start()

@@ -70,7 +70,6 @@ public class OrderMaterialManager : MonoBehaviour
     void OnMaterialClick(ItemInfo item)
     {
         selectMaterialItem = item;
-        Debug.Log(selectMaterialItem);
 
         materialName.enabled = true;
         materialImage.enabled = true;
