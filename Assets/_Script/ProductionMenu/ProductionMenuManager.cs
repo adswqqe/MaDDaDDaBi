@@ -27,6 +27,8 @@ public class ProductionMenuManager : MonoBehaviour
     List<GameObject> contents;
     List<ItemInfo> selectObj;
 
+    List<ProductionObjInfo> haveProductionList;
+
     public void Initialization(List<ProductionObjInfo> productionList)
     {
         this.productionList = productionList;
@@ -37,6 +39,7 @@ public class ProductionMenuManager : MonoBehaviour
     {
         contents = new List<GameObject>();
         selectObj = new List<ItemInfo>();
+        haveProductionList = new List<ProductionObjInfo>();
 
         for (int i = 0; i < MAX_CONTENT_SIZE; i++)
         {
@@ -72,12 +75,61 @@ public class ProductionMenuManager : MonoBehaviour
         if (curSelectIndex >= 6)
             return;
 
-        slot[curSelectIndex].sprite = Resources.Load<Sprite>("ICON/" + item.ICON_INDEX.ToString());
+        slot[curSelectIndex].sprite = Resources.Load<Sprite>("ICON/" + item.ICON_INDEX);
         selectObj.Add(item);
 
         curSelectIndex += 1;
 
-        GamasotInIcon.sprite = Resources.Load<Sprite>("ICON/" + "999");
+        CheckGamasotInIcon();
+    }
+
+    void CheckGamasotInIcon()
+    {
+        List<string> tempIdList = new List<string>();
+        List<string> tempCombiation;
+        string iconIndex = "";
+        bool isFind = false;
+
+        foreach (var item in selectObj)
+        {
+            tempIdList.Add(item.ID.ToString());
+        }
+
+        foreach (var item in haveProductionList)
+        {
+            tempCombiation = new List<string>(item.COMBINATIONLIST);
+            int conter = 0;
+            int combiationCount = tempCombiation.Count;
+
+            if (tempCombiation.Count != tempIdList.Count)
+            {
+                continue;
+            }
+
+            if (tempCombiation.Contains(tempIdList[0]))
+            {
+                for (int i = 0; i < combiationCount; i++)
+                {
+                    if (tempCombiation.Contains(tempIdList[i]))
+                    {
+                        tempCombiation.Remove(tempIdList[i]);
+                        conter += 1;
+                    }
+                }
+
+                if (combiationCount == conter)
+                {
+                    isFind = true;
+                    iconIndex = item.ICON_INDEX;
+                }
+            }
+        }
+
+        if (isFind)
+            GamasotInIcon.sprite = Resources.Load<Sprite>("ICON/" + iconIndex);
+        else
+            GamasotInIcon.sprite = Resources.Load<Sprite>("ICON/" + "999");
+
         GamasotInIcon.color = new Color(GamasotInIcon.color.r, GamasotInIcon.color.g, GamasotInIcon.color.b, 1);
     }
 
@@ -99,9 +151,9 @@ public class ProductionMenuManager : MonoBehaviour
             return;
 
         ProductionObjInfo production = null;
-        bool isFind = false;
 
         List<string> tempIdList = new List<string>();
+        List<string> tempCombiation;
 
         foreach (var item in selectObj)
         {
@@ -110,35 +162,41 @@ public class ProductionMenuManager : MonoBehaviour
 
         foreach (var item in productionList)
         {
+            tempCombiation = new List<string>(item.COMBINATIONLIST);
             int conter = 0;
-            //if (isFind)
-            //    break;
+            int combiationCount = tempCombiation.Count;
 
-            if (item.COMBINATIONLIST.Count != tempIdList.Count)
+            if (tempCombiation.Count != tempIdList.Count)
             {
                 continue;
             }
 
-            if (item.COMBINATIONLIST.Contains(tempIdList[0]))
+            if (tempCombiation.Contains(tempIdList[0]))
             {
-                for (int i = 0; i < item.COMBINATIONLIST.Count; i++)
+                for (int i = 0; i < combiationCount; i++)
                 {
-                    if(item.COMBINATIONLIST.Contains(tempIdList[i]))
+                    if(tempCombiation.Contains(tempIdList[i]))
                     {
                         conter += 1;
+                        tempCombiation.Remove(tempIdList[i]);
                     }
 
-                    if (item.COMBINATIONLIST.Count == conter)
+                    if (combiationCount == conter)
                     {
-                        isFind = true;
                         production = new ProductionObjInfo(item);
                         Debug.Log(production.AMOUNTNUMBER + " 이름 " + production.NAME);
                     }
                 }
             }
         }
+        if (production != null)
+            haveProductionList.Add(production);
+        if (production != null)
+            GamasotInIcon.sprite = Resources.Load<Sprite>("ICON/" + production.ICON_INDEX);
+        else
+            GamasotInIcon.sprite = Resources.Load<Sprite>("ICON/" + "998"); // 쓰레기 이미지 출력
+
         CreateProduction?.Invoke(selectObj, production);
-        GamasotInIcon.sprite = Resources.Load<Sprite>("ICON/" + production.ICON_INDEX);
         selectObj.Clear();
         for (int i = 0; i < slot.Length; i++)
         {
