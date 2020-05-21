@@ -68,6 +68,11 @@ public class CameraManager : MonoBehaviour
     [SerializeField]
     float orthoZoomSpeed = 0.5f;
 
+    [SerializeField]
+    Vector3 dayCameraPos;
+    [SerializeField]
+    Vector3 EndDayCameraPos;
+
     //void update()
     //{
     //    if (input.getmousebuttondown(0))
@@ -300,5 +305,24 @@ public class CameraManager : MonoBehaviour
         List<RaycastResult> results = new List<RaycastResult>();
         EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
         return results.Count > 0;
+    }
+
+    public void OnEndDay(bool isEndDay)
+    {
+        //if (isEndDay)
+        //    transform.position = EndDayCameraPos;
+        //else
+        //    transform.position = dayCameraPos;
+        StartCoroutine(WaitFadeScene(isEndDay));
+    }
+
+    IEnumerator WaitFadeScene(bool isEndDay)
+    {
+        yield return new WaitForSeconds(0.45f);
+
+        if (isEndDay)
+            transform.position = EndDayCameraPos;
+        else
+            transform.position = dayCameraPos;
     }
 }

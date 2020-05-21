@@ -13,6 +13,12 @@ public class UIManager : MonoBehaviour
     Text reputationText;
     [SerializeField]
     Text bagSpaceText;
+    [SerializeField]
+    GameObject orderBtn;
+    [SerializeField]
+    GameObject displayBtn;
+    [SerializeField]
+    GameObject openStoreBtn;
 
     // Start is called before the first frame update
     void Start()
@@ -27,4 +33,26 @@ public class UIManager : MonoBehaviour
         reputationText.text = data.REPUTATION.ToString();
         bagSpaceText.text = "공간 : " + data.BAGSPACE + "/" + " " + data.MAX_BAGSPCE;
     }
+
+    public void OnEndDay(bool isEndDay)
+    {
+        if (isEndDay)
+        {
+            orderBtn.GetComponent<Button>().enabled = true;
+            displayBtn.GetComponent<Button>().enabled = false;
+            openStoreBtn.SetActive(true);
+        }
+        else
+        {
+            orderBtn.GetComponent<Button>().enabled = false;
+            displayBtn.GetComponent<Button>().enabled = true;
+            openStoreBtn.SetActive(false);
+        }
+    }
+
+    //public void OnStartDay()
+    //{
+    //    orderBtn.GetComponent<Button>().enabled = false;
+    //    displayBtn.GetComponent<Button>().enabled = false;
+    //}
 }

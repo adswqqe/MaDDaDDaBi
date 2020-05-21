@@ -21,6 +21,7 @@ public class OrderMaterialManager : MonoBehaviour
     List<MaterialItemManager> curShoppingBaskeList;
 
     bool isAlreadyAdded = false;
+    bool isEndDay = false;
 
     public void Initialization(GameObject itemprefabs, Transform contentTr, List<ItemInfo> materialList, Text description, Text materialName, Image materialImage, Button buyBtn, Transform shoppingBaskeContentTr, Button choiceBtn)
     {

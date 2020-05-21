@@ -23,6 +23,10 @@ public class GameManager : MonoBehaviour
     Transform shoppingBaskeContentTr;
     [SerializeField]
     CountManager shoppingBakeCountManger;
+    [SerializeField]
+    CameraManager cameraManager;
+    [SerializeField]
+    SceneTransitionManager sceneTransitionManager;
 
     XMLManager xmlManager;
     OrderMaterialManager orderMaterialManager;
@@ -30,6 +34,9 @@ public class GameManager : MonoBehaviour
     UIManager uiManager;
     BagManager bagManaer;
     ProductionMenuManager productionMenuManager;
+    TimeManager timeManager;
+    DisPlayMenuManager displayMenuManager;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,6 +46,8 @@ public class GameManager : MonoBehaviour
         uiManager = GetComponent<UIManager>();
         bagManaer = GetComponent<BagManager>();
         productionMenuManager = GetComponent<ProductionMenuManager>();
+        timeManager = GetComponent<TimeManager>();
+        displayMenuManager = GetComponent<DisPlayMenuManager>();
 
         orderMaterialManager.Initialization(UIitemPrefabs, contentTr, xmlManager.GetOrderMaterial("재료"), description, materialName, materialImage, buyBtn, shoppingBaskeContentTr, choiceBtn);
         productionMenuManager.Initialization(xmlManager.GetProductionObjInfo());
@@ -54,7 +63,9 @@ public class GameManager : MonoBehaviour
         dataManager.changeData += bagManaer.OnAddBagItem;
         dataManager.changeData += productionMenuManager.OnAddMatrialViewPort;
         productionMenuManager.CreateProduction += dataManager.OnCreateProduction;
-
+        timeManager.EndDayTime += uiManager.OnEndDay;
+        timeManager.EndDayTime += cameraManager.OnEndDay;
+        timeManager.EndDayTime += sceneTransitionManager.OnStartSceneTransition;
     }
 
     void UnBind()
@@ -66,6 +77,9 @@ public class GameManager : MonoBehaviour
         dataManager.changeData -= bagManaer.OnAddBagItem;
         dataManager.changeData -= productionMenuManager.OnAddMatrialViewPort;
         productionMenuManager.CreateProduction -= dataManager.OnCreateProduction;
+        timeManager.EndDayTime -= uiManager.OnEndDay;
+        timeManager.EndDayTime -= cameraManager.OnEndDay;
+        timeManager.EndDayTime -= sceneTransitionManager.OnStartSceneTransition;
     }
 
 
