@@ -68,7 +68,7 @@ public class BagManager : MonoBehaviour
         int i = 0;
         foreach (var item in data.CURMATERIALITELIST)
         {
-            materialContents[i].GetComponent<BagItemInfo>().Initialization(item.ITEMINFO, item.ITEMINFO.AMOUNTNUMBER);
+            materialContents[i].GetComponent<BagItemInfo>().Initialization(item.ITEMINFO);
             materialContents[i].SetActive(true);
             i++;
         }
@@ -79,7 +79,7 @@ public class BagManager : MonoBehaviour
             //Debug.Log(i + " 번 째");
             //Debug.Log(item.ITEMINFO.NAME + "??");
             Debug.Log(item.AMOUNTNUMBER + "??");
-            equipmentContents[j].GetComponent<BagItemInfo>().Initialization(item.ITEMINFO, item.ITEMINFO.AMOUNTNUMBER);
+            equipmentContents[j].GetComponent<BagItemInfo>().Initialization(item.ITEMINFO);
             equipmentContents[j].SetActive(true);
             j++;
         }

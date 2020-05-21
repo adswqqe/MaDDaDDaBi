@@ -59,10 +59,14 @@ public class GameManager : MonoBehaviour
         shoppingBakeCountManger.clickAddSoppingBaskeBtn += orderMaterialManager.OnAddShoppingBaskeBtn;
         orderMaterialManager.buyButtonPress += dataManager.CalcBuy;
         dataManager.resultCalcGold += orderMaterialManager.OnbuySuccessMatreial;
+
         dataManager.changeData += uiManager.OnChangeValueUI;
         dataManager.changeData += bagManaer.OnAddBagItem;
         dataManager.changeData += productionMenuManager.OnAddMatrialViewPort;
+        dataManager.changeData += displayMenuManager.OnAddItemViewPort;
+
         productionMenuManager.CreateProduction += dataManager.OnCreateProduction;
+
         timeManager.EndDayTime += uiManager.OnEndDay;
         timeManager.EndDayTime += cameraManager.OnEndDay;
         timeManager.EndDayTime += sceneTransitionManager.OnStartSceneTransition;
@@ -73,10 +77,14 @@ public class GameManager : MonoBehaviour
         shoppingBakeCountManger.clickAddSoppingBaskeBtn -= orderMaterialManager.OnAddShoppingBaskeBtn;
         orderMaterialManager.buyButtonPress -= dataManager.CalcBuy;
         dataManager.resultCalcGold -= orderMaterialManager.OnbuySuccessMatreial;
+
         dataManager.changeData -= uiManager.OnChangeValueUI;
         dataManager.changeData -= bagManaer.OnAddBagItem;
         dataManager.changeData -= productionMenuManager.OnAddMatrialViewPort;
+        dataManager.changeData -= displayMenuManager.OnAddItemViewPort;
+
         productionMenuManager.CreateProduction -= dataManager.OnCreateProduction;
+
         timeManager.EndDayTime -= uiManager.OnEndDay;
         timeManager.EndDayTime -= cameraManager.OnEndDay;
         timeManager.EndDayTime -= sceneTransitionManager.OnStartSceneTransition;

@@ -13,16 +13,17 @@ public class TimeManager : MonoBehaviour
     [SerializeField]
     float increaseTime = 2.0f;
 
-    float hour = 7;
+    float hour = 19;
     float min = 0;
     float sec = 0;
 
-    bool isEndTime = false;
+    bool isEndTime = true;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        EndDayTime?.Invoke(true);
+        timeText.text = hour.ToString("00") + ":" + min.ToString("00");
     }
 
     // Update is called once per frame
@@ -30,10 +31,10 @@ public class TimeManager : MonoBehaviour
     {
         if (!isEndTime)
         {
-            if (hour >= 17)
+            if (hour >= 19)
             {
                 isEndTime = true;
-                hour = 17;
+                hour = 19;
                 min = 0;
                 EndDayTime?.Invoke(true);
             }

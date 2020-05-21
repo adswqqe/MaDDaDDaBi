@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine;
 
-public class BagItemInfo : MonoBehaviour
+public class DisPlayItemInfo : MonoBehaviour
 {
     public Action<ItemInfo> ClickItem;
 
@@ -14,15 +14,15 @@ public class BagItemInfo : MonoBehaviour
 
     public void Initialization(ItemInfo itemInfo)
     {
-        Debug.Log("갯수 : " + itemInfo.AMOUNTNUMBER);
-        Debug.Log("이름 : " + itemInfo.NAME);
         this.itemInfo = new ItemInfo(itemInfo);
+
         img = GetComponentInChildren<Image>();
 
         img.enabled = true;
         img.sprite = Resources.Load<Sprite>("ICON/" + this.itemInfo.ICON_INDEX.ToString());
     }
 
+    // Start is called before the first frame update
     void Start()
     {
         btn = GetComponent<Button>();
@@ -54,4 +54,5 @@ public class BagItemInfo : MonoBehaviour
 
         img.sprite = Resources.Load<Sprite>("ICON/" + itemInfo.ICON_INDEX.ToString());
     }
+
 }
