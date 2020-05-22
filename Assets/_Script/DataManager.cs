@@ -138,4 +138,23 @@ public class DataManager : MonoBehaviour
 
     }
 
+    public void OnDisplayItemObj(ItemInfo iteminfo)
+    {
+        foreach (var item in data.CURPRODUCTIONITEMLIST)
+        {
+            if(item.ID == iteminfo.ID)
+            {
+                item.ITEMINFO.AMOUNTNUMBER -= 1;
+
+                if (item.ITEMINFO.AMOUNTNUMBER <= 0)
+                {
+                    data.CURPRODUCTIONITEMLIST.Remove(item);
+                    break;
+                }
+            }
+        }
+
+        changeData?.Invoke(data);
+    }
+
 }

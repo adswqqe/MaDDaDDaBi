@@ -70,7 +70,10 @@ public class ContentObjInfo : MonoBehaviour
 
         if (item.ID == id)
         {
-            clickCount -= 1;
+            clickCount = clickCount - 1;
+            if (clickCount <= 0)
+                clickCount = 0;
+
             GetComponentInChildren<Text>().text = item.NAME + "    " + (amountNumber - clickCount) + "개";
         }
     }

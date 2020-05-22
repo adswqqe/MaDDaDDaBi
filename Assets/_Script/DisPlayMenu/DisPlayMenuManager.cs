@@ -1,9 +1,16 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class DisPlayMenuManager : MonoBehaviour
 {
+    public Action<ItemInfo> DisplayItemObj;
+    public Action<Transform> DisPlayItemPos;
+
+    [SerializeField]
+    GameObject displayItemObj;
     [SerializeField]
     GameObject itemPrefab;
     [SerializeField]
@@ -12,12 +19,23 @@ public class DisPlayMenuManager : MonoBehaviour
     Transform toolsViewPort;
     [SerializeField]
     Transform equipmentViewPort;
+    [SerializeField]
+    Text description;
+    [SerializeField]
+    Button displayBtn;
+    [SerializeField]
+    Transform[] displayStandPos;
 
+    int curDisplayCount = 0;
     const int MAX_CONTENT_SIZE = 30;
 
     List<GameObject> potionContents;
     List<GameObject> toolsContents;
     List<GameObject> equipmentContents;
+
+    List<GameObject> curDisplayItemObjList;
+
+    ItemInfo seletingItem;
 
     // Start is called before the first frame update
     void Start()
@@ -98,6 +116,24 @@ public class DisPlayMenuManager : MonoBehaviour
 
     void OnClickItem(ItemInfo item)
     {
-     //   description.text = item.AMOUNTNUMBER.ToString() + "개\n" + item.DESCRIPTION.ToString();
+        description.text = item.NAME + "\n" + item.DESCRIPTION + "\n" + item.AMOUNTNUMBER + "개";
+        seletingItem = new ItemInfo(item);
+        displayBtn.gameObject.SetActive(true);
+    }
+
+    public void OnClickDisplayBtn()
+    {
+        if (seletingItem == null)
+            return;
+
+        var tempGo = Instantiate(displayItemObj);
+        tempGo.transform.position = displayStandPos[curDisplayCount].position;
+
+        DisplayItemObj?.Invoke(seletingItem);
+        DisPlayItemPos?.Invoke(displayStandPos[curDisplayCount]);
+
+        curDisplayCount += 1;
+        seletingItem = null;
+        description.text = "";
     }
 }

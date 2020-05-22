@@ -36,6 +36,7 @@ public class GameManager : MonoBehaviour
     ProductionMenuManager productionMenuManager;
     TimeManager timeManager;
     DisPlayMenuManager displayMenuManager;
+    NPCManager npcManager;
 
     // Start is called before the first frame update
     void Start()
@@ -48,6 +49,7 @@ public class GameManager : MonoBehaviour
         productionMenuManager = GetComponent<ProductionMenuManager>();
         timeManager = GetComponent<TimeManager>();
         displayMenuManager = GetComponent<DisPlayMenuManager>();
+        npcManager = GetComponent<NPCManager>();
 
         orderMaterialManager.Initialization(UIitemPrefabs, contentTr, xmlManager.GetOrderMaterial("재료"), description, materialName, materialImage, buyBtn, shoppingBaskeContentTr, choiceBtn);
         productionMenuManager.Initialization(xmlManager.GetProductionObjInfo());
@@ -70,6 +72,10 @@ public class GameManager : MonoBehaviour
         timeManager.EndDayTime += uiManager.OnEndDay;
         timeManager.EndDayTime += cameraManager.OnEndDay;
         timeManager.EndDayTime += sceneTransitionManager.OnStartSceneTransition;
+        timeManager.EndDayTime += npcManager.OnEndDay;
+
+        displayMenuManager.DisplayItemObj += dataManager.OnDisplayItemObj;
+        displayMenuManager.DisPlayItemPos += npcManager.OnGetItemPos;
     }
 
     void UnBind()
@@ -88,6 +94,10 @@ public class GameManager : MonoBehaviour
         timeManager.EndDayTime -= uiManager.OnEndDay;
         timeManager.EndDayTime -= cameraManager.OnEndDay;
         timeManager.EndDayTime -= sceneTransitionManager.OnStartSceneTransition;
+        timeManager.EndDayTime -= npcManager.OnEndDay;
+
+        displayMenuManager.DisplayItemObj -= dataManager.OnDisplayItemObj;
+        displayMenuManager.DisPlayItemPos -= npcManager.OnGetItemPos;
     }
 
 
