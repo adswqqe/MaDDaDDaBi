@@ -55,19 +55,39 @@ public class XMLManager : MonoBehaviour
 
         foreach (XmlNode node in all_nodes)
         {
-            if(node.SelectSingleNode("SORT").InnerText == "재료")
+            if (sortName == "재료")
             {
-                ItemInfo item = new ItemInfo(
-                    int.Parse(node.SelectSingleNode("ID").InnerText),
-                    node.SelectSingleNode("SORT").InnerText,
-                    node.SelectSingleNode("NAME").InnerText,
-                    node.SelectSingleNode("ICON").InnerText,
-                    int.Parse(node.SelectSingleNode("BUYCOST").InnerText),
-                    0,      //재료이기 때문에 sellCost가 없다.
-                    node.SelectSingleNode("DESCRIPTION").InnerText
-                    );
+                if (node.SelectSingleNode("SORT").InnerText == sortName)
+                {
+                    ItemInfo item = new ItemInfo(
+                        int.Parse(node.SelectSingleNode("ID").InnerText),
+                        node.SelectSingleNode("SORT").InnerText,
+                        node.SelectSingleNode("NAME").InnerText,
+                        node.SelectSingleNode("ICON").InnerText,
+                        int.Parse(node.SelectSingleNode("BUYCOST").InnerText),
+                        0,      //재료이기 때문에 sellCost가 없다.
+                        node.SelectSingleNode("DESCRIPTION").InnerText
+                        );
 
-                materialItems.Add(item);
+                    materialItems.Add(item);
+                }
+            }
+            else if(sortName == "제작")
+            {
+                if (node.SelectSingleNode("SORT").InnerText != "재료" && node.SelectSingleNode("SORT").InnerText != "가구")
+                {
+                    ItemInfo item = new ItemInfo(
+                        int.Parse(node.SelectSingleNode("ID").InnerText),
+                        node.SelectSingleNode("SORT").InnerText,
+                        node.SelectSingleNode("NAME").InnerText,
+                        node.SelectSingleNode("ICON").InnerText,
+                        0,//int.Parse(node.SelectSingleNode("BUYCOST").InnerText),  //제작물이기 때문에 BUYCost가 없다.
+                        int.Parse(node.SelectSingleNode("SELLCOST").InnerText),      
+                        node.SelectSingleNode("DESCRIPTION").InnerText
+                        );
+
+                    materialItems.Add(item);
+                }
             }
         }
 

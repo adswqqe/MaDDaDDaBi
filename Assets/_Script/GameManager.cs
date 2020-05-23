@@ -53,6 +53,7 @@ public class GameManager : MonoBehaviour
 
         orderMaterialManager.Initialization(UIitemPrefabs, contentTr, xmlManager.GetOrderMaterial("재료"), description, materialName, materialImage, buyBtn, shoppingBaskeContentTr, choiceBtn);
         productionMenuManager.Initialization(xmlManager.GetProductionObjInfo());
+        dataManager.Initialization(xmlManager.GetOrderMaterial("제작"));
         Bind();
     }
 
@@ -75,7 +76,9 @@ public class GameManager : MonoBehaviour
         timeManager.EndDayTime += npcManager.OnEndDay;
 
         displayMenuManager.DisplayItemObj += dataManager.OnDisplayItemObj;
-        displayMenuManager.DisPlayItemPos += npcManager.OnGetItemPos;
+        displayMenuManager.DisPlayItem += npcManager.OnGetItemPos;
+
+        npcManager.sellItem += dataManager.OnSellItem;
     }
 
     void UnBind()
@@ -97,7 +100,9 @@ public class GameManager : MonoBehaviour
         timeManager.EndDayTime -= npcManager.OnEndDay;
 
         displayMenuManager.DisplayItemObj -= dataManager.OnDisplayItemObj;
-        displayMenuManager.DisPlayItemPos -= npcManager.OnGetItemPos;
+        displayMenuManager.DisPlayItem -= npcManager.OnGetItemPos;
+
+        npcManager.sellItem -= dataManager.OnSellItem;
     }
 
 

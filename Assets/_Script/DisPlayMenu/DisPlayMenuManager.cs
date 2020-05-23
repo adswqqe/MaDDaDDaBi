@@ -7,7 +7,7 @@ using UnityEngine;
 public class DisPlayMenuManager : MonoBehaviour
 {
     public Action<ItemInfo> DisplayItemObj;
-    public Action<Transform> DisPlayItemPos;
+    public Action<DisplayItemCtrl> DisPlayItem;
 
     [SerializeField]
     GameObject displayItemObj;
@@ -43,6 +43,7 @@ public class DisPlayMenuManager : MonoBehaviour
         potionContents = new List<GameObject>();
         toolsContents = new List<GameObject>();
         equipmentContents = new List<GameObject>();
+        curDisplayItemObjList = new List<GameObject>();
 
         CreateContents();
     }
@@ -126,14 +127,21 @@ public class DisPlayMenuManager : MonoBehaviour
         if (seletingItem == null)
             return;
 
+        if (curDisplayCount >= 4)
+            curDisplayCount = 0;
+
+        Debug.Log(seletingItem.NAME);
         var tempGo = Instantiate(displayItemObj);
-        tempGo.transform.position = displayStandPos[curDisplayCount].position;
+        Debug.Log(displayStandPos[curDisplayCount].position);
+        tempGo.GetComponent<DisplayItemCtrl>().Initialization(seletingItem, displayStandPos[curDisplayCount]);
+        curDisplayItemObjList.Add(tempGo);
 
         DisplayItemObj?.Invoke(seletingItem);
-        DisPlayItemPos?.Invoke(displayStandPos[curDisplayCount]);
+        DisPlayItem?.Invoke(tempGo.GetComponent<DisplayItemCtrl>());
 
         curDisplayCount += 1;
         seletingItem = null;
         description.text = "";
+
     }
 }

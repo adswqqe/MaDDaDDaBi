@@ -1,9 +1,12 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class NPCManager : MonoBehaviour
 {
+    public Action<ItemInfo> sellItem;
+
     [SerializeField]
     GameObject Npcprefab;
     [SerializeField]
@@ -12,18 +15,23 @@ public class NPCManager : MonoBehaviour
     Transform[] disaplyStandPos;
     
     bool isEndDay;
-    bool isTargetOn = false;
+    bool isItemOn = false;
     float spawnCoolTime = 10.0f;
     int maxNPCCount = 5;
     int curNpcCount = 0;
 
     List<GameObject> npcs;
+    List<Transform> targets;
     Transform target;
+
+    List<DisplayItemCtrl> items;
     
     // Start is called before the first frame update
     void Start()
     {
         npcs = new List<GameObject>();
+        targets = new List<Transform>();
+        items = new List<DisplayItemCtrl>();
         CreateNPC();
     }
 
@@ -43,10 +51,17 @@ public class NPCManager : MonoBehaviour
         
     }
 
-    public void OnGetItemPos(Transform pos)
+    public void OnSellingItem(ItemInfo item)
     {
-        isTargetOn = true;
-        target = pos;
+        sellItem?.Invoke(item);
+        Debug.Log("NPCMAger");
+    }
+
+    public void OnGetItemPos(DisplayItemCtrl item)
+    {
+        isItemOn = true;
+        items.Add(item);
+        target = item.ITEMPOS;
     }
 
     public void OnEndDay(bool isEndDay)
@@ -66,20 +81,34 @@ public class NPCManager : MonoBehaviour
             if (isEndDay)
                 break;
 
-            if (!isTargetOn)
+            if (items.Count <= 0)
             {
-                int index = Random.Range(0, 4);
+                int index = UnityEngine.Random.Range(0, 4);
                 target = disaplyStandPos[index];
                 Debug.Log(index);
             }
             else
-                isTargetOn = false;
+            {
+                target = items[0].ITEMPOS;
+                //items.RemoveAt(0);
+                Debug.Log("target");
+            }
 
             if (curNpcCount + 1 <= 5)
             {
-                npcs[curNpcCount].GetComponent<NPCCtrl>().Initialization(spanPos, target);
+                if (items.Count >= 1)
+                {
+                    npcs[curNpcCount].GetComponent<NPCCtrl>().Initialization(spanPos, target, items[0], this);
+                    items.RemoveAt(0);
+                }
+                else
+                    npcs[curNpcCount].GetComponent<NPCCtrl>().Initialization(spanPos, target, null, this);
                 npcs[curNpcCount].SetActive(true);
                 curNpcCount += 1;
+            }
+            else
+            {
+                curNpcCount = 0;
             }
             yield return new WaitForSeconds(spawnCoolTime);
 

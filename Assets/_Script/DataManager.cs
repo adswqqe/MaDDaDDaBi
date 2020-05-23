@@ -8,6 +8,8 @@ public class DataManager : MonoBehaviour
     public Action<bool> resultCalcGold;
     public Action<Data> changeData;
 
+    List<ItemInfo> createItem;
+
     Data data;
     // Start is called before the first frame update
     void Start()
@@ -20,6 +22,11 @@ public class DataManager : MonoBehaviour
     void dataSet()
     {
         data = new Data(1, 0, 100, 0, 0, 10, new List<MaterialItemManager>());
+    }
+
+    public void Initialization(List<ItemInfo> createItem)
+    {
+        this.createItem = createItem;
     }
 
 
@@ -157,4 +164,19 @@ public class DataManager : MonoBehaviour
         changeData?.Invoke(data);
     }
 
+
+    public void OnSellItem(ItemInfo itemInfo)
+    {
+        foreach (var item in createItem)
+        {
+            if(item.ID == itemInfo.ID)
+            {
+                data.GOLD += item.SELLCOST;
+                data.EXP += 5;
+                changeData?.Invoke(data);   
+                break;
+            }
+        }
+
+    }
 }
