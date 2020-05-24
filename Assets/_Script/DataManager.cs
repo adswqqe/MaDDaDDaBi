@@ -173,10 +173,16 @@ public class DataManager : MonoBehaviour
             {
                 data.GOLD += item.SELLCOST;
                 data.EXP += 5;
-                changeData?.Invoke(data);   
                 break;
             }
         }
+
+        if (data.EXP >= 15)
+        {
+            data.Level += 1;
+            data.EXP = 0;
+        }
+        changeData?.Invoke(data);
 
     }
 }

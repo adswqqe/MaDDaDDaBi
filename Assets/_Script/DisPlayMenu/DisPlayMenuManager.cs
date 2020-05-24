@@ -127,7 +127,7 @@ public class DisPlayMenuManager : MonoBehaviour
         if (seletingItem == null)
             return;
 
-        if (curDisplayCount >= 4)
+        if (curDisplayCount >= displayStandPos.Length)
             curDisplayCount = 0;
 
         Debug.Log(seletingItem.NAME);
