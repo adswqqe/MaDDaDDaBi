@@ -20,6 +20,9 @@ public class ProductionMenuManager : MonoBehaviour
     Image[] slot = new Image[6];
     [SerializeField]
     Image GamasotInIcon;
+    [SerializeField]
+    Image GamasotInIconOnItem;
+
     int curSelectIndex = 0;
 
     const int MAX_CONTENT_SIZE = 30;
@@ -126,23 +129,33 @@ public class ProductionMenuManager : MonoBehaviour
         }
 
         if (isFind)
-            GamasotInIcon.sprite = Resources.Load<Sprite>("ICON/" + iconIndex);
+        {
+            //   GamasotInIcon.sprite = Resources.Load<Sprite>("ICON/" + iconIndex);
+            GamasotInIconOnItem.sprite = Resources.Load<Sprite>("ICON/" + iconIndex);
+            GamasotInIconOnItem.color = new Color(GamasotInIcon.color.r, GamasotInIcon.color.g, GamasotInIcon.color.b, 1);
+            GamasotInIcon.color = new Color(GamasotInIcon.color.r, GamasotInIcon.color.g, GamasotInIcon.color.b, 0);
+        }
         else
+        {
             GamasotInIcon.sprite = Resources.Load<Sprite>("ICON/" + "999");
+            GamasotInIcon.color = new Color(GamasotInIcon.color.r, GamasotInIcon.color.g, GamasotInIcon.color.b, 1);
+            GamasotInIconOnItem.color = new Color(GamasotInIcon.color.r, GamasotInIcon.color.g, GamasotInIcon.color.b, 0);
+        }
 
-        GamasotInIcon.color = new Color(GamasotInIcon.color.r, GamasotInIcon.color.g, GamasotInIcon.color.b, 1);
+        //GamasotInIcon.color = new Color(GamasotInIcon.color.r, GamasotInIcon.color.g, GamasotInIcon.color.b, 1);
     }
 
     public void ExitProductionMenu()
     {
         for (int i = 0; i < slot.Length; i++)
         {
-            slot[i].sprite = null;
+            slot[i].sprite = Resources.Load<Sprite>("ICON/" + "9998");
         }
         curSelectIndex = 0;
         selectObj.Clear();
 
         GamasotInIcon.color = new Color(GamasotInIcon.color.r, GamasotInIcon.color.g, GamasotInIcon.color.b, 0);
+        GamasotInIconOnItem.color = new Color(GamasotInIcon.color.r, GamasotInIcon.color.g, GamasotInIcon.color.b, 0);
     }
 
     public void OnClickCreateProduction()
@@ -192,22 +205,30 @@ public class ProductionMenuManager : MonoBehaviour
         if (production != null)
             haveProductionList.Add(production);
         if (production != null)
-            GamasotInIcon.sprite = Resources.Load<Sprite>("ICON/" + production.ICON_INDEX);
-        else
-            GamasotInIcon.sprite = Resources.Load<Sprite>("ICON/" + "998"); // 쓰레기 이미지 출력
+        {
+            //GamasotInIcon.sprite = Resources.Load<Sprite>("ICON/" + production.ICON_INDEX);
+            GamasotInIconOnItem.sprite = Resources.Load<Sprite>("ICON/" + production.ICON_INDEX);
 
+        }
+        else
+        {
+            GamasotInIconOnItem.sprite = Resources.Load<Sprite>("ICON/" + "998"); // 쓰레기 이미지 출력
+        }
+
+        GamasotInIcon.color = new Color(GamasotInIcon.color.r, GamasotInIcon.color.g, GamasotInIcon.color.b, 0);
+        GamasotInIconOnItem.color = new Color(GamasotInIcon.color.r, GamasotInIcon.color.g, GamasotInIcon.color.b, 1);
         CreateProduction?.Invoke(selectObj, production);
         selectObj.Clear();
         for (int i = 0; i < slot.Length; i++)
         {
-            slot[i].sprite = null;
+            slot[i].sprite = Resources.Load<Sprite>("ICON/" + "9998");
         }
         curSelectIndex = 0;
     }
 
     public void OnClickSlot(int index)
     {
-        if (slot[index].sprite == null)
+        if (slot[index].sprite.name == "9998")
             return;
 
         int id = 0;
@@ -225,7 +246,7 @@ public class ProductionMenuManager : MonoBehaviour
 
         for (int j = 0; j < slot.Length; j++)
         {
-            slot[j].sprite = null;
+            slot[j].sprite = Resources.Load<Sprite>("ICON/" + "9998");
         }
 
         int i = 0;

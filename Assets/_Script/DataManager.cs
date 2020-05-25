@@ -140,7 +140,8 @@ public class DataManager : MonoBehaviour
             //}
         }
 
-        data.BAGSPACE = data.CURMATERIALITELIST.Count + data.CURPRODUCTIONITEMLIST.Count;
+        data.BAGSPACE = data.CURMATERIALITELIST.Count + 1;  //1인 이유는 현재 아이템이 하나씩 추가되서
+        Debug.Log("가방 수량 : " + data.CURMATERIALITELIST.Count + data.CURPRODUCTIONITEMLIST.Count);
         changeData?.Invoke(data);
 
     }
@@ -161,6 +162,7 @@ public class DataManager : MonoBehaviour
             }
         }
 
+        data.BAGSPACE -= 1;
         changeData?.Invoke(data);
     }
 
