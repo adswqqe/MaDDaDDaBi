@@ -415,7 +415,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4060962277985744623
 Transform:
   m_ObjectHideFlags: 0
@@ -2235,7 +2235,7 @@ GameObject:
   - component: {fileID: 4373375494427342422}
   - component: {fileID: 3498427456368592922}
   m_Layer: 0
-  m_Name: Magician_Prefabs 1
+  m_Name: Magician_Prefabs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
