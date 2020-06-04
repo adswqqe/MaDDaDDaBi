@@ -13,6 +13,7 @@ public class Data
     List<MaterialItemManager> curMaterialItmList;
     List<MaterialItemManager> addMaterialItmList;
     List<ProductionObjInfo> curProductionItemList;
+    List<FurnitureItem> curFurnitureItemItemList;
 
     public Data(int lever, int exp, int gold, int reputation, int bagSpace, int max_bagSpace, List<MaterialItemManager> curMaterialItemList)
     {
@@ -25,6 +26,7 @@ public class Data
         this.curMaterialItmList = curMaterialItemList;
         addMaterialItmList = new List<MaterialItemManager>();
         curProductionItemList = new List<ProductionObjInfo>();
+        curFurnitureItemItemList = new List<FurnitureItem>();
     }
 
     public Data(Data data)
@@ -38,6 +40,7 @@ public class Data
         this.curMaterialItmList = data.CURMATERIALITELIST;
         addMaterialItmList = new List<MaterialItemManager>();
         curProductionItemList = new List<ProductionObjInfo>();
+        curFurnitureItemItemList = new List<FurnitureItem>();
     }
 
     public int Level
@@ -89,6 +92,11 @@ public class Data
     public List<ProductionObjInfo> CURPRODUCTIONITEMLIST
     {
         get { return curProductionItemList; }
+    }
+
+    public List<FurnitureItem> CURFURNITUREITEMLIST
+    {
+        get { return curFurnitureItemItemList; }
     }
         
 }

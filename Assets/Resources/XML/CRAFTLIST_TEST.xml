@@ -208,12 +208,84 @@
 		<DESCRIPTION>똑똑해진다.</DESCRIPTION>
 		<needMaterial>410,427</needMaterial>
 	</text>
-  <text>
-    <ID>999</ID>
-    <SORT>장비</SORT>
-    <NAME>테스트</NAME>
-    <ICON>999</ICON>
-    <DESCRIPTION>푸싱</DESCRIPTION>
-    <needMaterial>410,410,410</needMaterial>
-  </text>
+	<text>
+		<ID>502</ID>
+		<SORT>가구</SORT>
+		<NAME>물약진열대1</NAME>
+		<ICON>502</ICON>
+		<DESCRIPTION>물약만 진열된다. 최대 1개 까지 진열할 수 있다.</DESCRIPTION>
+		<needMaterial>412,412,427</needMaterial>
+	</text>
+	<text>
+		<ID>503</ID>
+		<SORT>가구</SORT>
+		<NAME>물약진열대2</NAME>
+		<ICON>503</ICON>
+		<DESCRIPTION>물약만 진열된다. 최대 2개 까지 진열할 수 있다.</DESCRIPTION>
+		<needMaterial>412,412,412,427,427</needMaterial>
+	</text>
+	<text>
+		<ID>504</ID>
+		<SORT>가구</SORT>
+		<NAME>물약진열대4</NAME>
+		<ICON>504</ICON>
+		<DESCRIPTION>물약만 진열된다. 최대 4개 까지 진열할 수 있다.</DESCRIPTION>
+		<needMaterial>412,412,412,412,427,427,427</needMaterial>
+	</text>
+	<text>
+		<ID>505</ID>
+		<SORT>가구</SORT>
+		<NAME>도구진열대1</NAME>
+		<ICON>505</ICON>
+		<DESCRIPTION>도구만 진열된다. 최대 1개 까지 진열할 수 있다.</DESCRIPTION>
+		<needMaterial>412,412,427</needMaterial>
+	</text>
+	<text>
+		<ID>506</ID>
+		<SORT>가구</SORT>
+		<NAME>도구진열대2</NAME>
+		<ICON>506</ICON>
+		<DESCRIPTION>도구만 진열된다. 최대 2개 까지 진열할 수 있다.</DESCRIPTION>
+		<needMaterial>412,412,412,427,427</needMaterial>
+	</text>
+	<text>
+		<ID>507</ID>
+		<SORT>가구</SORT>
+		<NAME>도구진열대4</NAME>
+		<ICON>507</ICON>
+		<DESCRIPTION>도구만 진열된다. 최대 4개 까지 진열할 수 있다.</DESCRIPTION>
+		<needMaterial>412,412,412,412,427,427,427</needMaterial>
+	</text>
+	<text>
+		<ID>508</ID>
+		<SORT>가구</SORT>
+		<NAME>장비진열대1</NAME>
+		<ICON>508</ICON>
+		<DESCRIPTION>장비만 진열된다. 최대 1개 까지 진열할 수 있다.</DESCRIPTION>
+		<needMaterial>412,412,427</needMaterial>
+	</text>
+	<text>
+		<ID>509</ID>
+		<SORT>가구</SORT>
+		<NAME>장비진열대2</NAME>
+		<ICON>509</ICON>
+		<DESCRIPTION>장비만 진열된다. 최대 2개 까지 진열할 수 있다.</DESCRIPTION>
+		<needMaterial>412,412,412,427,427</needMaterial>
+	</text>
+	<text>
+		<ID>510</ID>
+		<SORT>가구</SORT>
+		<NAME>장비진열대4</NAME>
+		<ICON>510</ICON>
+		<DESCRIPTION>장비만 진열된다. 최대 4개 까지 진열할 수 있다.</DESCRIPTION>
+		<needMaterial>412,412,412,412,427,427,427</needMaterial>
+	</text>
+	<text>
+		<ID>511</ID>
+		<SORT>가구</SORT>
+		<NAME>창고</NAME>
+		<ICON>511</ICON>
+		<DESCRIPTION>가방공간확장</DESCRIPTION>
+		<needMaterial>412,412,436</needMaterial>
+	</text>
 </CRAFTLIST>

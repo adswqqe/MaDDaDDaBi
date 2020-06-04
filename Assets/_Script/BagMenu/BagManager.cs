@@ -15,6 +15,8 @@ public class BagManager : MonoBehaviour
     [SerializeField]
     Transform EquipmentViewPort;
     [SerializeField]
+    Transform FurnitureViewPort;
+    [SerializeField]
     Text description;
     List<MaterialItemManager> curMaterialItems;
 
@@ -22,7 +24,7 @@ public class BagManager : MonoBehaviour
 
     List<GameObject> materialContents;
     List<GameObject> equipmentContents;
-
+    List<GameObject> FurniturContents;
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +32,7 @@ public class BagManager : MonoBehaviour
         curMaterialItems = new List<MaterialItemManager>();
         materialContents = new List<GameObject>();
         equipmentContents = new List<GameObject>();
+        FurniturContents = new List<GameObject>();
 
         CreateContents();
     }
@@ -52,6 +55,16 @@ public class BagManager : MonoBehaviour
             var tempGO = Instantiate(materialPrefab);
             tempGO.transform.SetParent(EquipmentViewPort);
             equipmentContents.Add(tempGO);
+            tempGO.GetComponent<BagItemInfo>().ClickItem += OnClickItem;
+            //tempGO.SetActive(true);
+        }
+
+        // 가구
+        for (int i = 0; i < MAX_CONTENT_SIZE; i++)
+        {
+            var tempGO = Instantiate(materialPrefab);
+            tempGO.transform.SetParent(FurnitureViewPort);
+            FurniturContents.Add(tempGO);
             tempGO.GetComponent<BagItemInfo>().ClickItem += OnClickItem;
             //tempGO.SetActive(true);
         }
@@ -84,6 +97,13 @@ public class BagManager : MonoBehaviour
             j++;
         }
 
+        int t = 0;
+        foreach (var item in data.CURFURNITUREITEMLIST)
+        {
+            equipmentContents[t].GetComponent<BagItemInfo>().Initialization(item.ITEMINFO);
+            equipmentContents[t].SetActive(true);
+            t++;
+        }
         //ChageBag?.Invoke(data.CURMATERIALITELIST);
 
 

@@ -7,6 +7,8 @@ public class RatCastClickManager : MonoBehaviour
 {
     [SerializeField]
     GameObject productionMenuObj;
+    [SerializeField]
+    GameObject workstationMenuObj;
 
     // Start is called before the first frame update
     void Start()
@@ -24,8 +26,10 @@ public class RatCastClickManager : MonoBehaviour
             Physics.Raycast(ray, out hit);
             if (hit.collider != null)
             {
-                if (hit.collider.name == this.gameObject.name)
+                if (hit.collider.tag == "Production")
                     productionMenuObj?.SetActive(true);
+                else if (hit.collider.tag == "Workstation")
+                    workstationMenuObj?.SetActive(true);
             }
         }
     }

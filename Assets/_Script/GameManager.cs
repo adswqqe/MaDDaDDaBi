@@ -37,6 +37,7 @@ public class GameManager : MonoBehaviour
     TimeManager timeManager;
     DisPlayMenuManager displayMenuManager;
     NPCManager npcManager;
+    WorkstationManager workstationManager;
 
     // Start is called before the first frame update
     void Start()
@@ -50,10 +51,13 @@ public class GameManager : MonoBehaviour
         timeManager = GetComponent<TimeManager>();
         displayMenuManager = GetComponent<DisPlayMenuManager>();
         npcManager = GetComponent<NPCManager>();
+        workstationManager = GetComponent<WorkstationManager>();
 
         orderMaterialManager.Initialization(UIitemPrefabs, contentTr, xmlManager.GetOrderMaterial("재료"), description, materialName, materialImage, buyBtn, shoppingBaskeContentTr, choiceBtn);
         productionMenuManager.Initialization(xmlManager.GetProductionObjInfo());
         dataManager.Initialization(xmlManager.GetOrderMaterial("제작"));
+        workstationManager.Initialization(xmlManager.GetProductionObjInfo(), xmlManager.GetOrderMaterial("재료"));
+
         Bind();
     }
 
@@ -67,6 +71,7 @@ public class GameManager : MonoBehaviour
         dataManager.changeData += bagManaer.OnAddBagItem;
         dataManager.changeData += productionMenuManager.OnAddMatrialViewPort;
         dataManager.changeData += displayMenuManager.OnAddItemViewPort;
+        dataManager.changeData += workstationManager.OnGetData;
 
         productionMenuManager.CreateProduction += dataManager.OnCreateProduction;
 
@@ -91,6 +96,7 @@ public class GameManager : MonoBehaviour
         dataManager.changeData -= bagManaer.OnAddBagItem;
         dataManager.changeData -= productionMenuManager.OnAddMatrialViewPort;
         dataManager.changeData -= displayMenuManager.OnAddItemViewPort;
+        dataManager.changeData -= workstationManager.OnGetData;
 
         productionMenuManager.CreateProduction -= dataManager.OnCreateProduction;
 
