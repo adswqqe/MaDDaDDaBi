@@ -79,7 +79,7 @@ public class WorkstationManager : MonoBehaviour
             {
                 CreateItemInVIewprot(furnitureContent, item);
             }
-            else if (item.SORT == "재료")
+            else if (item.SORT == "제작재료")
             {
                 CreateItemInVIewprot(materialContent, item);
             }

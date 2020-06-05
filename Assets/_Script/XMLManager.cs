@@ -76,13 +76,22 @@ public class XMLManager : MonoBehaviour
             {
                 if (node.SelectSingleNode("SORT").InnerText != "재료" && node.SelectSingleNode("SORT").InnerText != "가구")
                 {
+                    int number;
+                    if(int.TryParse(node.SelectSingleNode("SELLCOST").InnerText, out number))
+                    {
+                        number = int.Parse(node.SelectSingleNode("SELLCOST").InnerText);
+                    }
+                    else
+                    {
+                        number = 0;
+                    }
                     ItemInfo item = new ItemInfo(
                         int.Parse(node.SelectSingleNode("ID").InnerText),
                         node.SelectSingleNode("SORT").InnerText,
                         node.SelectSingleNode("NAME").InnerText,
                         node.SelectSingleNode("ICON").InnerText,
                         0,//int.Parse(node.SelectSingleNode("BUYCOST").InnerText),  //제작물이기 때문에 BUYCost가 없다.
-                        int.Parse(node.SelectSingleNode("SELLCOST").InnerText),      
+                        number,//int.TryParse(node.SelectSingleNode("SELLCOST").InnerText),      
                         node.SelectSingleNode("DESCRIPTION").InnerText
                         );
 

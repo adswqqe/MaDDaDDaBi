@@ -249,7 +249,7 @@ public class DataManager : MonoBehaviour
                         data.CURFURNITUREITEMLIST.Add(temp);
                     }
                 }
-                else if (workstationItem.SORT == "재료")
+                else if (workstationItem.SORT == "제작재료")
                 {
 
                 }

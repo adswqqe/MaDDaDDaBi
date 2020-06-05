@@ -286,6 +286,22 @@
 		<NAME>창고</NAME>
 		<ICON>511</ICON>
 		<DESCRIPTION>가방공간확장</DESCRIPTION>
-		<needMaterial>412,412,436</needMaterial>
+		<needMaterial>412,412,427</needMaterial>
+	</text>
+	<text>
+		<ID>600</ID>
+		<SORT>제작재료</SORT>
+		<NAME>중급마법의돌</NAME>
+		<ICON>600</ICON>
+		<DESCRIPTION>마법의 힘이 깃든 돌이다.</DESCRIPTION>
+		<needMaterial>402,402</needMaterial>
+	</text>
+	<text>
+		<ID>601</ID>
+		<SORT>제작재료</SORT>
+		<NAME>고급마법의돌</NAME>
+		<ICON>601</ICON>
+		<DESCRIPTION>마법의 힘이 깃든 돌이다.</DESCRIPTION>
+		<needMaterial>600,600</needMaterial>
 	</text>
 </CRAFTLIST>

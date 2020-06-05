@@ -262,172 +262,217 @@
 		<DESCRIPTION>마법의 힘이 깃든 돌이다.</DESCRIPTION>
 	</text>
 	<text>
-		<ID>403</ID>
+		<ID>405</ID>
 		<SORT>재료</SORT>
 		<NAME>화염의돌</NAME>
-		<ICON>403</ICON>
+		<ICON>405</ICON>
 		<BUYCOST>10</BUYCOST>
 		<SELLCOST>#</SELLCOST>
 		<DESCRIPTION>화염의 힘이 깃든 돌이다.</DESCRIPTION>
 	</text>
 	<text>
-		<ID>404</ID>
+		<ID>406</ID>
+		<SORT>재료</SORT>
+		<NAME>냉기의돌</NAME>
+		<ICON>406</ICON>
+		<BUYCOST>10</BUYCOST>
+		<SELLCOST>#</SELLCOST>
+		<DESCRIPTION>냉기의 힘이 깃든 돌이다.</DESCRIPTION>
+	</text>
+	<text>
+		<ID>407</ID>
+		<SORT>재료</SORT>
+		<NAME>연기의돌</NAME>
+		<ICON>407</ICON>
+		<BUYCOST>10</BUYCOST>
+		<SELLCOST>#</SELLCOST>
+		<DESCRIPTION>연기의 힘이 깃든 돌이다.</DESCRIPTION>
+	</text>
+	<text>
+		<ID>408</ID>
+		<SORT>재료</SORT>
+		<NAME>힘의돌</NAME>
+		<ICON>408</ICON>
+		<BUYCOST>10</BUYCOST>
+		<SELLCOST>#</SELLCOST>
+		<DESCRIPTION>힘이 깃든 돌이다.</DESCRIPTION>
+	</text>
+	<text>
+		<ID>409</ID>
+		<SORT>재료</SORT>
+		<NAME>보호의돌</NAME>
+		<ICON>409</ICON>
+		<BUYCOST>10</BUYCOST>
+		<SELLCOST>#</SELLCOST>
+		<DESCRIPTION>보호의 힘이 깃든 돌이다.</DESCRIPTION>
+	</text>
+	<text>
+		<ID>410</ID>
+		<SORT>재료</SORT>
+		<NAME>지혜의돌</NAME>
+		<ICON>410</ICON>
+		<BUYCOST>10</BUYCOST>
+		<SELLCOST>#</SELLCOST>
+		<DESCRIPTION>지혜의 힘이 깃든 돌이다.</DESCRIPTION>
+	</text>
+	<text>
+		<ID>411</ID>
 		<SORT>재료</SORT>
 		<NAME>마따따비</NAME>
-		<ICON>404</ICON>
+		<ICON>411</ICON>
 		<BUYCOST>10</BUYCOST>
 		<SELLCOST>#</SELLCOST>
 		<DESCRIPTION>고양이가 좋아하는 나무이다.</DESCRIPTION>
 	</text>
 	<text>
-		<ID>405</ID>
+		<ID>412</ID>
 		<SORT>재료</SORT>
 		<NAME>목재</NAME>
-		<ICON>405</ICON>
+		<ICON>412</ICON>
 		<BUYCOST>10</BUYCOST>
 		<SELLCOST>#</SELLCOST>
 		<DESCRIPTION>제작에 많이 쓰이는 재료</DESCRIPTION>
 	</text>
 	<text>
-		<ID>406</ID>
+		<ID>413</ID>
 		<SORT>재료</SORT>
 		<NAME>종이</NAME>
-		<ICON>406</ICON>
+		<ICON>413</ICON>
 		<BUYCOST>10</BUYCOST>
 		<SELLCOST>#</SELLCOST>
 		<DESCRIPTION>종이로 만든 종이다.</DESCRIPTION>
 	</text>
 	<text>
-		<ID>407</ID>
+		<ID>414</ID>
 		<SORT>재료</SORT>
 		<NAME>뼈</NAME>
-		<ICON>407</ICON>
+		<ICON>414</ICON>
 		<BUYCOST>10</BUYCOST>
 		<SELLCOST>#</SELLCOST>
 		<DESCRIPTION>동물의 뼈다</DESCRIPTION>
 	</text>
 	<text>
-		<ID>408</ID>
-		<SORT>재료</SORT>
-		<NAME>버섯1</NAME>
-		<ICON>408</ICON>
-		<BUYCOST>10</BUYCOST>
-		<SELLCOST>#</SELLCOST>
-		<DESCRIPTION>포션의 재료</DESCRIPTION>
-	</text>
-	<text>
-		<ID>409</ID>
-		<SORT>재료</SORT>
-		<NAME>버섯2</NAME>
-		<ICON>409</ICON>
-		<BUYCOST>10</BUYCOST>
-		<SELLCOST>#</SELLCOST>
-		<DESCRIPTION>포션의 재료</DESCRIPTION>
-	</text>
-	<text>
-		<ID>410</ID>
-		<SORT>재료</SORT>
-		<NAME>버섯3</NAME>
-		<ICON>410</ICON>
-		<BUYCOST>10</BUYCOST>
-		<SELLCOST>#</SELLCOST>
-		<DESCRIPTION>포션의 재료</DESCRIPTION>
-	</text>
-	<text>
-		<ID>411</ID>
-		<SORT>재료</SORT>
-		<NAME>버섯4</NAME>
-		<ICON>411</ICON>
-		<BUYCOST>10</BUYCOST>
-		<SELLCOST>#</SELLCOST>
-		<DESCRIPTION>포션의 재료</DESCRIPTION>
-	</text>
-	<text>
-		<ID>412</ID>
-		<SORT>재료</SORT>
-		<NAME>버섯5</NAME>
-		<ICON>412</ICON>
-		<BUYCOST>10</BUYCOST>
-		<SELLCOST>#</SELLCOST>
-		<DESCRIPTION>포션의 재료</DESCRIPTION>
-	</text>
-	<text>
-		<ID>413</ID>
-		<SORT>재료</SORT>
-		<NAME>약초1</NAME>
-		<ICON>413</ICON>
-		<BUYCOST>10</BUYCOST>
-		<SELLCOST>#</SELLCOST>
-		<DESCRIPTION>엘릭서재료</DESCRIPTION>
-	</text>
-	<text>
-		<ID>414</ID>
-		<SORT>재료</SORT>
-		<NAME>약초2</NAME>
-		<ICON>414</ICON>
-		<BUYCOST>10</BUYCOST>
-		<SELLCOST>#</SELLCOST>
-		<DESCRIPTION>엘릭서재료</DESCRIPTION>
-	</text>
-	<text>
 		<ID>415</ID>
 		<SORT>재료</SORT>
-		<NAME>약초3</NAME>
+		<NAME>버섯1</NAME>
 		<ICON>415</ICON>
 		<BUYCOST>10</BUYCOST>
 		<SELLCOST>#</SELLCOST>
-		<DESCRIPTION>엘릭서재료</DESCRIPTION>
+		<DESCRIPTION>포션의 재료</DESCRIPTION>
 	</text>
 	<text>
 		<ID>416</ID>
 		<SORT>재료</SORT>
-		<NAME>약초4</NAME>
+		<NAME>버섯2</NAME>
 		<ICON>416</ICON>
 		<BUYCOST>10</BUYCOST>
 		<SELLCOST>#</SELLCOST>
-		<DESCRIPTION>엘릭서재료</DESCRIPTION>
+		<DESCRIPTION>포션의 재료</DESCRIPTION>
 	</text>
 	<text>
 		<ID>417</ID>
 		<SORT>재료</SORT>
-		<NAME>약초5</NAME>
+		<NAME>버섯3</NAME>
 		<ICON>417</ICON>
+		<BUYCOST>10</BUYCOST>
+		<SELLCOST>#</SELLCOST>
+		<DESCRIPTION>포션의 재료</DESCRIPTION>
+	</text>
+	<text>
+		<ID>418</ID>
+		<SORT>재료</SORT>
+		<NAME>버섯4</NAME>
+		<ICON>418</ICON>
+		<BUYCOST>10</BUYCOST>
+		<SELLCOST>#</SELLCOST>
+		<DESCRIPTION>포션의 재료</DESCRIPTION>
+	</text>
+	<text>
+		<ID>419</ID>
+		<SORT>재료</SORT>
+		<NAME>버섯5</NAME>
+		<ICON>419</ICON>
+		<BUYCOST>10</BUYCOST>
+		<SELLCOST>#</SELLCOST>
+		<DESCRIPTION>포션의 재료</DESCRIPTION>
+	</text>
+	<text>
+		<ID>420</ID>
+		<SORT>재료</SORT>
+		<NAME>약초1</NAME>
+		<ICON>420</ICON>
 		<BUYCOST>10</BUYCOST>
 		<SELLCOST>#</SELLCOST>
 		<DESCRIPTION>엘릭서재료</DESCRIPTION>
 	</text>
 	<text>
-		<ID>418</ID>
+		<ID>421</ID>
+		<SORT>재료</SORT>
+		<NAME>약초2</NAME>
+		<ICON>421</ICON>
+		<BUYCOST>10</BUYCOST>
+		<SELLCOST>#</SELLCOST>
+		<DESCRIPTION>엘릭서재료</DESCRIPTION>
+	</text>
+	<text>
+		<ID>422</ID>
+		<SORT>재료</SORT>
+		<NAME>약초3</NAME>
+		<ICON>422</ICON>
+		<BUYCOST>10</BUYCOST>
+		<SELLCOST>#</SELLCOST>
+		<DESCRIPTION>엘릭서재료</DESCRIPTION>
+	</text>
+	<text>
+		<ID>423</ID>
+		<SORT>재료</SORT>
+		<NAME>약초4</NAME>
+		<ICON>423</ICON>
+		<BUYCOST>10</BUYCOST>
+		<SELLCOST>#</SELLCOST>
+		<DESCRIPTION>엘릭서재료</DESCRIPTION>
+	</text>
+	<text>
+		<ID>424</ID>
+		<SORT>재료</SORT>
+		<NAME>약초5</NAME>
+		<ICON>424</ICON>
+		<BUYCOST>10</BUYCOST>
+		<SELLCOST>#</SELLCOST>
+		<DESCRIPTION>엘릭서재료</DESCRIPTION>
+	</text>
+	<text>
+		<ID>425</ID>
 		<SORT>재료</SORT>
 		<NAME>힘의약초</NAME>
-		<ICON>418</ICON>
+		<ICON>425</ICON>
 		<BUYCOST>10</BUYCOST>
 		<SELLCOST>#</SELLCOST>
 		<DESCRIPTION>힘 관련 아이템</DESCRIPTION>
 	</text>
 	<text>
-		<ID>419</ID>
+		<ID>426</ID>
 		<SORT>재료</SORT>
 		<NAME>화염약초</NAME>
-		<ICON>419</ICON>
+		<ICON>426</ICON>
 		<BUYCOST>10</BUYCOST>
 		<SELLCOST>#</SELLCOST>
 		<DESCRIPTION>화염 관련 아이템</DESCRIPTION>
 	</text>
 	<text>
-		<ID>420</ID>
+		<ID>427</ID>
 		<SORT>재료</SORT>
 		<NAME>철괴</NAME>
-		<ICON>420</ICON>
+		<ICON>427</ICON>
 		<BUYCOST>10</BUYCOST>
 		<SELLCOST>#</SELLCOST>
 		<DESCRIPTION>제작에 많이 쓰이는 재료</DESCRIPTION>
 	</text>
 	<text>
-		<ID>421</ID>
+		<ID>428</ID>
 		<SORT>재료</SORT>
 		<NAME>금괴</NAME>
-		<ICON>421</ICON>
+		<ICON>428</ICON>
 		<BUYCOST>10</BUYCOST>
 		<SELLCOST>#</SELLCOST>
 		<DESCRIPTION>제작에 많이 쓰이는 재료</DESCRIPTION>
@@ -539,5 +584,23 @@
 		<BUYCOST>100</BUYCOST>
 		<SELLCOST>#</SELLCOST>
 		<DESCRIPTION>가방공간확장</DESCRIPTION>
+	</text>
+	<text>
+		<ID>600</ID>
+		<SORT>제작재료</SORT>
+		<NAME>중급마법의돌</NAME>
+		<ICON>600</ICON>
+		<BUYCOST>#</BUYCOST>
+		<SELLCOST>#</SELLCOST>
+		<DESCRIPTION>마법의 힘이 깃든 돌이다.</DESCRIPTION>
+	</text>
+	<text>
+		<ID>601</ID>
+		<SORT>제작재료</SORT>
+		<NAME>고급마법의돌</NAME>
+		<ICON>601</ICON>
+		<BUYCOST>#</BUYCOST>
+		<SELLCOST>#</SELLCOST>
+		<DESCRIPTION>마법의 힘이 깃든 돌이다.</DESCRIPTION>
 	</text>
 </ITEMLIST>
