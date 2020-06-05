@@ -59,6 +59,7 @@ public class ProductionObjInfo
     public int AMOUNTNUMBER
     {
         get { return ItemInfo.AMOUNTNUMBER; }
+        set { amountNumber = value; }
     }
 
     public string NAME

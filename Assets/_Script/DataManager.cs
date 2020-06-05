@@ -9,7 +9,7 @@ public class DataManager : MonoBehaviour
     public Action<Data> changeData;
 
     List<ItemInfo> createItem;
-
+    List<ProductionObjInfo> workStationItemList;
     Data data;
     // Start is called before the first frame update
     void Start()
@@ -24,9 +24,10 @@ public class DataManager : MonoBehaviour
         data = new Data(1, 0, 100, 0, 0, 10, new List<MaterialItemManager>());
     }
 
-    public void Initialization(List<ItemInfo> createItem)
+    public void Initialization(List<ItemInfo> createItem, List<ProductionObjInfo> workStationItemList)
     {
         this.createItem = createItem;
+        this.workStationItemList = workStationItemList;
     }
 
 
@@ -186,5 +187,75 @@ public class DataManager : MonoBehaviour
         }
         changeData?.Invoke(data);
 
+    }
+
+    public void OnCreateInWorkStation(List<ItemInfo> materials, int id, int amo)
+    {
+        foreach (var material in materials)
+        {
+            MaterialItemManager finditem = null;
+            bool isZreo = false;
+            foreach (var dataItem in data.CURMATERIALITELIST)
+            {
+                if(material.ID == dataItem.ITEMINFO.ID)
+                {
+                    dataItem.ITEMINFO.AMOUNTNUMBER -= material.AMOUNTNUMBER;
+                    if (dataItem.ITEMINFO.AMOUNTNUMBER <= 0)
+                    {
+                        finditem = dataItem;
+                        isZreo = true;
+                    }
+                }
+            }
+            if (isZreo)
+                data.CURMATERIALITELIST.Remove(finditem);
+        }
+
+        foreach (var workstationItem in workStationItemList)
+        {
+            bool isHave = false;
+            if(workstationItem.ID == id)
+            {
+                if (workstationItem.SORT != "가구" && workstationItem.SORT != "재료")
+                {
+                    foreach (var item in data.CURPRODUCTIONITEMLIST)
+                    {
+                        if (item.ID == workstationItem.ID)
+                        {
+                            isHave = true;
+                            item.ITEMINFO.AMOUNTNUMBER += amo;
+                        }
+                    }
+                    if (!isHave)
+                    {
+                        var temp = new ProductionObjInfo(workstationItem);
+                        data.CURPRODUCTIONITEMLIST.Add(temp);
+                    }
+                }
+                else if (workstationItem.SORT == "가구")
+                {
+                    foreach (var item in data.CURFURNITUREITEMLIST)
+                    {
+                        if (item.ITEMINFO.ID == workstationItem.ID)
+                        {
+                            isHave = true;
+                            item.ITEMINFO.AMOUNTNUMBER += amo;
+                        }
+                    }
+                    if (!isHave)
+                    {
+                        var temp = new FurnitureItem();
+                        temp.Initialization(workstationItem.ITEMINFO);
+                        data.CURFURNITUREITEMLIST.Add(temp);
+                    }
+                }
+                else if (workstationItem.SORT == "재료")
+                {
+
+                }
+            }
+        }
+
+        changeData?.Invoke(data);
     }
 }

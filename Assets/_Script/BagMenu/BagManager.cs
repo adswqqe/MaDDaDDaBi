@@ -91,7 +91,7 @@ public class BagManager : MonoBehaviour
         {
             //Debug.Log(i + " 번 째");
             //Debug.Log(item.ITEMINFO.NAME + "??");
-            Debug.Log(item.AMOUNTNUMBER + "??");
+            Debug.Log(item.ITEMINFO.AMOUNTNUMBER + "??");
             equipmentContents[j].GetComponent<BagItemInfo>().Initialization(item.ITEMINFO);
             equipmentContents[j].SetActive(true);
             j++;

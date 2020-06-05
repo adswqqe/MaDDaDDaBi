@@ -1,10 +1,13 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 
 public class WorkstationManager : MonoBehaviour
 {
+    public Action<List<ItemInfo>, int, int> ClickCrateBtnInWorkstation;
+
     [SerializeField]
     GameObject toolsContent;
     [SerializeField]
@@ -44,6 +47,20 @@ public class WorkstationManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        setActiveUI(false);
+
+        for (int i = 0; i < materialImage.Length; i++)
+        {
+            materialImage[i].gameObject.SetActive(false);
+            materialText[i].gameObject.SetActive(false);
+        }
+    }
+
+    void setActiveUI(bool isActive)
+    {
+        itemImage.gameObject.SetActive(isActive);
+        itemNameText.gameObject.SetActive(isActive);
+        itemDescriptText.gameObject.SetActive(isActive);
     }
 
     void SetViewPort()
@@ -78,8 +95,111 @@ public class WorkstationManager : MonoBehaviour
 
     }
 
+    void UpdateList()
+    {
+        if (selectItem == null)
+            return;
+
+        itemImage.sprite = Resources.Load<Sprite>("ICON/" + selectItem.ICON_INDEX);
+        itemNameText.text = selectItem.NAME;
+        itemDescriptText.text = selectItem.DESCRIPTION;
+
+        var needMaterialList = selectItem.COMBINATIONLIST;
+        string materialId = needMaterialList[0];
+        string materialName = "";
+        int materialCounter = 0;
+        int materialIndex = 0;
+        int curMaterialCount = 0;
+        int k = 0;
+
+        for (k = 0; k < needMaterialList.Count; k++)
+        {
+            if (materialId == needMaterialList[k])
+            {
+                materialCounter++;
+            }
+            else
+            {
+                materialImage[materialIndex].sprite = Resources.Load<Sprite>("ICON/" + materialId);
+
+                foreach (var materialItem in materialItems)
+                {
+                    if (materialId == materialItem.ID.ToString())
+                    {
+                        materialName = materialItem.NAME;
+                        break;
+                    }
+                }
+
+                foreach (var curMaterialItem in data.CURMATERIALITELIST)
+                {
+                    curMaterialCount = 0;
+                    if (materialId == curMaterialItem.ITEMINFO.ID.ToString())
+                    {
+                        curMaterialCount = curMaterialItem.ITEMINFO.AMOUNTNUMBER;
+                        break;
+                    }
+                }
+
+                materialText[materialIndex].text = materialName + " " +
+                    (materialCounter * int.Parse(createCountNumbeText.text)) + "/" + curMaterialCount;
+                materialImage[materialIndex].gameObject.SetActive(true);
+                materialText[materialIndex].gameObject.SetActive(true);
+                //SetMaterialNameAndCount(materialId, materialCounter, materialIndex);
+                materialIndex++;
+                materialCounter = 1;
+                Debug.Log("k : " + k + "count : " + needMaterialList.Count);
+                materialId = needMaterialList[k];
+                Debug.Log(materialId);
+
+            }
+
+            if (k == needMaterialList.Count - 1)
+            {
+                materialImage[materialIndex].sprite = Resources.Load<Sprite>("ICON/" + materialId);
+
+                foreach (var materialItem in materialItems)
+                {
+                    if (materialId == materialItem.ID.ToString())
+                    {
+                        materialName = materialItem.NAME;
+                        break;
+                    }
+                }
+
+                foreach (var curMaterialItem in data.CURMATERIALITELIST)
+                {
+                    curMaterialCount = 0;
+                    if (materialId == curMaterialItem.ITEMINFO.ID.ToString())
+                    {
+                        curMaterialCount = curMaterialItem.ITEMINFO.AMOUNTNUMBER;
+                        break;
+                    }
+                }
+
+                materialText[materialIndex].text = materialName + " " +
+                    (materialCounter * int.Parse(createCountNumbeText.text)) + "/" + curMaterialCount;
+                materialImage[materialIndex].gameObject.SetActive(true);
+                materialText[materialIndex].gameObject.SetActive(true);
+                //SetMaterialNameAndCount(materialId, materialCounter, materialIndex);
+                materialIndex++;
+                materialCounter = 1;
+                Debug.Log("i : " + k + "count : " + needMaterialList.Count);
+                materialId = needMaterialList[k];
+            }
+        }
+
+        for (int i = k; i < materialImage.Length; i++)
+        {
+            materialImage[i].gameObject.SetActive(false);
+            materialText[i].gameObject.SetActive(false);
+        }
+
+    }
+
     void OnClickItem(ProductionObjInfo item)
     {
+        setActiveUI(true);
         selectItem = item;
         itemImage.sprite = Resources.Load<Sprite>("ICON/" + item.ICON_INDEX);
         itemNameText.text = item.NAME;
@@ -123,7 +243,7 @@ public class WorkstationManager : MonoBehaviour
                 }
 
                 materialText[materialIndex].text = materialName + " " +
-                    materialCounter + "/" + curMaterialCount;
+                    (materialCounter * int.Parse(createCountNumbeText.text)) + "/" + curMaterialCount;
                 materialImage[materialIndex].gameObject.SetActive(true);
                 materialText[materialIndex].gameObject.SetActive(true);
                 //SetMaterialNameAndCount(materialId, materialCounter, materialIndex);
@@ -159,7 +279,7 @@ public class WorkstationManager : MonoBehaviour
                 }
 
                 materialText[materialIndex].text = materialName + " " +
-                    materialCounter + "/" + curMaterialCount;
+                    (materialCounter * int.Parse(createCountNumbeText.text)) + "/" + curMaterialCount;
                 materialImage[materialIndex].gameObject.SetActive(true);
                 materialText[materialIndex].gameObject.SetActive(true);
                 //SetMaterialNameAndCount(materialId, materialCounter, materialIndex);
@@ -184,6 +304,8 @@ public class WorkstationManager : MonoBehaviour
             createCountNumbeText.text = 1.ToString();
         else
             createCountNumbeText.text = (int.Parse(createCountNumbeText.text) + add).ToString();
+
+        UpdateList();
     }
 
     public void OnClickCreateBtn()
@@ -195,7 +317,7 @@ public class WorkstationManager : MonoBehaviour
         int trueCounter = 0;
         int materialKindCounter = 0;
         int i = 0;
-        
+        List<ItemInfo> BuyList = new List<ItemInfo>();
         for (i = 0; i < combinationList.Count; i++)
         {
             if (materialid == combinationList[i])
@@ -207,13 +329,16 @@ public class WorkstationManager : MonoBehaviour
                 {
                     if (materialid == curitem.ITEMINFO.ID.ToString())
                     {
-                        if (curitem.ITEMINFO.AMOUNTNUMBER - materialCounter < 0)
+                        if (curitem.ITEMINFO.AMOUNTNUMBER - (materialCounter * int.Parse(createCountNumbeText.text)) < 0)
                         {
                             isResult = false;
                             break;
                         }
                         else
                         {
+                            var temp = new ItemInfo(int.Parse(materialid), "", "", "", 0, 0, "");
+                            temp.AMOUNTNUMBER = materialCounter * int.Parse(createCountNumbeText.text);
+                            BuyList.Add(temp);
                             isResult = true;
                             trueCounter++;
                         }
@@ -231,13 +356,16 @@ public class WorkstationManager : MonoBehaviour
                 {
                     if (materialid == curitem.ITEMINFO.ID.ToString())
                     {
-                        if (curitem.ITEMINFO.AMOUNTNUMBER - materialCounter < 0)
+                        if (curitem.ITEMINFO.AMOUNTNUMBER - (materialCounter * int.Parse(createCountNumbeText.text)) < 0)
                         {
                             isResult = false;
                             break;
                         }
                         else
                         {
+                            var temp = new ItemInfo(int.Parse(materialid), "", "", "", 0, 0, "");
+                            temp.AMOUNTNUMBER = materialCounter * int.Parse(createCountNumbeText.text);
+                            BuyList.Add(temp);
                             isResult = true;
                             trueCounter++;
                         }
@@ -249,6 +377,12 @@ public class WorkstationManager : MonoBehaviour
 
         if (materialKindCounter == trueCounter)
             isResult = true;
+
+        if(isResult)
+        {
+            ClickCrateBtnInWorkstation?.Invoke(BuyList, selectItem.ID, int.Parse(createCountNumbeText.text));
+        }
+
         Debug.Log("Result : " + isResult);
         Debug.Log("materialKindCounter : " + materialKindCounter);
         Debug.Log("trueCounter : " + trueCounter);
@@ -257,5 +391,6 @@ public class WorkstationManager : MonoBehaviour
     public void OnGetData(Data data)
     {
         this.data = data;
+        UpdateList();
     }
 }
