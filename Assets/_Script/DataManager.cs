@@ -228,8 +228,11 @@ public class DataManager : MonoBehaviour
                     }
                     if (!isHave)
                     {
+                        
                         var temp = new ProductionObjInfo(workstationItem);
-                        data.CURPRODUCTIONITEMLIST.Add(temp);
+                        if (amo >= 2)
+                            temp.ITEMINFO.AMOUNTNUMBER = amo;
+                            data.CURPRODUCTIONITEMLIST.Add(temp);
                     }
                 }
                 else if (workstationItem.SORT == "가구")
@@ -246,12 +249,19 @@ public class DataManager : MonoBehaviour
                     {
                         var temp = new FurnitureItem();
                         temp.Initialization(workstationItem.ITEMINFO);
+                        if (amo >= 2)
+                            temp.ITEMINFO.AMOUNTNUMBER = amo;
                         data.CURFURNITUREITEMLIST.Add(temp);
                     }
                 }
-                else if (workstationItem.SORT == "제작재료")
+                else if (workstationItem.SORT == "재료")
                 {
-
+                    var temp = new MaterialItemManager();
+                    Debug.Log(workstationItem.ITEMINFO.ICON_INDEX);
+                    temp.Initialization(workstationItem.ITEMINFO);
+                    if (amo >= 2)
+                        temp.ITEMINFO.AMOUNTNUMBER = amo;
+                    data.CURMATERIALITELIST.Add(temp);
                 }
             }
         }

@@ -262,6 +262,24 @@
 		<DESCRIPTION>마법의 힘이 깃든 돌이다.</DESCRIPTION>
 	</text>
 	<text>
+		<ID>403</ID>
+		<SORT>재료</SORT>
+		<NAME>중급마법의돌</NAME>
+		<ICON>403</ICON>
+		<BUYCOST>#</BUYCOST>
+		<SELLCOST>#</SELLCOST>
+		<DESCRIPTION>마법의 힘이 깃든 돌이다.</DESCRIPTION>
+	</text>
+	<text>
+		<ID>404</ID>
+		<SORT>재료</SORT>
+		<NAME>고급마법의돌</NAME>
+		<ICON>404</ICON>
+		<BUYCOST>#</BUYCOST>
+		<SELLCOST>#</SELLCOST>
+		<DESCRIPTION>마법의 힘이 깃든 돌이다.</DESCRIPTION>
+	</text>
+	<text>
 		<ID>405</ID>
 		<SORT>재료</SORT>
 		<NAME>화염의돌</NAME>
@@ -585,22 +603,22 @@
 		<SELLCOST>#</SELLCOST>
 		<DESCRIPTION>가방공간확장</DESCRIPTION>
 	</text>
-	<text>
-		<ID>600</ID>
-		<SORT>제작재료</SORT>
-		<NAME>중급마법의돌</NAME>
-		<ICON>600</ICON>
-		<BUYCOST>#</BUYCOST>
-		<SELLCOST>#</SELLCOST>
-		<DESCRIPTION>마법의 힘이 깃든 돌이다.</DESCRIPTION>
-	</text>
-	<text>
-		<ID>601</ID>
-		<SORT>제작재료</SORT>
-		<NAME>고급마법의돌</NAME>
-		<ICON>601</ICON>
-		<BUYCOST>#</BUYCOST>
-		<SELLCOST>#</SELLCOST>
-		<DESCRIPTION>마법의 힘이 깃든 돌이다.</DESCRIPTION>
-	</text>
+  <text>
+    <ID>600</ID>
+    <SORT>재료</SORT>
+    <NAME>중급마법의돌</NAME>
+    <ICON>600</ICON>
+    <BUYCOST>#</BUYCOST>
+    <SELLCOST>#</SELLCOST>
+    <DESCRIPTION>마법의 힘이 깃든 돌이다.</DESCRIPTION>
+  </text>
+  <text>
+    <ID>601</ID>
+    <SORT>재료</SORT>
+    <NAME>고급마법의돌</NAME>
+    <ICON>601</ICON>
+    <BUYCOST>#</BUYCOST>
+    <SELLCOST>#</SELLCOST>
+    <DESCRIPTION>마법의 힘이 깃든 돌이다.</DESCRIPTION>
+  </text>
 </ITEMLIST>

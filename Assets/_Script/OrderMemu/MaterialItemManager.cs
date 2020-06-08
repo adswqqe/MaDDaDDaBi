@@ -50,6 +50,11 @@ public class MaterialItemManager : MonoBehaviour
         m_bt.onClick.AddListener(onClickMaterial);
     }
 
+    public void Initialization(ItemInfo itemInfo)
+    {
+        this.itemInfo = new ItemInfo(itemInfo);
+    }
+
     public void Initialization(MaterialItemManager materialItemManager, bool isOrderMenu)
     {
         this.itemInfo = new ItemInfo(materialItemManager.itemInfo);

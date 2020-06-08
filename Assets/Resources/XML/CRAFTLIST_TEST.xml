@@ -290,7 +290,7 @@
 	</text>
 	<text>
 		<ID>600</ID>
-		<SORT>제작재료</SORT>
+		<SORT>재료</SORT>
 		<NAME>중급마법의돌</NAME>
 		<ICON>600</ICON>
 		<DESCRIPTION>마법의 힘이 깃든 돌이다.</DESCRIPTION>
@@ -298,7 +298,7 @@
 	</text>
 	<text>
 		<ID>601</ID>
-		<SORT>제작재료</SORT>
+		<SORT>재료</SORT>
 		<NAME>고급마법의돌</NAME>
 		<ICON>601</ICON>
 		<DESCRIPTION>마법의 힘이 깃든 돌이다.</DESCRIPTION>

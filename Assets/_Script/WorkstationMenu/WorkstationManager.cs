@@ -79,7 +79,7 @@ public class WorkstationManager : MonoBehaviour
             {
                 CreateItemInVIewprot(furnitureContent, item);
             }
-            else if (item.SORT == "제작재료")
+            else if (item.SORT == "재료")
             {
                 CreateItemInVIewprot(materialContent, item);
             }
@@ -207,7 +207,7 @@ public class WorkstationManager : MonoBehaviour
 
         var needMaterialList = item.COMBINATIONLIST;
         string materialId = needMaterialList[0];
-        string materialName = "";
+        string materialName = "test";
         int materialCounter = 0;
         int materialIndex = 0;
         int curMaterialCount = 0;
@@ -225,9 +225,12 @@ public class WorkstationManager : MonoBehaviour
 
                 foreach (var materialItem in materialItems)
                 {
+                    Debug.Log("materialId : " + materialId);
+                    Debug.Log("materialItem.ID : " + materialItem.ID);
                     if (materialId == materialItem.ID.ToString())
                     {
                         materialName = materialItem.NAME;
+                        Debug.Log("Name : " + materialItem.NAME);
                         break;
                     }
                 }
@@ -246,6 +249,7 @@ public class WorkstationManager : MonoBehaviour
                     (materialCounter * int.Parse(createCountNumbeText.text)) + "/" + curMaterialCount;
                 materialImage[materialIndex].gameObject.SetActive(true);
                 materialText[materialIndex].gameObject.SetActive(true);
+                Debug.Log("Name : " + materialName);
                 //SetMaterialNameAndCount(materialId, materialCounter, materialIndex);
                 materialIndex++;
                 materialCounter = 1;
@@ -280,6 +284,8 @@ public class WorkstationManager : MonoBehaviour
 
                 materialText[materialIndex].text = materialName + " " +
                     (materialCounter * int.Parse(createCountNumbeText.text)) + "/" + curMaterialCount;
+
+                Debug.Log("Name : " + materialName);
                 materialImage[materialIndex].gameObject.SetActive(true);
                 materialText[materialIndex].gameObject.SetActive(true);
                 //SetMaterialNameAndCount(materialId, materialCounter, materialIndex);
@@ -290,7 +296,8 @@ public class WorkstationManager : MonoBehaviour
             }
         }
 
-        for (int i = k; i < materialImage.Length; i++)
+
+        for (int i = materialIndex; i < materialImage.Length; i++)
         {
             materialImage[i].gameObject.SetActive(false);
             materialText[i].gameObject.SetActive(false);

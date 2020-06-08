@@ -55,8 +55,19 @@ public class XMLManager : MonoBehaviour
 
         foreach (XmlNode node in all_nodes)
         {
+            //int sellNumber = 0;
             if (sortName == "재료")
             {
+                int buyNumber = 0;
+                if (int.TryParse(node.SelectSingleNode("BUYCOST").InnerText, out buyNumber))
+                {
+                    buyNumber = int.Parse(node.SelectSingleNode("BUYCOST").InnerText);
+                }
+                else
+                {
+                    buyNumber = 0;
+                }
+
                 if (node.SelectSingleNode("SORT").InnerText == sortName)
                 {
                     ItemInfo item = new ItemInfo(
@@ -64,20 +75,57 @@ public class XMLManager : MonoBehaviour
                         node.SelectSingleNode("SORT").InnerText,
                         node.SelectSingleNode("NAME").InnerText,
                         node.SelectSingleNode("ICON").InnerText,
-                        int.Parse(node.SelectSingleNode("BUYCOST").InnerText),
+                        buyNumber,//int.Parse(node.SelectSingleNode("BUYCOST").InnerText),
                         0,      //재료이기 때문에 sellCost가 없다.
                         node.SelectSingleNode("DESCRIPTION").InnerText
                         );
 
                     materialItems.Add(item);
+
                 }
             }
             else if(sortName == "제작")
             {
+                //int buyNumber = 0;
+                //if(int.TryParse(node.SelectSingleNode("BUYCOST").InnerText, out buyNumber))
+                //{
+                //    buyNumber = int.Parse(node.SelectSingleNode("BUYCOST").InnerText);
+                //}
+
+                if (node.SelectSingleNode("SORT").InnerText == "재료" && node.SelectSingleNode("BUYCOST").InnerText == "#")
+                {
+                    bool isWorkMaterial = false;
+                    int number;
+
+
+                    if (int.TryParse(node.SelectSingleNode("SELLCOST").InnerText, out number))
+                    {
+                        number = int.Parse(node.SelectSingleNode("SELLCOST").InnerText);
+                    }
+                    else
+                    {
+                        number = 0;
+                    }
+                    ItemInfo item = new ItemInfo(
+                        int.Parse(node.SelectSingleNode("ID").InnerText),
+                        node.SelectSingleNode("SORT").InnerText,
+                        node.SelectSingleNode("NAME").InnerText,
+                        node.SelectSingleNode("ICON").InnerText,
+                        0,//int.Parse(node.SelectSingleNode("BUYCOST").InnerText),  //제작물이기 때문에 BUYCost가 없다.
+                        number,//int.TryParse(node.SelectSingleNode("SELLCOST").InnerText),      
+                        node.SelectSingleNode("DESCRIPTION").InnerText
+                        );
+
+                    materialItems.Add(item);
+                }
+
                 if (node.SelectSingleNode("SORT").InnerText != "재료" && node.SelectSingleNode("SORT").InnerText != "가구")
                 {
+                    bool isWorkMaterial = false;
                     int number;
-                    if(int.TryParse(node.SelectSingleNode("SELLCOST").InnerText, out number))
+
+
+                    if (int.TryParse(node.SelectSingleNode("SELLCOST").InnerText, out number))
                     {
                         number = int.Parse(node.SelectSingleNode("SELLCOST").InnerText);
                     }

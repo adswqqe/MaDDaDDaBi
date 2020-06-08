@@ -48,10 +48,14 @@ public class OrderMaterialManager : MonoBehaviour
 
     void SetAddContent()
     {
-        contentTr.GetComponent<GridLayoutGroup>().constraintCount = materialList.Count;
-
+        int workMaterialCounter = 0;
         foreach (var item in materialList)
         {
+            if (item.BUYCOST == 0)
+            {
+                workMaterialCounter++;
+                continue;
+            }
             var instance = Instantiate(itemprefabs);
             instance.GetComponent<MaterialItemManager>().Initialization(item, true);
             instance.GetComponent<MaterialItemManager>().ClickMaterial += OnMaterialClick;
@@ -60,6 +64,9 @@ public class OrderMaterialManager : MonoBehaviour
             //instance.GetComponentInChildren<Text>().text = item.NAME + " " + item.BUYCOST + "골드";
 
         }
+
+        contentTr.GetComponent<GridLayoutGroup>().constraintCount = materialList.Count - workMaterialCounter;
+
     }
 
     private void OnDestroyMaterial(MaterialItemManager item)
