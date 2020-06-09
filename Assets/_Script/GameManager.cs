@@ -27,6 +27,10 @@ public class GameManager : MonoBehaviour
     CameraManager cameraManager;
     [SerializeField]
     SceneTransitionManager sceneTransitionManager;
+    [SerializeField]
+    BuildSystem buildSystem;
+    [SerializeField]
+    BuildSelector buildSelector;
 
     XMLManager xmlManager;
     OrderMaterialManager orderMaterialManager;
@@ -38,6 +42,7 @@ public class GameManager : MonoBehaviour
     DisPlayMenuManager displayMenuManager;
     NPCManager npcManager;
     WorkstationManager workstationManager;
+    FurnitureDisplayManager furnitureDisplayManager;
 
     // Start is called before the first frame update
     void Start()
@@ -52,6 +57,7 @@ public class GameManager : MonoBehaviour
         displayMenuManager = GetComponent<DisPlayMenuManager>();
         npcManager = GetComponent<NPCManager>();
         workstationManager = GetComponent<WorkstationManager>();
+        furnitureDisplayManager = GetComponent<FurnitureDisplayManager>();
 
         orderMaterialManager.Initialization(UIitemPrefabs, contentTr, xmlManager.GetOrderMaterial("재료"), description, materialName, materialImage, buyBtn, shoppingBaskeContentTr, choiceBtn);
         productionMenuManager.Initialization(xmlManager.GetProductionObjInfo());
@@ -69,6 +75,7 @@ public class GameManager : MonoBehaviour
 
         dataManager.changeData += uiManager.OnChangeValueUI;
         dataManager.changeData += bagManaer.OnAddBagItem;
+        dataManager.changeData += furnitureDisplayManager.OnAddBagItem;
         dataManager.changeData += productionMenuManager.OnAddMatrialViewPort;
         dataManager.changeData += displayMenuManager.OnAddItemViewPort;
         dataManager.changeData += workstationManager.OnGetData;
@@ -86,6 +93,10 @@ public class GameManager : MonoBehaviour
         npcManager.sellItem += dataManager.OnSellItem;
 
         workstationManager.ClickCrateBtnInWorkstation += dataManager.OnCreateInWorkStation;
+
+        furnitureDisplayManager.StartBuild += buildSelector.OnStartBuild;
+
+        buildSystem.ConfirmationFurniture += dataManager.OnConfirmationFurniture;
     }
 
     void UnBind()
@@ -96,6 +107,7 @@ public class GameManager : MonoBehaviour
 
         dataManager.changeData -= uiManager.OnChangeValueUI;
         dataManager.changeData -= bagManaer.OnAddBagItem;
+        dataManager.changeData -= furnitureDisplayManager.OnAddBagItem;
         dataManager.changeData -= productionMenuManager.OnAddMatrialViewPort;
         dataManager.changeData -= displayMenuManager.OnAddItemViewPort;
         dataManager.changeData -= workstationManager.OnGetData;
@@ -113,6 +125,10 @@ public class GameManager : MonoBehaviour
         npcManager.sellItem -= dataManager.OnSellItem;
 
         workstationManager.ClickCrateBtnInWorkstation -= dataManager.OnCreateInWorkStation;
+
+        furnitureDisplayManager.StartBuild -= buildSelector.OnStartBuild;
+
+        buildSystem.ConfirmationFurniture -= dataManager.OnConfirmationFurniture;
     }
 
 

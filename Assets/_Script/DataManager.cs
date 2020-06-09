@@ -270,4 +270,43 @@ public class DataManager : MonoBehaviour
 
         changeData?.Invoke(data);
     }
+
+    public void OnConfirmationFurniture(int id)
+    {
+        int index = 0;
+        bool isFind = false;
+        for (int i = 0; i < data.CURFURNITUREITEMLIST.Count; i++)
+        {
+            if(data.CURFURNITUREITEMLIST[i].ITEMINFO.ID == id)
+            {
+                data.CURFURNITUREITEMLIST[i].ITEMINFO.AMOUNTNUMBER -= 1;
+
+                if(data.CURFURNITUREITEMLIST[i].ITEMINFO.AMOUNTNUMBER <= 0)
+                {
+                    isFind = true;
+                    index = i;
+                }
+            }
+        }
+
+        if (isFind)
+            data.CURFURNITUREITEMLIST.RemoveAt(index);
+
+        changeData?.Invoke(data);
+
+        //foreach (var item in data.CURFURNITUREITEMLIST)
+        //{
+        //    if(item.ITEMINFO.ID == id)
+        //    {
+        //        item.ITEMINFO.AMOUNTNUMBER -= 1;
+
+        //        if (item.ITEMINFO.AMOUNTNUMBER <= 0)
+        //        {
+        //            Debug.Log("itemITEMINFO.AMOUNTNUMBER : " + item.ITEMINFO.AMOUNTNUMBER);
+        //            temp = item;
+        //        }
+        //    }
+        //}
+
+    }
 }

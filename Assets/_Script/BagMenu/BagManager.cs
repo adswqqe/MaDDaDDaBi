@@ -76,6 +76,7 @@ public class BagManager : MonoBehaviour
         {
             materialContents[k].SetActive(false);
             equipmentContents[k].SetActive(false);
+            FurniturContents[k].SetActive(false);
         }
 
         int i = 0;
