@@ -225,12 +225,12 @@ public class WorkstationManager : MonoBehaviour
 
                 foreach (var materialItem in materialItems)
                 {
-                    Debug.Log("materialId : " + materialId);
-                    Debug.Log("materialItem.ID : " + materialItem.ID);
+                    //Debug.Log("materialId : " + materialId);
+                    //Debug.Log("materialItem.ID : " + materialItem.ID);
                     if (materialId == materialItem.ID.ToString())
                     {
                         materialName = materialItem.NAME;
-                        Debug.Log("Name : " + materialItem.NAME);
+                        //Debug.Log("Name : " + materialItem.NAME);
                         break;
                     }
                 }
@@ -331,9 +331,16 @@ public class WorkstationManager : MonoBehaviour
                 materialCounter++;
             else
             {
+
                 materialKindCounter++;
                 foreach (var curitem in data.CURMATERIALITELIST)
                 {
+                    //Debug.Log("materialId : " + materialid);
+                    //Debug.Log("materialCounter : " + materialCounter);
+                    //Debug.Log("curitem.ITEMINFO.ID.ToString() : " + curitem.ITEMINFO.ID.ToString());
+                    //Debug.Log("curitem.ITEMINFO.AMOUNTNUMBER : " + curitem.ITEMINFO.AMOUNTNUMBER);
+                    //Debug.Log("materialCounter * int.Parse(createCountNumbeText.text) : " + (materialCounter * int.Parse(createCountNumbeText.text)));
+
                     if (materialid == curitem.ITEMINFO.ID.ToString())
                     {
                         if (curitem.ITEMINFO.AMOUNTNUMBER - (materialCounter * int.Parse(createCountNumbeText.text)) < 0)
@@ -355,17 +362,27 @@ public class WorkstationManager : MonoBehaviour
                 materialid = combinationList[i];
             }
 
-
             if (i == combinationList.Count - 1)
             {
+                materialCounter = 0;
+                if (materialid == combinationList[i])
+                    materialCounter++;
+
                 materialKindCounter++;
                 foreach (var curitem in data.CURMATERIALITELIST)
                 {
+                    //Debug.Log("materialId : " + materialid);
+                    //Debug.Log("materialCounter : " + materialCounter);
+                    //Debug.Log("curitem.ITEMINFO.ID.ToString() : " + curitem.ITEMINFO.ID.ToString());
+                    //Debug.Log("curitem.ITEMINFO.AMOUNTNUMBER : " + curitem.ITEMINFO.AMOUNTNUMBER);
+                    //Debug.Log("materialCounter * int.Parse(createCountNumbeText.text) : " + (materialCounter * int.Parse(createCountNumbeText.text)));
+
                     if (materialid == curitem.ITEMINFO.ID.ToString())
                     {
                         if (curitem.ITEMINFO.AMOUNTNUMBER - (materialCounter * int.Parse(createCountNumbeText.text)) < 0)
                         {
                             isResult = false;
+                            //Debug.Log("flase ++");
                             break;
                         }
                         else
@@ -375,6 +392,7 @@ public class WorkstationManager : MonoBehaviour
                             BuyList.Add(temp);
                             isResult = true;
                             trueCounter++;
+                            //Debug.Log("true ++");
                         }
 
                     }

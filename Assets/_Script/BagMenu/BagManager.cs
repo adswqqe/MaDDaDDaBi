@@ -100,8 +100,8 @@ public class BagManager : MonoBehaviour
         int t = 0;
         foreach (var item in data.CURFURNITUREITEMLIST)
         {
-            equipmentContents[t].GetComponent<BagItemInfo>().Initialization(item.ITEMINFO);
-            equipmentContents[t].SetActive(true);
+            FurniturContents[t].GetComponent<BagItemInfo>().Initialization(item.ITEMINFO);
+            FurniturContents[t].SetActive(true);
             t++;
         }
         //ChageBag?.Invoke(data.CURMATERIALITELIST);

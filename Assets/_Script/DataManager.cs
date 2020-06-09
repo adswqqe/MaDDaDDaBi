@@ -228,7 +228,8 @@ public class DataManager : MonoBehaviour
                     }
                     if (!isHave)
                     {
-                        
+                        Debug.Log("제작물");
+
                         var temp = new ProductionObjInfo(workstationItem);
                         if (amo >= 2)
                             temp.ITEMINFO.AMOUNTNUMBER = amo;
@@ -247,6 +248,7 @@ public class DataManager : MonoBehaviour
                     }
                     if (!isHave)
                     {
+                        Debug.Log("가구");
                         var temp = new FurnitureItem();
                         temp.Initialization(workstationItem.ITEMINFO);
                         if (amo >= 2)
