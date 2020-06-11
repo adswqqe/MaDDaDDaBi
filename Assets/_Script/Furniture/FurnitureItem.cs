@@ -5,6 +5,7 @@ using UnityEngine;
 public class FurnitureItem : MonoBehaviour
 {
     ItemInfo itemInfo;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -14,6 +15,10 @@ public class FurnitureItem : MonoBehaviour
     public void Initialization(ItemInfo itemInfo)
     {
         this.itemInfo = new ItemInfo(itemInfo);
+    }
+
+    public void Initialization(int id)
+    {
     }
 
     public ItemInfo ITEMINFO

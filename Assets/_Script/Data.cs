@@ -14,6 +14,7 @@ public class Data
     List<MaterialItemManager> addMaterialItmList;
     List<ProductionObjInfo> curProductionItemList;
     List<FurnitureItem> curFurnitureItemItemList;
+    List<GameObject> curDisplayFurnitureItemList;
 
     public Data(int lever, int exp, int gold, int reputation, int bagSpace, int max_bagSpace, List<MaterialItemManager> curMaterialItemList)
     {
@@ -27,6 +28,7 @@ public class Data
         addMaterialItmList = new List<MaterialItemManager>();
         curProductionItemList = new List<ProductionObjInfo>();
         curFurnitureItemItemList = new List<FurnitureItem>();
+        curDisplayFurnitureItemList = new List<GameObject>();
     }
 
     public Data(Data data)
@@ -41,6 +43,7 @@ public class Data
         addMaterialItmList = new List<MaterialItemManager>();
         curProductionItemList = new List<ProductionObjInfo>();
         curFurnitureItemItemList = new List<FurnitureItem>();
+        curDisplayFurnitureItemList = new List<GameObject>();
     }
 
     public int Level
@@ -97,6 +100,11 @@ public class Data
     public List<FurnitureItem> CURFURNITUREITEMLIST
     {
         get { return curFurnitureItemItemList; }
+    }
+
+    public List<GameObject> CURDISPLAYFURNITUREITEMLIST
+    {
+        get { return curDisplayFurnitureItemList; }
     }
         
 }

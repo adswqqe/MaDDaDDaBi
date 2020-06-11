@@ -7,6 +7,7 @@ using UnityEngine.EventSystems;
 public class BuildSystem : MonoBehaviour
 {
     public Action<int> ConfirmationFurniture;
+    public Action<GameObject> DisplayFurniture;
 
     [SerializeField]
     GameObject[] furniturePrefabs;
@@ -19,10 +20,11 @@ public class BuildSystem : MonoBehaviour
 
     private GameObject preview;//this is the preview object that you will be moving around in the scene
     private PreviewObj previewScript;//this is the script that is sitting on that object
+    private ItemInfo furnitureInfo;
 
     private bool isBuilding = false;
-    public GameObject 가구1;
-    public GameObject 가구2;
+    //public GameObject 가구1;
+    //public GameObject 가구2;
 
     public bool IsPointerOverUIObject(Vector2 touchPos)
     {
@@ -44,9 +46,12 @@ public class BuildSystem : MonoBehaviour
     {
         if (!IsPointerOverUIObject(Input.mousePosition))
         {
+            if (selector.isBuildStart == false)
+                return;
+
             if (Input.GetMouseButtonDown(0) && isBuilding && previewScript.CanBuild())//pressing LMB, and isBuiding = true, and the Preview Script -> canBuild = true
             {
-                BuildIt();//then build the thing
+                //BuildIt();//then build the thing
             }
 
             else if (Input.GetMouseButtonDown(1) && isBuilding)//stop build
@@ -57,7 +62,6 @@ public class BuildSystem : MonoBehaviour
 
             else if (Input.GetMouseButtonDown(0))
             {
-
                 RaycastHit hit;
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                 Physics.Raycast(ray, out hit);
@@ -66,7 +70,7 @@ public class BuildSystem : MonoBehaviour
                     if (hit.collider.gameObject.name.Contains(selector.furnitureId.ToString()))
                     {
                         isBuilding = true;//we can now build
-                        selector.TogglePanel();
+                        //selector.TogglePanel();
                         Destroy(hit.collider.gameObject);
 
                         GameObject go = null;
@@ -123,7 +127,7 @@ public class BuildSystem : MonoBehaviour
 
     private void BuildIt()//actually build the thing
     {
-        previewScript.Build();//just calls the Build() method on the previewScript
+        DisplayFurniture?.Invoke(previewScript.Build(furnitureInfo));//just calls the Build() method on the previewScript
         StopBuild();
     }
 
@@ -170,14 +174,25 @@ public class BuildSystem : MonoBehaviour
     }
     public void Confirmation()
     {
-        BuildIt();
-        selector.TogglePanel();
-        ConfirmationFurniture?.Invoke(selector.furnitureId);
+        if (previewScript == null)
+            return;
+
+        if (previewScript.CanBuild())
+        {
+            BuildIt();
+            //selector.TogglePanel();
+            ConfirmationFurniture?.Invoke(selector.furnitureId);
+            selector.isBuildStart = false;
+        }
     }
+
     public void Cancel()
     {
         StopBuild();
     }
+
+    public void OnGetFurnitureInfo(ItemInfo itemInfo)
+    {
+        furnitureInfo = new ItemInfo(itemInfo);
+    }
 }
-
-

@@ -309,4 +309,11 @@ public class DataManager : MonoBehaviour
         //}
 
     }
+
+    public void OnDisplayFurniture(GameObject furnitureGo)
+    {
+        data.CURDISPLAYFURNITUREITEMLIST.Add(furnitureGo);
+
+        Debug.Log(data.CURDISPLAYFURNITUREITEMLIST[0].name);
+    }
 }

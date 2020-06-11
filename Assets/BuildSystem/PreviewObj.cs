@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -24,11 +25,10 @@ public class PreviewObj : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-            Debug.Log("충돌");
         if(other.CompareTag("Building") || other.CompareTag("Furniture"))//hit a building or a wall?...... 
         {
             obj.Add(other.gameObject);//then stick it in the obj list.....
-            Debug.Log("충돌");
+            Debug.Log("추가");
         }
 
         if (other.CompareTag("GroundCube"))//hit a ground cube?.........
@@ -43,11 +43,9 @@ public class PreviewObj : MonoBehaviour
     //----this is the exact opposit of OnTriggerEnter
     private void OnTriggerExit(Collider other)
     {
-
-            Debug.Log("충돌");
         if (other.CompareTag("Building") || other.CompareTag("Furniture"))
         {
-            Debug.Log("충돌");
+            Debug.Log("삭제");
             obj.Remove(other.gameObject);//----notice we're removing it from the list
         }
 
@@ -76,14 +74,16 @@ public class PreviewObj : MonoBehaviour
         }
     }
 
-    public void Build()
+    public GameObject Build(ItemInfo itemInfo)
     {
         for (int i = 0; i < cubes.Count; i++)//loop through all ground cubes an change their selection
         {
             cubes[i].HandleSelection();
         }
 
-        Instantiate(prefab, transform.position, transform.rotation);//spawn in the prefab(Actual Building this preview represents)
+        var temp = Instantiate(prefab, transform.position, transform.rotation);//spawn in the prefab(Actual Building this preview represents)
+        temp.GetComponent<DisplayFurnitureItem>().Initialization(itemInfo);
+        return temp;
         Destroy(gameObject);//destroy the preview
 
     }

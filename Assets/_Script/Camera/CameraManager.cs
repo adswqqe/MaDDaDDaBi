@@ -53,6 +53,8 @@ public class CameraManager : MonoBehaviour
     public float dragSpeed = 2;
     private Vector3 dragOrigin;
 
+    bool isBuilding = false; // 가구 배치 중이라면 카메라 회전 막기
+
     //카메라 회전 및 축소 확대 제한
     [SerializeField]
     float maxRotate;
@@ -111,7 +113,7 @@ public class CameraManager : MonoBehaviour
 
         if (Input.touchCount == 1)
         {
-            if (!isZooming && !isRotating)
+            if (!isZooming && !isRotating && !isBuilding)
             {
                 if (Input.GetTouch(0).phase == TouchPhase.Moved)
                 {
@@ -324,5 +326,16 @@ public class CameraManager : MonoBehaviour
             transform.position = EndDayCameraPos;
         else
             transform.position = dayCameraPos;
+    }
+
+    public void OnStartBuild(int temp)
+    {
+        isBuilding = true;
+    }
+
+    public void OnEndBuild(int temp)
+    {
+        isBuilding = false;
+
     }
 }

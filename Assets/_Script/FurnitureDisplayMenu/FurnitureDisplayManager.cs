@@ -6,6 +6,7 @@ using UnityEngine;
 public class FurnitureDisplayManager : MonoBehaviour
 {
     public Action<int> StartBuild;
+    public Action<ItemInfo> ThrowFurniteminfo;
 
     [SerializeField]
     Transform furnitureScrollview;
@@ -62,6 +63,7 @@ public class FurnitureDisplayManager : MonoBehaviour
     {
         selectIteminfo = item;
         StartBuild?.Invoke(selectIteminfo.ID);
+        ThrowFurniteminfo?.Invoke(item);
         //description.text = item.AMOUNTNUMBER.ToString() + "개\n" + item.DESCRIPTION.ToString();
     }
 

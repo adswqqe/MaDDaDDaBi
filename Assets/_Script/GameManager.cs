@@ -95,8 +95,16 @@ public class GameManager : MonoBehaviour
         workstationManager.ClickCrateBtnInWorkstation += dataManager.OnCreateInWorkStation;
 
         furnitureDisplayManager.StartBuild += buildSelector.OnStartBuild;
+        furnitureDisplayManager.StartBuild += uiManager.OnStartBuild;
+        furnitureDisplayManager.StartBuild += cameraManager.OnStartBuild;
 
         buildSystem.ConfirmationFurniture += dataManager.OnConfirmationFurniture;
+        buildSystem.ConfirmationFurniture += uiManager.OnEndBuild;
+        buildSystem.ConfirmationFurniture += cameraManager.OnEndBuild;
+
+        buildSystem.DisplayFurniture += dataManager.OnDisplayFurniture;
+
+        furnitureDisplayManager.ThrowFurniteminfo += buildSystem.OnGetFurnitureInfo;
     }
 
     void UnBind()
@@ -127,8 +135,17 @@ public class GameManager : MonoBehaviour
         workstationManager.ClickCrateBtnInWorkstation -= dataManager.OnCreateInWorkStation;
 
         furnitureDisplayManager.StartBuild -= buildSelector.OnStartBuild;
+        furnitureDisplayManager.StartBuild -= uiManager.OnStartBuild;
+        furnitureDisplayManager.StartBuild -= cameraManager.OnStartBuild;
 
         buildSystem.ConfirmationFurniture -= dataManager.OnConfirmationFurniture;
+        buildSystem.ConfirmationFurniture -= uiManager.OnEndBuild;
+        buildSystem.ConfirmationFurniture -= cameraManager.OnEndBuild;
+
+        buildSystem.DisplayFurniture -= dataManager.OnDisplayFurniture;
+
+        furnitureDisplayManager.ThrowFurniteminfo -= buildSystem.OnGetFurnitureInfo;
+
     }
 
 

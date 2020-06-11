@@ -13,6 +13,7 @@ public class BuildSelector : MonoBehaviour
     private bool 가구선택보이기 = false;
 
     public int furnitureId = 0;
+    public bool isBuildStart = false;
 
     private void Start()
     {
@@ -32,18 +33,23 @@ public class BuildSelector : MonoBehaviour
         }
 
         if (go != null)
+        {
             Instantiate(go, new Vector3(0, -6.5f, 0), transform.rotation);
+            TogglePanel();
+        }
+
+        isBuildStart = true;
         //buildSystem.NewBuild(go);//this "Starts" a new build in the build system
         //TogglePanel();
     }
 
     public void TogglePanel()
     {
-        가구목록보이기 = !가구목록보이기;
-        가구목록.SetActive(가구목록보이기);
+        //가구목록보이기 = !가구목록보이기;
+        //가구목록.SetActive(가구목록보이기);
 
-        //가구선택보이기 = !가구선택보이기;
-        //가구선택.SetActive(가구선택보이기);
+        가구선택보이기 = !가구선택보이기;
+        가구선택.SetActive(가구선택보이기);
     }
 
 }

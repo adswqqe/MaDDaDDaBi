@@ -19,6 +19,12 @@ public class UIManager : MonoBehaviour
     GameObject displayBtn;
     [SerializeField]
     GameObject openStoreBtn;
+    [SerializeField]
+    GameObject furnitureDisplaybtn;
+    [SerializeField]
+    GameObject[] CanvasUIs;
+    [SerializeField]
+    GameObject furnitureDisplayMenuGo;
 
     // Start is called before the first frame update
     void Start()
@@ -40,13 +46,33 @@ public class UIManager : MonoBehaviour
         {
             orderBtn.GetComponent<Button>().enabled = true;
             displayBtn.GetComponent<Button>().enabled = false;
+            furnitureDisplaybtn.GetComponent<Button>().enabled = false;
             openStoreBtn.SetActive(true);
         }
         else
         {
             orderBtn.GetComponent<Button>().enabled = false;
             displayBtn.GetComponent<Button>().enabled = true;
+            furnitureDisplaybtn.GetComponent<Button>().enabled = true;
             openStoreBtn.SetActive(false);
+        }
+    }
+
+    public void OnStartBuild(int temp)
+    {
+        for (int i = 0; i < CanvasUIs.Length; i++)
+        {
+            CanvasUIs[i].SetActive(false);
+        }
+
+        furnitureDisplayMenuGo.SetActive(false);
+    }
+
+    public void OnEndBuild(int temp)
+    {
+        for (int i = 0; i < CanvasUIs.Length; i++)
+        {
+            CanvasUIs[i].SetActive(true);
         }
     }
 
