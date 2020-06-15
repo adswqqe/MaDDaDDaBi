@@ -34,7 +34,7 @@ public class BuildSelector : MonoBehaviour
 
         if (go != null)
         {
-            Instantiate(go, new Vector3(0, -6.5f, 0), transform.rotation);
+            Instantiate(go, new Vector3(0, -6f, 0), transform.rotation);
             TogglePanel();
         }
 

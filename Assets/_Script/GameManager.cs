@@ -79,6 +79,7 @@ public class GameManager : MonoBehaviour
         dataManager.changeData += productionMenuManager.OnAddMatrialViewPort;
         dataManager.changeData += displayMenuManager.OnAddItemViewPort;
         dataManager.changeData += workstationManager.OnGetData;
+        dataManager.changeData += npcManager.OnGetFurnitureItem;
 
         productionMenuManager.CreateProduction += dataManager.OnCreateProduction;
 
@@ -88,7 +89,7 @@ public class GameManager : MonoBehaviour
         timeManager.EndDayTime += npcManager.OnEndDay;
 
         displayMenuManager.DisplayItemObj += dataManager.OnDisplayItemObj;
-        displayMenuManager.DisPlayItem += npcManager.OnGetItemPos;
+        displayMenuManager.DisPlayItem += npcManager.OnGetItem;
 
         npcManager.sellItem += dataManager.OnSellItem;
 
@@ -119,6 +120,7 @@ public class GameManager : MonoBehaviour
         dataManager.changeData -= productionMenuManager.OnAddMatrialViewPort;
         dataManager.changeData -= displayMenuManager.OnAddItemViewPort;
         dataManager.changeData -= workstationManager.OnGetData;
+        dataManager.changeData -= npcManager.OnGetFurnitureItem;
 
         productionMenuManager.CreateProduction -= dataManager.OnCreateProduction;
 
@@ -128,7 +130,7 @@ public class GameManager : MonoBehaviour
         timeManager.EndDayTime -= npcManager.OnEndDay;
 
         displayMenuManager.DisplayItemObj -= dataManager.OnDisplayItemObj;
-        displayMenuManager.DisPlayItem -= npcManager.OnGetItemPos;
+        displayMenuManager.DisPlayItem -= npcManager.OnGetItem;
 
         npcManager.sellItem -= dataManager.OnSellItem;
 

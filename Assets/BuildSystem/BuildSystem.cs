@@ -112,7 +112,7 @@ public class BuildSystem : MonoBehaviour
     {
         preview = Instantiate(_go, Vector3.zero, Quaternion.identity);//set the preview = to something
         previewScript = preview.GetComponent<PreviewObj>();//grab the script that is sitting on the preview
-        preview.transform.position = new Vector3(0, -6.5f, 0);
+        preview.transform.position = new Vector3(0, -6f, 0);
         //isBuilding = true;//we can now build
     }
 
@@ -155,7 +155,7 @@ public class BuildSystem : MonoBehaviour
         //int y = Mathf.RoundToInt(_pos.y);//personal preferance to comment this out. I hard coded in my y value
         int z = Mathf.RoundToInt(_pos.z);
 
-        preview.transform.position = new Vector3(x, -6.5f, z);//set the previews transform postion to a new Vector3 made up of the x,y,z that you roundedToInt
+        preview.transform.position = new Vector3(x, -6f, z);//set the previews transform postion to a new Vector3 made up of the x,y,z that you roundedToInt
 
     }
 

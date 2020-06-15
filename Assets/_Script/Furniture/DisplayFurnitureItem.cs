@@ -7,6 +7,11 @@ public class DisplayFurnitureItem : MonoBehaviour
     ItemInfo itemInfo;
 
     List<Transform> itemPos;
+    int itemIndex = 0;
+
+    public bool isFull = false;
+    public bool isHasItem = false;
+    List<GameObject> itemList;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,7 +34,47 @@ public class DisplayFurnitureItem : MonoBehaviour
         {
             Debug.Log("item Pos : " + itemPos[i].position);
         }
+        itemList = new List<GameObject>();
         Debug.Log("가구 배치 : " + itemInfo.ID);
+    }
+
+    public bool OnDisplayItem(GameObject item)
+    {
+        if (itemIndex > itemPos.Count)
+        {
+            isFull = true;
+            return false;
+        }
+
+        isHasItem = true;
+        itemList.Add(item);
+        item.transform.position = itemPos[itemIndex++].position;
+
+        Debug.Log(itemPos.Count);
+        Debug.Log(itemIndex);
+
+        if (itemIndex >= itemPos.Count)
+            isFull = true;
+        return true;
+    }
+
+    public GameObject SellItem()
+    {
+        itemIndex--;
+        isFull = false;
+        GameObject temp = itemList[itemIndex];
+        itemList.RemoveAt(itemIndex);
+        if (itemList.Count == 0)
+        {
+            isHasItem = false;
+        }
+
+        return temp;
+    }
+
+    public ItemInfo ITEMINFO
+    {
+        get { return itemInfo; }
     }
 
 }

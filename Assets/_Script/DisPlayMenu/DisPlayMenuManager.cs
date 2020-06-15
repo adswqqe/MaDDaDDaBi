@@ -7,10 +7,10 @@ using UnityEngine;
 public class DisPlayMenuManager : MonoBehaviour
 {
     public Action<ItemInfo> DisplayItemObj;
-    public Action<DisplayItemCtrl> DisPlayItem;
+    public Action<GameObject> DisPlayItem;
 
     [SerializeField]
-    GameObject displayItemObj;
+    GameObject[] displayItemObjs;
     [SerializeField]
     GameObject itemPrefab;
     [SerializeField]
@@ -23,8 +23,8 @@ public class DisPlayMenuManager : MonoBehaviour
     Text description;
     [SerializeField]
     Button displayBtn;
-    [SerializeField]
-    Transform[] displayStandPos;
+    //[SerializeField]
+    //Transform[] displayStandPos;
 
     int curDisplayCount = 0;
     const int MAX_CONTENT_SIZE = 30;
@@ -36,6 +36,7 @@ public class DisPlayMenuManager : MonoBehaviour
     List<GameObject> curDisplayItemObjList;
 
     ItemInfo seletingItem;
+    List<GameObject> curFurnitureList;
 
     // Start is called before the first frame update
     void Start()
@@ -44,6 +45,7 @@ public class DisPlayMenuManager : MonoBehaviour
         toolsContents = new List<GameObject>();
         equipmentContents = new List<GameObject>();
         curDisplayItemObjList = new List<GameObject>();
+        curFurnitureList = new List<GameObject>();
 
         CreateContents();
     }
@@ -83,6 +85,8 @@ public class DisPlayMenuManager : MonoBehaviour
 
     public void OnAddItemViewPort(Data data)
     {
+        curFurnitureList = data.CURDISPLAYFURNITUREITEMLIST;
+
         for (int k = 0; k < MAX_CONTENT_SIZE; k++)
         {
             potionContents[k].SetActive(false);
@@ -124,20 +128,56 @@ public class DisPlayMenuManager : MonoBehaviour
 
     public void OnClickDisplayBtn()
     {
+        bool hasSortFurnitrue = false;
+        bool isFull = false;
+        int fullCounter = 0;
         if (seletingItem == null)
             return;
 
-        if (curDisplayCount >= displayStandPos.Length)
-            curDisplayCount = 0;
+        //if (curDisplayCount >= displayStandPos.Length)
+        //    curDisplayCount = 0;
+
+        foreach (var item in curFurnitureList)
+        {
+            Debug.Log("seletingItem.SORT" + seletingItem.SORT);
+            Debug.Log("item.ITEMINFO.SORT" + item.GetComponent<DisplayFurnitureItem>().ITEMINFO.SORT);
+            if(item.GetComponent<DisplayFurnitureItem>().ITEMINFO.NAME.Contains
+                (seletingItem.SORT))
+            {
+                hasSortFurnitrue = true;
+            }
+            Debug.Log("item.GetComponent<DisplayFurnitureItem>().isFull :" + item.GetComponent<DisplayFurnitureItem>().isFull);
+            if (item.GetComponent<DisplayFurnitureItem>().isFull == true)
+            {
+                isFull = true;
+                fullCounter++;
+            }
+        }
+
+        if (hasSortFurnitrue == false)
+        {
+            Debug.Log("asdasd");
+            return;
+        }
+        if (fullCounter >= curFurnitureList.Count)
+            return;
 
         Debug.Log(seletingItem.NAME);
-        var tempGo = Instantiate(displayItemObj);
-        Debug.Log(displayStandPos[curDisplayCount].position);
-        tempGo.GetComponent<DisplayItemCtrl>().Initialization(seletingItem, displayStandPos[curDisplayCount]);
+        int goIndex = 0;
+        for (int i = 0; i < displayItemObjs.Length; i++)
+        {
+            if(seletingItem.ID.ToString().Contains(displayItemObjs[i].name))
+            {
+                goIndex = i;
+            }
+        }
+        var tempGo = Instantiate(displayItemObjs[goIndex]);
+        //Debug.Log(displayStandPos[curDisplayCount].position);
+        tempGo.GetComponent<DisplayItemCtrl>().Initialization(seletingItem);
         curDisplayItemObjList.Add(tempGo);
 
         DisplayItemObj?.Invoke(seletingItem);
-        DisPlayItem?.Invoke(tempGo.GetComponent<DisplayItemCtrl>());
+        DisPlayItem?.Invoke(tempGo);
 
         curDisplayCount += 1;
         seletingItem = null;

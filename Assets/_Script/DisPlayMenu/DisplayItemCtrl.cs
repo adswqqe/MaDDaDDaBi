@@ -15,13 +15,20 @@ public class DisplayItemCtrl : MonoBehaviour
         get { return itemPos; }
     }
 
-    public void Initialization(ItemInfo itemInfo, Transform itemPos)
+    public ItemInfo ITEMINFO
+    {
+        get { return ItemInfo; }
+    }
+
+    public void Initialization(ItemInfo itemInfo)
     {
         this.ItemInfo = new ItemInfo(itemInfo);
-        this.itemPos = itemPos;
-        //this.itemPos.position = itemPos.position;
+    }
 
-        transform.position = itemPos.position;
+    public void SetItemPos(Transform itemPos)
+    {
+        this.itemPos = itemPos;
+        transform.position = this.itemPos.position;
     }
 
     void Start()

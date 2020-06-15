@@ -343,6 +343,8 @@ public class WorkstationManager : MonoBehaviour
 
                     if (materialid == curitem.ITEMINFO.ID.ToString())
                     {
+                        Debug.Log("curitem.Info.Amo : " + curitem.ITEMINFO.AMOUNTNUMBER);
+                        Debug.Log("CountNumbeText : " + (materialCounter * int.Parse(createCountNumbeText.text)));
                         if (curitem.ITEMINFO.AMOUNTNUMBER - (materialCounter * int.Parse(createCountNumbeText.text)) < 0)
                         {
                             isResult = false;
@@ -360,15 +362,20 @@ public class WorkstationManager : MonoBehaviour
                     }
                 }
                 materialid = combinationList[i];
+                materialCounter = 0;
             }
 
             if (i == combinationList.Count - 1)
             {
-                materialCounter = 0;
+                //materialCounter = 1;
                 if (materialid == combinationList[i])
+                {
+                    Debug.Log("Counter++");
                     materialCounter++;
+                }
 
                 materialKindCounter++;
+                //materialCounter--;
                 foreach (var curitem in data.CURMATERIALITELIST)
                 {
                     //Debug.Log("materialId : " + materialid);
@@ -379,6 +386,9 @@ public class WorkstationManager : MonoBehaviour
 
                     if (materialid == curitem.ITEMINFO.ID.ToString())
                     {
+                        Debug.Log("curitem.Info.Amo : " + curitem.ITEMINFO.AMOUNTNUMBER);
+                        Debug.Log("CountNumbeText : " + (materialCounter * int.Parse(createCountNumbeText.text)));
+                        Debug.Log("MaterialCounter : " + materialCounter);
                         if (curitem.ITEMINFO.AMOUNTNUMBER - (materialCounter * int.Parse(createCountNumbeText.text)) < 0)
                         {
                             isResult = false;
@@ -397,13 +407,11 @@ public class WorkstationManager : MonoBehaviour
 
                     }
                 }
+
             }
         }
 
-        if (materialKindCounter == trueCounter)
-            isResult = true;
-
-        if(isResult)
+        if(materialKindCounter == trueCounter)
         {
             ClickCrateBtnInWorkstation?.Invoke(BuyList, selectItem.ID, int.Parse(createCountNumbeText.text));
         }
