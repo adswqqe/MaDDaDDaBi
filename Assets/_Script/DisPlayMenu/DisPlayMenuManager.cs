@@ -136,22 +136,25 @@ public class DisPlayMenuManager : MonoBehaviour
 
         //if (curDisplayCount >= displayStandPos.Length)
         //    curDisplayCount = 0;
-
+        int sortCount = 0;
         foreach (var item in curFurnitureList)
         {
             Debug.Log("seletingItem.SORT" + seletingItem.SORT);
-            Debug.Log("item.ITEMINFO.SORT" + item.GetComponent<DisplayFurnitureItem>().ITEMINFO.SORT);
+            Debug.Log("item.ITEMINFO.SORT" + item.GetComponent<DisplayFurnitureItem>().ITEMINFO.NAME);
             if(item.GetComponent<DisplayFurnitureItem>().ITEMINFO.NAME.Contains
                 (seletingItem.SORT))
             {
                 hasSortFurnitrue = true;
+                sortCount++;
+
+                if (item.GetComponent<DisplayFurnitureItem>().isFull == true)
+                {
+                    isFull = true;
+                    fullCounter++;
+                }
             }
             Debug.Log("item.GetComponent<DisplayFurnitureItem>().isFull :" + item.GetComponent<DisplayFurnitureItem>().isFull);
-            if (item.GetComponent<DisplayFurnitureItem>().isFull == true)
-            {
-                isFull = true;
-                fullCounter++;
-            }
+
         }
 
         if (hasSortFurnitrue == false)
@@ -159,7 +162,13 @@ public class DisPlayMenuManager : MonoBehaviour
             Debug.Log("asdasd");
             return;
         }
-        if (fullCounter >= curFurnitureList.Count)
+
+        Debug.Log("FullCounter : " + fullCounter);
+        Debug.Log("CurFurnListCount : " + curFurnitureList.Count);
+        //if (fullCounter >= curFurnitureList.Count)
+        //    return;
+
+        if (fullCounter >= sortCount)
             return;
 
         Debug.Log(seletingItem.NAME);

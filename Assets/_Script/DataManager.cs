@@ -125,6 +125,7 @@ public class DataManager : MonoBehaviour
                 {
                     //Debug.Log(item.AMOUNTNUMBER + " 갯수");
                     dataItem.ITEMINFO.AMOUNTNUMBER -= 1;
+                    data.BAGSPACE -= 1;
                     if (dataItem.ITEMINFO.AMOUNTNUMBER <= 0)
                     {
                         //         tempItem = dataItem;
@@ -200,6 +201,7 @@ public class DataManager : MonoBehaviour
                 if(material.ID == dataItem.ITEMINFO.ID)
                 {
                     dataItem.ITEMINFO.AMOUNTNUMBER -= material.AMOUNTNUMBER;
+                    data.BAGSPACE -= material.AMOUNTNUMBER;
                     if (dataItem.ITEMINFO.AMOUNTNUMBER <= 0)
                     {
                         finditem = dataItem;
