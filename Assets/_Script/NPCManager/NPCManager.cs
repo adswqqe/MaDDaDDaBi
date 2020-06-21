@@ -23,6 +23,7 @@ public class NPCManager : MonoBehaviour
     float spawnCoolTime = 10.0f;
     int maxNPCCount = 5;
     int curNpcCount = 0;
+    int maxActiveNpcNum = 3;
 
     List<GameObject> npcs;
     List<Transform> targets;
@@ -124,6 +125,22 @@ public class NPCManager : MonoBehaviour
             }
         }
     }
+
+    bool CheckActiveNpc()
+    {
+        int activeCount = 0;
+        for (int i = 0; i < npcs.Count; i++)
+        {
+            if (npcs[i].activeSelf)
+                activeCount++;
+        }
+
+        if (activeCount >= maxActiveNpcNum)
+            return false;
+        else
+            return true;
+    }
+
     IEnumerator StartNPCSpawn()
     {
         curNpcCount = 0;
@@ -132,9 +149,12 @@ public class NPCManager : MonoBehaviour
         {
             if(curNpcCount < npcs.Count)
             {
-                npcs[curNpcCount].SetActive(true);
-                npcs[curNpcCount].GetComponent<NPCCtrl>().OnStartNpc();
-                curNpcCount++;
+                if (CheckActiveNpc())
+                {
+                    npcs[curNpcCount].SetActive(true);
+                    npcs[curNpcCount].GetComponent<NPCCtrl>().OnStartNpc();
+                    curNpcCount++;
+                }
             }
             else
             {
