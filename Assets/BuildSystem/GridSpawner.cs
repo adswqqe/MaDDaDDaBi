@@ -13,6 +13,7 @@ public class GridSpawner : MonoBehaviour
 
     private void Start()
     {
+
         for (int x = 0; x < xLength; x++)
         {
             for (int z = 0; z < zLength; z++)
@@ -23,6 +24,7 @@ public class GridSpawner : MonoBehaviour
                 go.transform.SetParent(transform);//so the hierarchy looks neater
             }
         }
+
     }
 
 
