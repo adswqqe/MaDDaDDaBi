@@ -343,9 +343,16 @@ public class WorkstationManager : MonoBehaviour
 
                     if (materialid == curitem.ITEMINFO.ID.ToString())
                     {
+                        int number = 0;
                         Debug.Log("curitem.Info.Amo : " + curitem.ITEMINFO.AMOUNTNUMBER);
                         Debug.Log("CountNumbeText : " + (materialCounter * int.Parse(createCountNumbeText.text)));
-                        if (curitem.ITEMINFO.AMOUNTNUMBER - (materialCounter * int.Parse(createCountNumbeText.text)) < 0)
+
+                        if ((materialCounter * int.Parse(createCountNumbeText.text)) == 0)
+                            number++;
+                        else
+                            number = (materialCounter * int.Parse(createCountNumbeText.text));
+
+                        if (curitem.ITEMINFO.AMOUNTNUMBER - number < 0)
                         {
                             isResult = false;
                             break;
@@ -353,7 +360,7 @@ public class WorkstationManager : MonoBehaviour
                         else
                         {
                             var temp = new ItemInfo(int.Parse(materialid), "", "", "", 0, 0, "");
-                            temp.AMOUNTNUMBER = materialCounter * int.Parse(createCountNumbeText.text);
+                            temp.AMOUNTNUMBER = number;
                             BuyList.Add(temp);
                             isResult = true;
                             trueCounter++;
@@ -375,6 +382,13 @@ public class WorkstationManager : MonoBehaviour
                 }
 
                 materialKindCounter++;
+
+                if (materialKindCounter == 1)
+                {
+                    //materialKindCounter++;
+                    materialCounter--;
+                }
+
                 //materialCounter--;
                 foreach (var curitem in data.CURMATERIALITELIST)
                 {

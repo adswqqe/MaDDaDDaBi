@@ -260,12 +260,23 @@ public class DataManager : MonoBehaviour
                 }
                 else if (workstationItem.SORT == "재료")
                 {
-                    var temp = new MaterialItemManager();
-                    Debug.Log(workstationItem.ITEMINFO.ICON_INDEX);
-                    temp.Initialization(workstationItem.ITEMINFO);
-                    if (amo >= 2)
-                        temp.ITEMINFO.AMOUNTNUMBER = amo;
-                    data.CURMATERIALITELIST.Add(temp);
+                    foreach (var item in data.CURMATERIALITELIST)
+                    {
+                        if(item.ITEMINFO.ID == workstationItem.ID)
+                        {
+                            isHave = transform;
+                            item.ITEMINFO.AMOUNTNUMBER += amo;
+                        }
+                    }
+                    if (!isHave)
+                    {
+                        var temp = new MaterialItemManager();
+                        Debug.Log(workstationItem.ITEMINFO.ICON_INDEX);
+                        temp.Initialization(workstationItem.ITEMINFO);
+                        if (amo >= 2)
+                            temp.ITEMINFO.AMOUNTNUMBER = amo;
+                        data.CURMATERIALITELIST.Add(temp);
+                    }
                 }
             }
         }
