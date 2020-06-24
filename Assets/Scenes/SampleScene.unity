@@ -852,7 +852,7 @@ PrefabInstance:
     - target: {fileID: 9220059511353611100, guid: bfb28c232822e0e42938576885d190d8,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.56
+      value: -7.8
       objectReference: {fileID: 0}
     - target: {fileID: 9220059511353611100, guid: bfb28c232822e0e42938576885d190d8,
         type: 3}
@@ -10572,8 +10572,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: -2.4000146e-13, y: 1.117e-42, z: -0.000000007450581,
-    w: 2.4024993e-38}
+  m_BoundingSphereOverride: {x: -7.7e-44, y: NaN, z: 0, w: 4.5918e-41}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
