@@ -145,6 +145,13 @@ public class NPCCtrl : MonoBehaviour
             {
                 obstacle.enabled = false;
                 dumyTimer += Time.deltaTime;
+                if (furnitureList.Count >= 1 && target == null)
+                {
+                    SetNpc();
+                    agent.enabled = true;
+                    agent.speed = 4;
+                    dumyTimer = 0;
+                }
                 if (dumyTimer >= 0.5f)
                 {
                     //dumyTarget = spawnPos;
