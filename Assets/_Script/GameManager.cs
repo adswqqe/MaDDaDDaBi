@@ -44,6 +44,7 @@ public class GameManager : MonoBehaviour
     WorkstationManager workstationManager;
     FurnitureDisplayManager furnitureDisplayManager;
     WasteMenu wasteManager;
+    RecipeMenuManager recipeMenuManager;
 
     // Start is called before the first frame update
     void Start()
@@ -60,11 +61,13 @@ public class GameManager : MonoBehaviour
         workstationManager = GetComponent<WorkstationManager>();
         furnitureDisplayManager = GetComponent<FurnitureDisplayManager>();
         wasteManager = GetComponent<WasteMenu>();
+        recipeMenuManager = GetComponent<RecipeMenuManager>();
 
         orderMaterialManager.Initialization(UIitemPrefabs, contentTr, xmlManager.GetOrderMaterial("재료"), description, materialName, materialImage, buyBtn, shoppingBaskeContentTr, choiceBtn);
         productionMenuManager.Initialization(xmlManager.GetProductionObjInfo());
         dataManager.Initialization(xmlManager.GetOrderMaterial("제작"), xmlManager.GetProductionObjInfo());
         workstationManager.Initialization(xmlManager.GetProductionObjInfo(), xmlManager.GetOrderMaterial("재료"));
+        recipeMenuManager.Initialization(xmlManager.GetOrderMaterial("재료"));
 
         Bind();
     }

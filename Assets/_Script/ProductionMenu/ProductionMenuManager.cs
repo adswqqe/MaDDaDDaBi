@@ -22,6 +22,8 @@ public class ProductionMenuManager : MonoBehaviour
     Image GamasotInIcon;
     [SerializeField]
     Image GamasotInIconOnItem;
+    [SerializeField]
+    RecipeMenuManager recipeMenuManager;
 
     int curSelectIndex = 0;
 
@@ -224,6 +226,8 @@ public class ProductionMenuManager : MonoBehaviour
             slot[i].sprite = Resources.Load<Sprite>("ICON/" + "9998");
         }
         curSelectIndex = 0;
+
+        recipeMenuManager.GetHaveProductionList(haveProductionList);
     }
 
     public void OnClickSlot(int index)
