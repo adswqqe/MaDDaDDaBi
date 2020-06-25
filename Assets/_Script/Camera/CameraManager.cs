@@ -75,6 +75,8 @@ public class CameraManager : MonoBehaviour
     [SerializeField]
     Vector3 EndDayCameraPos;
 
+    bool isEndDay = false;
+
     //void update()
     //{
     //    if (input.getmousebuttondown(0))
@@ -95,7 +97,7 @@ public class CameraManager : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
-        if (IsPointerOverUIObject())
+        if (IsPointerOverUIObject() && isEndDay)
             return;
 
         Quaternion desiredRotation = transform.rotation;
@@ -316,6 +318,7 @@ public class CameraManager : MonoBehaviour
         //else
         //    transform.position = dayCameraPos;
         StartCoroutine(WaitFadeScene(isEndDay));
+        this.isEndDay = isEndDay;
     }
 
     IEnumerator WaitFadeScene(bool isEndDay)

@@ -9,6 +9,7 @@ TagManager:
   - Building
   - GroundCube
   - Furniture
+  - Waste
   layers:
   - Default
   - TransparentFX

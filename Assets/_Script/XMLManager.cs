@@ -164,18 +164,19 @@ public class XMLManager : MonoBehaviour
 
         foreach (XmlNode node in productionAllnodes)
         {
+            if (node.SelectSingleNode("SORT").InnerText == "물약")
+            {
+                ProductionObjInfo item = new ProductionObjInfo(
+                    int.Parse(node.SelectSingleNode("ID").InnerText),
+                    node.SelectSingleNode("SORT").InnerText,
+                    node.SelectSingleNode("NAME").InnerText,
+                    node.SelectSingleNode("ICON").InnerText,
+                    node.SelectSingleNode("DESCRIPTION").InnerText,
+                    node.SelectSingleNode("needMaterial").InnerText
+                    );
 
-            ProductionObjInfo item = new ProductionObjInfo(
-                int.Parse(node.SelectSingleNode("ID").InnerText),
-                node.SelectSingleNode("SORT").InnerText,
-                node.SelectSingleNode("NAME").InnerText,
-                node.SelectSingleNode("ICON").InnerText,
-                node.SelectSingleNode("DESCRIPTION").InnerText,
-                node.SelectSingleNode("needMaterial").InnerText
-                );
-
-            productionObjs.Add(item);
-
+                productionObjs.Add(item);
+            }
         }
 
 

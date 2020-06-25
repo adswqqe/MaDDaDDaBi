@@ -24,6 +24,7 @@ public class NPCManager : MonoBehaviour
     int maxNPCCount = 5;
     int curNpcCount = 0;
     int maxActiveNpcNum = 3;
+    int wasteCount = 0;    
 
     List<GameObject> npcs;
     List<Transform> targets;
@@ -59,6 +60,17 @@ public class NPCManager : MonoBehaviour
 
         if (furnitureitemList.Count >= 1)
             NpcUpdate();
+
+        wasteCount = data.CURWASTEITEMLIST.Count;
+
+        if (wasteCount <= 4)
+            spawnCoolTime = 10;
+        else if (wasteCount >= 5 && wasteCount <= 9)
+            spawnCoolTime = 12;
+        else if (wasteCount >= 10 && wasteCount <= 19)
+            spawnCoolTime = 16;
+        else if (wasteCount >= 20)
+            spawnCoolTime = 18;
     }
 
     public void OnDisableNPC(GameObject npcGO)

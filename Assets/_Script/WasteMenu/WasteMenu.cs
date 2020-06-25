@@ -1,0 +1,91 @@
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine.UI;
+using UnityEngine;
+
+public class WasteMenu : MonoBehaviour
+{
+    public Action<int> WasteProcessing;
+
+    [SerializeField]
+    Slider slider;
+    [SerializeField]
+    Text wasteNumberText;
+    [SerializeField]
+    Text wasteCountText;
+    [SerializeField]
+    Text wasteDescriptText;
+    [SerializeField]
+    Text wasteProcessingText;
+
+    int wasteCount = 0;
+    int count = 0;
+    int curGold = 0;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+    }
+    
+    void SetUIcontent()
+    {
+        slider.value = wasteCount;
+        wasteNumberText.text = wasteCount + "개 보관중";
+
+        if(wasteCount >= 4 && wasteCount <= 9)
+        {
+            wasteDescriptText.text = "악취가 조금 심하다. 손님이 줄어들 것 같다.";
+        }
+        else if(wasteCount >= 10 && wasteCount <= 14)
+        {
+            wasteDescriptText.text = "악취가 심하다. 손님이 적게 올 것 같다. ";
+        }
+        else if(wasteCount >= 15 && wasteCount <= 19)
+        {
+            wasteDescriptText.text = "악취가 매우 심하다. 손님이 많이 줄어들 것 같다.";
+        }
+        else if(wasteCount >= 20)
+        {
+            wasteDescriptText.text = "악취가 심각하다. 손님이 거의 안 올 것 같다.";
+        }
+        else
+            wasteDescriptText.text = "깨끗한 상태이다.";
+
+    }
+
+    public void OnGetData(Data data)
+    {
+        wasteCount = data.CURWASTEITEMLIST.Count;
+        curGold = data.GOLD;
+        SetUIcontent();
+    }
+
+    public void AddCount(int count)
+    {
+        this.count += count;
+        if (this.count <= 0)
+            this.count = 0;
+        else if (this.count >= wasteCount)
+            this.count = wasteCount;
+
+        wasteCountText.text = this.count + "개 처리";
+        wasteProcessingText.text = (this.count * 2).ToString() + "냥";
+    }
+
+    public void OnClickProcessingButton()
+    {
+        if (curGold < count * 2)
+        {
+            Debug.Log("골드가 부족");
+            return;
+        }
+
+        if (count == 0)
+            return;
+
+        WasteProcessing?.Invoke(count);
+        AddCount(-count);
+    }
+}

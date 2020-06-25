@@ -43,6 +43,7 @@ public class GameManager : MonoBehaviour
     NPCManager npcManager;
     WorkstationManager workstationManager;
     FurnitureDisplayManager furnitureDisplayManager;
+    WasteMenu wasteManager;
 
     // Start is called before the first frame update
     void Start()
@@ -58,6 +59,7 @@ public class GameManager : MonoBehaviour
         npcManager = GetComponent<NPCManager>();
         workstationManager = GetComponent<WorkstationManager>();
         furnitureDisplayManager = GetComponent<FurnitureDisplayManager>();
+        wasteManager = GetComponent<WasteMenu>();
 
         orderMaterialManager.Initialization(UIitemPrefabs, contentTr, xmlManager.GetOrderMaterial("재료"), description, materialName, materialImage, buyBtn, shoppingBaskeContentTr, choiceBtn);
         productionMenuManager.Initialization(xmlManager.GetProductionObjInfo());
@@ -80,6 +82,7 @@ public class GameManager : MonoBehaviour
         dataManager.changeData += displayMenuManager.OnAddItemViewPort;
         dataManager.changeData += workstationManager.OnGetData;
         dataManager.changeData += npcManager.OnGetFurnitureItem;
+        dataManager.changeData += wasteManager.OnGetData;
 
         productionMenuManager.CreateProduction += dataManager.OnCreateProduction;
 
@@ -106,6 +109,8 @@ public class GameManager : MonoBehaviour
         buildSystem.DisplayFurniture += dataManager.OnDisplayFurniture;
 
         furnitureDisplayManager.ThrowFurniteminfo += buildSystem.OnGetFurnitureInfo;
+
+        wasteManager.WasteProcessing += dataManager.OnWasteProcessing;
     }
 
     void UnBind()
@@ -121,6 +126,7 @@ public class GameManager : MonoBehaviour
         dataManager.changeData -= displayMenuManager.OnAddItemViewPort;
         dataManager.changeData -= workstationManager.OnGetData;
         dataManager.changeData -= npcManager.OnGetFurnitureItem;
+        dataManager.changeData -= wasteManager.OnGetData;
 
         productionMenuManager.CreateProduction -= dataManager.OnCreateProduction;
 
@@ -148,6 +154,7 @@ public class GameManager : MonoBehaviour
 
         furnitureDisplayManager.ThrowFurniteminfo -= buildSystem.OnGetFurnitureInfo;
 
+        wasteManager.WasteProcessing -= dataManager.OnWasteProcessing;
     }
 
 

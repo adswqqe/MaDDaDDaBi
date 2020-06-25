@@ -94,11 +94,15 @@ public class DataManager : MonoBehaviour
     public void OnCreateProduction(List<ItemInfo> materials, ProductionObjInfo production)
     {
         bool isHave = false;
+        bool isWaste = false;
 
         // null이라면 아무것도 조합되지 않았다는 뜻이므로 쓰레기를 던져야함.
         if (production == null)
+        {
             production = new ProductionObjInfo(999, "테스트", "쓰레기", "998", "실패한 연금술", "NONE");
-
+            data.CURWASTEITEMLIST.Add(production);
+            isWaste = true;
+        }
 
         foreach (var curItem in data.CURPRODUCTIONITEMLIST)
         {
@@ -110,7 +114,7 @@ public class DataManager : MonoBehaviour
             }
         }
 
-        if (!isHave)
+        if (!isHave && !isWaste)
         {
             data.CURPRODUCTIONITEMLIST.Add(production);
             Debug.Log("isHaved" + production.AMOUNTNUMBER);
@@ -328,6 +332,18 @@ public class DataManager : MonoBehaviour
         data.CURDISPLAYFURNITUREITEMLIST.Add(furnitureGo);
 
         Debug.Log(data.CURDISPLAYFURNITUREITEMLIST[0].name);
+
+        changeData?.Invoke(data);
+    }
+
+    public void OnWasteProcessing(int count)
+    {
+        data.GOLD -= count * 2;
+
+        for (int i = 0; i < count; i++)
+        {
+            data.CURWASTEITEMLIST.RemoveAt(i);
+        }
 
         changeData?.Invoke(data);
     }

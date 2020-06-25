@@ -9,6 +9,8 @@ public class RatCastClickManager : MonoBehaviour
     GameObject productionMenuObj;
     [SerializeField]
     GameObject workstationMenuObj;
+    [SerializeField]
+    GameObject wasteMenuObj;
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +32,8 @@ public class RatCastClickManager : MonoBehaviour
                     productionMenuObj?.SetActive(true);
                 else if (hit.collider.tag == "Workstation")
                     workstationMenuObj?.SetActive(true);
+                else if (hit.collider.tag == "Waste")
+                    wasteMenuObj?.SetActive(true);
             }
         }
     }
