@@ -152,7 +152,7 @@ public class XMLManager : MonoBehaviour
         return materialItems;
     }
 
-    public List<ProductionObjInfo> GetProductionObjInfo()
+    public List<ProductionObjInfo> GetProductionObjInfo(string sortName)
     {
         TextAsset textAsset = (TextAsset)Resources.Load("XML/" + productionObjXmlFileName);
         XmlDocument xmlDoc = new XmlDocument();
@@ -164,7 +164,23 @@ public class XMLManager : MonoBehaviour
 
         foreach (XmlNode node in productionAllnodes)
         {
-            if (node.SelectSingleNode("SORT").InnerText == "물약")
+            if (sortName == "물약")
+            {
+                if (node.SelectSingleNode("SORT").InnerText == "물약")
+                {
+                    ProductionObjInfo item = new ProductionObjInfo(
+                        int.Parse(node.SelectSingleNode("ID").InnerText),
+                        node.SelectSingleNode("SORT").InnerText,
+                        node.SelectSingleNode("NAME").InnerText,
+                        node.SelectSingleNode("ICON").InnerText,
+                        node.SelectSingleNode("DESCRIPTION").InnerText,
+                        node.SelectSingleNode("needMaterial").InnerText
+                        );
+
+                    productionObjs.Add(item);
+                }
+            }
+            else
             {
                 ProductionObjInfo item = new ProductionObjInfo(
                     int.Parse(node.SelectSingleNode("ID").InnerText),

@@ -78,6 +78,16 @@ public class RecipeMenuManager : MonoBehaviour
     public void OnClickNextPagebtn()
     {
         pagesGo[pageNum++].SetActive(false);
+        if (pageNum >= pagesGo.Length)
+            pageNum = pagesGo.Length -1;
+        pagesGo[pageNum].SetActive(true);
+    }
+
+    public void OnClickPrevPageBtn()
+    {
+        pagesGo[pageNum--].SetActive(false);
+        if(pageNum <= 0)
+            pageNum = 0;
         pagesGo[pageNum].SetActive(true);
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class UIManager : MonoBehaviour
@@ -74,6 +75,11 @@ public class UIManager : MonoBehaviour
         {
             CanvasUIs[i].SetActive(true);
         }
+    }
+
+    public void OnClickResetBtn()
+    {
+        SceneManager.LoadScene(0);
     }
 
     //public void OnStartDay()

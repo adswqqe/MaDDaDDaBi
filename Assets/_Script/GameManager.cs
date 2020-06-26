@@ -64,9 +64,9 @@ public class GameManager : MonoBehaviour
         recipeMenuManager = GetComponent<RecipeMenuManager>();
 
         orderMaterialManager.Initialization(UIitemPrefabs, contentTr, xmlManager.GetOrderMaterial("재료"), description, materialName, materialImage, buyBtn, shoppingBaskeContentTr, choiceBtn);
-        productionMenuManager.Initialization(xmlManager.GetProductionObjInfo());
-        dataManager.Initialization(xmlManager.GetOrderMaterial("제작"), xmlManager.GetProductionObjInfo());
-        workstationManager.Initialization(xmlManager.GetProductionObjInfo(), xmlManager.GetOrderMaterial("재료"));
+        productionMenuManager.Initialization(xmlManager.GetProductionObjInfo("물약"));
+        dataManager.Initialization(xmlManager.GetOrderMaterial("제작"), xmlManager.GetProductionObjInfo("전체"));
+        workstationManager.Initialization(xmlManager.GetProductionObjInfo("전체"), xmlManager.GetOrderMaterial("재료"));
         recipeMenuManager.Initialization(xmlManager.GetOrderMaterial("재료"));
 
         Bind();
@@ -104,6 +104,7 @@ public class GameManager : MonoBehaviour
         furnitureDisplayManager.StartBuild += buildSelector.OnStartBuild;
         furnitureDisplayManager.StartBuild += uiManager.OnStartBuild;
         furnitureDisplayManager.StartBuild += cameraManager.OnStartBuild;
+        buildSelector.cancelBuild += uiManager.OnEndBuild;
 
         buildSystem.ConfirmationFurniture += dataManager.OnConfirmationFurniture;
         buildSystem.ConfirmationFurniture += uiManager.OnEndBuild;
@@ -148,6 +149,7 @@ public class GameManager : MonoBehaviour
         furnitureDisplayManager.StartBuild -= buildSelector.OnStartBuild;
         furnitureDisplayManager.StartBuild -= uiManager.OnStartBuild;
         furnitureDisplayManager.StartBuild -= cameraManager.OnStartBuild;
+        buildSelector.cancelBuild -= uiManager.OnEndBuild;
 
         buildSystem.ConfirmationFurniture -= dataManager.OnConfirmationFurniture;
         buildSystem.ConfirmationFurniture -= uiManager.OnEndBuild;

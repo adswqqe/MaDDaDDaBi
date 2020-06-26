@@ -310,13 +310,21 @@ public class WorkstationManager : MonoBehaviour
         if (int.Parse(createCountNumbeText.text) + add <= 1)
             createCountNumbeText.text = 1.ToString();
         else
-            createCountNumbeText.text = (int.Parse(createCountNumbeText.text) + add).ToString();
+        {
+            if (int.Parse(createCountNumbeText.text) + add >= 99)
+                createCountNumbeText.text = 99.ToString();
+            else
+                createCountNumbeText.text = (int.Parse(createCountNumbeText.text) + add).ToString();
+        }
 
         UpdateList();
     }
 
     public void OnClickCreateBtn()
     {
+        if (selectItem == null)
+            return;
+
         bool isResult = false;
         var combinationList = selectItem.COMBINATIONLIST;
         string materialid = combinationList[0];

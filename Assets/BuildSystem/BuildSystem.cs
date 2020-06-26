@@ -21,6 +21,7 @@ public class BuildSystem : MonoBehaviour
     private GameObject preview;//this is the preview object that you will be moving around in the scene
     private PreviewObj previewScript;//this is the script that is sitting on that object
     private ItemInfo furnitureInfo;
+    public GameObject curfurnGo;
 
     private bool isBuilding = false;
     //public GameObject 가구1;
@@ -123,6 +124,9 @@ public class BuildSystem : MonoBehaviour
         previewScript = null;//
         selector.TogglePanel();
         isBuilding = false;
+
+        if (curfurnGo != null)
+            Destroy(curfurnGo);
     }
 
     private void BuildIt()//actually build the thing

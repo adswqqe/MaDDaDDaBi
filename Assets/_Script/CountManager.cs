@@ -21,7 +21,12 @@ public class CountManager : MonoBehaviour
         if ((int.Parse(numberText.text) + add) <= 1)
             numberText.text = 1.ToString();
         else
-            numberText.text = (int.Parse(numberText.text) + add).ToString(); ;
+        {
+            if (int.Parse(numberText.text) + add >= 99)
+                numberText.text = 99.ToString();
+            else
+                numberText.text = (int.Parse(numberText.text) + add).ToString();
+        }
     }
 
     public void OnShoppingBaskeBtn(Text number)

@@ -1,9 +1,12 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class BuildSelector : MonoBehaviour
 {
+    public Action<int> cancelBuild;
+
     [SerializeField]
     GameObject[] furniturePrefabs;
 
@@ -34,7 +37,7 @@ public class BuildSelector : MonoBehaviour
 
         if (go != null)
         {
-            Instantiate(go, new Vector3(0, -6f, 0), transform.rotation);
+            buildSystem.curfurnGo = Instantiate(go, new Vector3(0, -6f, 0), transform.rotation);
             TogglePanel();
         }
 
@@ -50,6 +53,7 @@ public class BuildSelector : MonoBehaviour
 
         가구선택보이기 = !가구선택보이기;
         가구선택.SetActive(가구선택보이기);
+        cancelBuild?.Invoke(0);
     }
 
 }

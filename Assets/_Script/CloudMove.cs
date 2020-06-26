@@ -32,12 +32,14 @@ public class CloudMove : MonoBehaviour
         time += Time.deltaTime;
         if(time > 3)
         {
+            if(TextUI != null)
             TextUI.SetActive(true);
             time = 0;
 
         }
         else if(time > 1)
         {
+            if(TextUI != null)
             TextUI.SetActive(false);
            
         }

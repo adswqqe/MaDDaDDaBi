@@ -339,10 +339,10 @@ public class DataManager : MonoBehaviour
     public void OnWasteProcessing(int count)
     {
         data.GOLD -= count * 2;
-
+        Debug.Log(data.CURWASTEITEMLIST.Count + "쓰레기 count");
         for (int i = 0; i < count; i++)
         {
-            data.CURWASTEITEMLIST.RemoveAt(i);
+            data.CURWASTEITEMLIST.RemoveAt(0);
         }
 
         changeData?.Invoke(data);

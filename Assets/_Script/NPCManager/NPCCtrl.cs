@@ -209,7 +209,6 @@ public class NPCCtrl : MonoBehaviour
         }
         else if(isNotFindItem)
         {
-            Debug.Log("isNot");
             agent.SetDestination(target.position);
             transform.LookAt(target);
             if (!agent.pathPending)
