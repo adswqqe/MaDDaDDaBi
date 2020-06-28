@@ -19,9 +19,16 @@ public class TimeManager : MonoBehaviour
 
     bool isEndTime = true;
 
+    [SerializeField]
+    new Light light;
+    GameObject SleepAni;
+    [SerializeField]
+    Animator anim;
+
     // Start is called before the first frame update
     void Start()
     {
+        SleepAni = GameObject.Find("PopMenuBundle").transform.Find("SleepAni").gameObject;
         EndDayTime?.Invoke(true);
         timeText.text = hour.ToString("00") + ":" + min.ToString("00");
     }
@@ -52,10 +59,29 @@ public class TimeManager : MonoBehaviour
 
     public void StartDay()
     {
-        isEndTime = false;
-        hour = 7;
-        min = 0;
-
-        EndDayTime?.Invoke(false);
+        SleepAni.SetActive(true);
+        light.intensity = 1;
+        StartCoroutine("SleepAniOff");
     }
+
+    IEnumerator SleepAniOff()
+    {
+        //Debug.Log("코루틴");
+
+        while (anim.GetCurrentAnimatorStateInfo(0).normalizedTime < 1f)
+        {
+            //Debug.Log("플레이중");
+            yield return null;
+        }
+
+            //Debug.Log("탈출");
+            SleepAni.SetActive(false);
+            isEndTime = false;
+            hour = 7;
+            min = 0;
+            EndDayTime?.Invoke(false);
+            yield return null;
+        
+}
+
 }

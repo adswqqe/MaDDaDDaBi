@@ -70,8 +70,8 @@ public class WasteMenu : MonoBehaviour
         else if (this.count >= wasteCount)
             this.count = wasteCount;
 
-        wasteCountText.text = this.count + "개 처리";
-        wasteProcessingText.text = (this.count * 2).ToString() + "냥";
+        wasteCountText.text = this.count.ToString();
+        wasteProcessingText.text = ("처리비용: " + this.count * 2).ToString() + "냥";
     }
 
     public void OnClickProcessingButton()

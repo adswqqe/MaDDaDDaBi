@@ -34,6 +34,11 @@ public class RatCastClickManager : MonoBehaviour
                     workstationMenuObj?.SetActive(true);
                 else if (hit.collider.tag == "Waste")
                     wasteMenuObj?.SetActive(true);
+                else if (hit.collider.tag == "OrderBox")
+                {
+                    GameObject.Find("GameManager").GetComponent<DataManager>().pickup = false;
+                    GameObject.Find("GameManager").GetComponent<OrderMaterialManager>().BuyBtn();
+                }
             }
         }
     }

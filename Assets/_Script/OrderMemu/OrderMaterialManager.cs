@@ -133,6 +133,10 @@ public class OrderMaterialManager : MonoBehaviour
         buyButtonPress?.Invoke(curShoppingBaskeList);
 
     }
+    public void BuyBtn()
+    {
+        buyButtonPress?.Invoke(curShoppingBaskeList);
+    }
 
     public void OnbuySuccessMatreial(bool isResult)
     {

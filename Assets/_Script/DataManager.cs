@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DataManager : MonoBehaviour
 {
@@ -12,10 +13,17 @@ public class DataManager : MonoBehaviour
     List<ProductionObjInfo> workStationItemList;
     Data data;
     // Start is called before the first frame update
+
+    public bool pickup;
+    int OrderNum; // 주문을 누른 횟수 1이면 상품 결제하고 박스 생성 2이면 박스 터치했을 때 아이템 획득
+    Animator GoldPoping;
+    GameObject Notification; //골드 부족, 재료 부족 등 알림창
+
     void Start()
     {
         dataSet();       // 향후 세이브 로드로 수정해야함
-
+        GoldPoping = GameObject.Find("Canvas").transform.Find("TOP").transform.Find("Gold_Poping").GetComponent<Animator>();
+        Notification = GameObject.Find("Canvas").transform.Find("Notification").gameObject;
         changeData?.Invoke(data);
     }
 
@@ -37,25 +45,62 @@ public class DataManager : MonoBehaviour
 
         int sumCost = 0;
         int itemAmonts = 0;
+
         foreach (var item in curMatrialShoppingBaske)
         {
-            sumCost += item.BUYCOST * item.ITEMINFO.AMOUNTNUMBER;
+            Debug.Log(pickup);
+            if (OrderNum == 1)
+            {
+                Debug.Log("썸0");
+                sumCost = 0;
+            }
+            else
+            {
+                Debug.Log("썸0");
+                sumCost += item.BUYCOST * item.ITEMINFO.AMOUNTNUMBER;
+            }
+
+
             itemAmonts += item.ITEMINFO.AMOUNTNUMBER;
         }
 
         // 인벤토리의 공간이 부족했을 경우의 예외처리를 해야함.
 
+        Debug.Log(sumCost);
+
         if ((data.GOLD - sumCost) < 0)
-            Debug.Log("머니가 머니머니부족해");
+        {
+            Notification.SetActive(true);
+            Notification.transform.GetChild(1).transform.GetComponent<Text>().text = "골드가 부족합니다.";
+        }
+            
+        else if (pickup == true)
+        {
+            Notification.SetActive(true);
+            Notification.transform.GetChild(1).transform.GetComponent<Text>().text = "배달함을 확인해주세요.";
+
+        }
         else
         {
-            if (data.BAGSPACE + itemAmonts <= data.MAX_BAGSPCE)
+            if (data.BAGSPACE + itemAmonts <= data.MAX_BAGSPCE && OrderNum == 0)
             {
-                Debug.Log("구매구매성공");
-                isResult = true;
+                Debug.Log("주문성공");
                 data.GOLD -= sumCost;
+                OrderNum++;
+
+                pickup = true;
+                changeData?.Invoke(data);
+                GameObject.Find("UnderFloor").transform.Find("OrderBox").gameObject.SetActive(true); // 택배박스 활성화
+
+            }
+
+            else if (data.BAGSPACE + itemAmonts <= data.MAX_BAGSPCE && OrderNum >= 1)
+            {
                 data.BAGSPACE += itemAmonts;
+                isResult = true;
+                Debug.Log("픽업성공");
                 bool isHave = false;
+                GameObject.Find("OrderBox").SetActive(false); // 택배박스 활성화
 
                 foreach (var item in curMatrialShoppingBaske)
                 {
@@ -79,16 +124,23 @@ public class DataManager : MonoBehaviour
                         Debug.Log(item.NAME);
                     }
                 }
-                
+
+                OrderNum = 0;
+
+                resultCalcGold?.Invoke(isResult);
+
+                changeData?.Invoke(data);
+
+                data.ADDMATERIALLIST.Clear();   // 재사용을 위한 초기화
+
+                pickup = false;
             }
             else
-                Debug.Log("공간이 부족해~");
+                Notification.SetActive(true);
+                Notification.transform.GetChild(1).transform.GetComponent<Text>().text = "가방 공간이 부족합니다.";
         }
 
-        resultCalcGold?.Invoke(isResult);
 
-        changeData?.Invoke(data);
-        data.ADDMATERIALLIST.Clear();   // 재사용을 위한 초기화
     }
 
     public void OnCreateProduction(List<ItemInfo> materials, ProductionObjInfo production)
@@ -179,8 +231,10 @@ public class DataManager : MonoBehaviour
         {
             if(item.ID == itemInfo.ID)
             {
+                Debug.Log("판매");
                 data.GOLD += item.SELLCOST;
                 data.EXP += 5;
+                GoldPoping.SetTrigger("Trigger");
                 break;
             }
         }
