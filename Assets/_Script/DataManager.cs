@@ -12,6 +12,8 @@ public class DataManager : MonoBehaviour
     List<ItemInfo> createItem;
     List<ProductionObjInfo> workStationItemList;
     Data data;
+
+    List<MaterialItemManager> curMaterialShopping;      // 코드 임시 대체
     // Start is called before the first frame update
 
     public bool pickup;
@@ -90,6 +92,12 @@ public class DataManager : MonoBehaviour
 
                 pickup = true;
                 changeData?.Invoke(data);
+                foreach (var item in curMatrialShoppingBaske)
+                {
+                    data.ADDMATERIALLIST.Add(item);
+                }
+
+                resultCalcGold?.Invoke(true);
                 GameObject.Find("UnderFloor").transform.Find("OrderBox").gameObject.SetActive(true); // 택배박스 활성화
 
             }

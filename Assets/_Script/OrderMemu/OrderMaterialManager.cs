@@ -131,8 +131,8 @@ public class OrderMaterialManager : MonoBehaviour
         Debug.Log(sumCost);
 
         buyButtonPress?.Invoke(curShoppingBaskeList);
-
     }
+
     public void BuyBtn()
     {
         buyButtonPress?.Invoke(curShoppingBaskeList);
