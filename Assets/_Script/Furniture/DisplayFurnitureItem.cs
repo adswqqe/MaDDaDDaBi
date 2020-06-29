@@ -48,8 +48,30 @@ public class DisplayFurnitureItem : MonoBehaviour
 
         isHasItem = true;
         itemList.Add(item);
-        item.transform.position = itemPos[itemIndex++].position;
         item.transform.SetParent(transform);
+        if (item.gameObject.name.Contains("301"))
+        {
+            item.transform.localPosition = new Vector3(-0.0002864352f, 1.013483f, 0.1088993f);
+            item.transform.localEulerAngles = new Vector3(-65, 0, 0);
+            item.transform.localScale = new Vector3(1.114803f, 1.295074f, 1.295074f);
+        }
+        else if(item.gameObject.name.Contains("303"))
+        {
+            item.transform.localPosition = new Vector3(0.01025567f, 1.574809f, 0.07122543f);
+            item.transform.localEulerAngles = new Vector3(-87.36101f, -43.042f, 134.705f);
+            item.transform.localScale = new Vector3(0.295215f, 0.295215f, 0.295215f);
+        }
+        else if(item.gameObject.name.Contains("304"))
+        {
+            item.transform.localPosition = new Vector3(0, 0.9378669f, 0.1006677f);
+            item.transform.localEulerAngles = new Vector3(26.597f, 0, 0);
+            item.transform.localScale = new Vector3(0.065764f, 0.065764f, 0.065764f);
+        }
+        else
+        {
+            item.transform.position = itemPos[itemIndex].position;
+        }
+        itemIndex++;
         Debug.Log(itemPos.Count);
         Debug.Log(itemIndex);
 
@@ -61,6 +83,8 @@ public class DisplayFurnitureItem : MonoBehaviour
     public GameObject SellItem()
     {
         itemIndex--;
+        if (itemIndex <= 0)
+            itemIndex = 0;
         isFull = false;
         GameObject temp = itemList[itemIndex];
         itemList.RemoveAt(itemIndex);

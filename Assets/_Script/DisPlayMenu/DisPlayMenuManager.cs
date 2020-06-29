@@ -48,6 +48,11 @@ public class DisPlayMenuManager : MonoBehaviour
         curFurnitureList = new List<GameObject>();
 
         CreateContents();
+
+        for (int i = 0; i < displayItemObjs.Length; i++)
+        {
+            Debug.Log("ItemPos " + i + " : " + displayItemObjs[i].transform.position);
+        }
     }
 
     void CreateContents()
@@ -181,7 +186,7 @@ public class DisPlayMenuManager : MonoBehaviour
             }
         }
         var tempGo = Instantiate(displayItemObjs[goIndex], displayItemObjs[goIndex].transform.position, displayItemObjs[goIndex].transform.rotation);
-        Debug.Log(displayItemObjs[goIndex].transform.position + " " + displayItemObjs[goIndex].transform.rotation);
+        //Debug.Log(displayItemObjs[goIndex].transform.position + " " + displayItemObjs[goIndex].transform.rotation);
         //Debug.Log(displayStandPos[curDisplayCount].position);
         tempGo.GetComponent<DisplayItemCtrl>().Initialization(seletingItem);
         curDisplayItemObjList.Add(tempGo);
