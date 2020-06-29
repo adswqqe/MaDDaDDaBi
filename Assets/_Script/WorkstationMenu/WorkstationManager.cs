@@ -37,6 +37,8 @@ public class WorkstationManager : MonoBehaviour
     Data data;
     ProductionObjInfo selectItem;
 
+    GameObject Notification; //골드 부족, 재료 부족 등 알림창
+
     public void Initialization(List<ProductionObjInfo> productionList, List<ItemInfo> materialItems)
     {
         this.productionList = productionList;
@@ -54,6 +56,7 @@ public class WorkstationManager : MonoBehaviour
             materialImage[i].gameObject.SetActive(false);
             materialText[i].gameObject.SetActive(false);
         }
+        Notification = GameObject.Find("Canvas").transform.Find("Notification").gameObject;
     }
 
     void setActiveUI(bool isActive)
@@ -323,8 +326,11 @@ public class WorkstationManager : MonoBehaviour
     public void OnClickCreateBtn()
     {
         if (selectItem == null)
+        {
+            Notification.SetActive(true);
+            Notification.transform.GetChild(1).transform.GetComponent<Text>().text = "제작할 물품을 선택해주세요.";
             return;
-
+        }
         bool isResult = false;
         var combinationList = selectItem.COMBINATIONLIST;
         string materialid = combinationList[0];
@@ -436,6 +442,11 @@ public class WorkstationManager : MonoBehaviour
         if(materialKindCounter == trueCounter)
         {
             ClickCrateBtnInWorkstation?.Invoke(BuyList, selectItem.ID, int.Parse(createCountNumbeText.text));
+        }
+        else
+        {
+            Notification.SetActive(true);
+            Notification.transform.GetChild(1).transform.GetComponent<Text>().text = "재료가 부족합니다.";
         }
 
         Debug.Log("Result : " + isResult);

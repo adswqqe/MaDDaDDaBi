@@ -20,6 +20,7 @@ public class DataManager : MonoBehaviour
     int OrderNum; // 주문을 누른 횟수 1이면 상품 결제하고 박스 생성 2이면 박스 터치했을 때 아이템 획득
     Animator GoldPoping;
     GameObject Notification; //골드 부족, 재료 부족 등 알림창
+    int itemAmonts = 0;
 
     void Start()
     {
@@ -44,9 +45,8 @@ public class DataManager : MonoBehaviour
     public void CalcBuy(List<MaterialItemManager> curMatrialShoppingBaske)
     {
         bool isResult = false;
-
+        int tempitemAmonts = 0;
         int sumCost = 0;
-        int itemAmonts = 0;
 
         foreach (var item in curMatrialShoppingBaske)
         {
@@ -63,7 +63,7 @@ public class DataManager : MonoBehaviour
             }
 
 
-            itemAmonts += item.ITEMINFO.AMOUNTNUMBER;
+            tempitemAmonts += item.ITEMINFO.AMOUNTNUMBER;
         }
 
         // 인벤토리의 공간이 부족했을 경우의 예외처리를 해야함.
@@ -80,17 +80,24 @@ public class DataManager : MonoBehaviour
         {
             Notification.SetActive(true);
             Notification.transform.GetChild(1).transform.GetComponent<Text>().text = "배달함을 확인해주세요.";
-
+            resultCalcGold?.Invoke(true);
+            return;
         }
         else
         {
-            if (data.BAGSPACE + itemAmonts <= data.MAX_BAGSPCE && OrderNum == 0)
+            Debug.Log(data.BAGSPACE + "현재공간 ");
+            Debug.Log(itemAmonts + "구매할 아이템 갯수");
+            if (data.BAGSPACE + tempitemAmonts <= data.MAX_BAGSPCE && OrderNum == 0)
             {
+                Debug.Log(data.BAGSPACE + "현재공간 ");
+                Debug.Log(itemAmonts + "구매할 아이템 갯수");
+
                 Debug.Log("주문성공");
                 data.GOLD -= sumCost;
                 OrderNum++;
 
                 pickup = true;
+                itemAmonts = tempitemAmonts;
                 changeData?.Invoke(data);
                 foreach (var item in curMatrialShoppingBaske)
                 {
@@ -99,10 +106,9 @@ public class DataManager : MonoBehaviour
 
                 resultCalcGold?.Invoke(true);
                 GameObject.Find("UnderFloor").transform.Find("OrderBox").gameObject.SetActive(true); // 택배박스 활성화
-
+                return;
             }
-
-            else if (data.BAGSPACE + itemAmonts <= data.MAX_BAGSPCE && OrderNum >= 1)
+            else if (data.BAGSPACE + tempitemAmonts <= data.MAX_BAGSPCE && OrderNum >= 1)
             {
                 data.BAGSPACE += itemAmonts;
                 isResult = true;
@@ -140,12 +146,15 @@ public class DataManager : MonoBehaviour
                 changeData?.Invoke(data);
 
                 data.ADDMATERIALLIST.Clear();   // 재사용을 위한 초기화
+                itemAmonts = 0;
 
                 pickup = false;
             }
             else
+            {
                 Notification.SetActive(true);
                 Notification.transform.GetChild(1).transform.GetComponent<Text>().text = "가방 공간이 부족합니다.";
+            }
         }
 
 
@@ -206,8 +215,8 @@ public class DataManager : MonoBehaviour
             //}
         }
 
-        data.BAGSPACE = data.CURMATERIALITELIST.Count + 1;  //1인 이유는 현재 아이템이 하나씩 추가되서
-        Debug.Log("가방 수량 : " + data.CURMATERIALITELIST.Count + data.CURPRODUCTIONITEMLIST.Count);
+        data.BAGSPACE += 1;  //1인 이유는 현재 아이템이 하나씩 추가되서
+        Debug.Log("가방 수량 : " + data.BAGSPACE + data.CURPRODUCTIONITEMLIST.Count);
         changeData?.Invoke(data);
 
     }
@@ -346,7 +355,7 @@ public class DataManager : MonoBehaviour
                 }
             }
         }
-
+        data.BAGSPACE += amo;
         changeData?.Invoke(data);
     }
 
@@ -365,12 +374,18 @@ public class DataManager : MonoBehaviour
                     isFind = true;
                     index = i;
                 }
+
+                if (id == 511)
+                {
+                    data.MAX_BAGSPCE += 10;
+                }
             }
         }
 
         if (isFind)
             data.CURFURNITUREITEMLIST.RemoveAt(index);
 
+        data.BAGSPACE -= 1;
         changeData?.Invoke(data);
 
         //foreach (var item in data.CURFURNITUREITEMLIST)
@@ -391,6 +406,9 @@ public class DataManager : MonoBehaviour
 
     public void OnDisplayFurniture(GameObject furnitureGo)
     {
+        if (furnitureGo.name.Contains(511.ToString()))
+            return;
+
         data.CURDISPLAYFURNITUREITEMLIST.Add(furnitureGo);
 
         Debug.Log(data.CURDISPLAYFURNITUREITEMLIST[0].name);

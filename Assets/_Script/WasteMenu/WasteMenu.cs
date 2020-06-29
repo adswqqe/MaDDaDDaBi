@@ -23,12 +23,14 @@ public class WasteMenu : MonoBehaviour
     int count = 0;
     int curGold = 0;
 
+    GameObject Notification; //골드 부족, 재료 부족 등 알림창
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        Notification = GameObject.Find("Canvas").transform.Find("Notification").gameObject;
     }
-    
+
     void SetUIcontent()
     {
         slider.value = wasteCount;
@@ -78,12 +80,17 @@ public class WasteMenu : MonoBehaviour
     {
         if (curGold < count * 2)
         {
-            Debug.Log("골드가 부족");
+            Notification.SetActive(true);
+            Notification.transform.GetChild(1).transform.GetComponent<Text>().text = "골드가 부족합니다.";
             return;
         }
 
         if (count == 0)
+        {
+            Notification.SetActive(true);
+            Notification.transform.GetChild(1).transform.GetComponent<Text>().text = "처리 갯수를 선택해주세요.";
             return;
+        }
 
         WasteProcessing?.Invoke(count);
         AddCount(-count);

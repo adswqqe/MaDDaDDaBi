@@ -35,7 +35,7 @@ public class OrderBoxManager : MonoBehaviour
             if (useIndex.Contains(rand))
             {
                 while (useIndex.Contains(rand))
-                    rand = Random.Range(0, 12);
+                    rand = Random.Range(0, 11);
             }
 
 
