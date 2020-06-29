@@ -97,7 +97,10 @@ public class CameraManager : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
-        if (IsPointerOverUIObject() && isEndDay)
+        if (isEndDay)
+            return;
+
+        if (IsPointerOverUIObject())
             return;
 
         Quaternion desiredRotation = transform.rotation;

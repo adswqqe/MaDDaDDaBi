@@ -32,12 +32,14 @@ public class NPCCtrl : MonoBehaviour
     float moveSpeed = 4;
 
     List<GameObject> furnitureList;
+    Animator anim;
 
     // Start is called before the first frame update
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         obstacle = GetComponent<NavMeshObstacle>();
+        anim = GetComponent<Animator>();
     }
 
     public void Initialization(Transform spawnPos, NPCManager npcManager,
@@ -99,6 +101,7 @@ public class NPCCtrl : MonoBehaviour
         if (furnitureList.Count <= 0)
         {
             dumyTarget = entrancePos;
+            Debug.Log(entrancePos);
             gameObject.GetComponent<NavMeshAgent>().SetDestination(dumyTarget.position);
         }
         else
@@ -137,10 +140,17 @@ public class NPCCtrl : MonoBehaviour
                 float dumyTimer = 0;
     void Update()
     {
-        if(agent.enabled == false)
+        //anim.SetFloat("Speed", agent.speed);
+
+        //if (agent.enabled =! false)
+        //    anim.SetBool("walk", true);
+        //else
+        //    anim.SetBool("walk", false);
+
+        if (agent.enabled == false)
         {
             curTime += Time.deltaTime;
-
+            anim.SetTrigger("Idle");
             if (curTime >= returnTime)
             {
                 obstacle.enabled = false;
@@ -199,11 +209,16 @@ public class NPCCtrl : MonoBehaviour
                                 SetNpc();
                             }
                             agent.speed = 0;
+                            anim.SetTrigger("Idle");
                             agent.enabled = false;
                             obstacle.enabled = true;
                             curTime += Time.deltaTime;
                         }
                     }
+                }
+                else
+                {
+                    anim.SetTrigger("WalkTrigger");
                 }
             }
         }
@@ -242,18 +257,20 @@ public class NPCCtrl : MonoBehaviour
                                     {
                                         SetNpc();
 
-                                        agent.speed = 0;
-                                        agent.enabled = false;
-                                        obstacle.enabled = true;
+                                        //anim.SetTrigger("Idle");
+                                        //agent.speed = 0;
+                                        //agent.enabled = false;
+                                        //obstacle.enabled = true;
                                     }
                                 }
                                 else
                                 {
                                     SetNpc();
 
-                                    agent.speed = 0;
-                                    agent.enabled = false;
-                                    obstacle.enabled = true;
+                                    //agent.speed = 0;
+                                    //agent.enabled = false;
+                                    //obstacle.enabled = true;
+                                    //anim.SetTrigger("Idle");
                                 }
                             }
                             else
@@ -262,68 +279,28 @@ public class NPCCtrl : MonoBehaviour
                                 isReturn = true;
                             }
 
-                            agent.speed = 0;
-                            agent.enabled = false;
-                            obstacle.enabled = true;
+                            //agent.speed = 0;
+                            //agent.enabled = false;
+                            //obstacle.enabled = true;
+                            //anim.SetTrigger("Idle");
                         }
                         else
                         {
+                            agent.speed = 0;
+                            agent.enabled = false;
+                            obstacle.enabled = true;
                             transform.LookAt(target);
                             curTime += Time.deltaTime;
+                            Debug.Log("asdasd");
+                            anim.SetTrigger("Idle");
                         }
                     }
                 }
+                else
+                {
+                    anim.SetTrigger("WalkTrigger");
+                }
             }
         }
-
-        //agent.SetDestination(target.position);
-
-        //if(!agent.pathPending)
-        //{
-        //    if(agent.remainingDistance <= agent.stoppingDistance)
-        //    {
-        //        if (!agent.hasPath || agent.velocity.sqrMagnitude == 0.0f)
-        //            if (target == spawnPos)
-        //            {
-        //                gameObject.SetActive(false);
-        //                if (item != null)
-        //                {
-        //                    ArrivalItem -= item.OnSellItem;
-        //                    item.itemSell -= npcManager.OnSellingItem;
-        //                }
-
-        //            }
-        //            else
-        //            {
-        //                if (curTime >= returnTime)
-        //                {
-        //                    if (isNotFindItem)
-        //                    {
-        //                        if (index <= 3)
-        //                        {
-        //                            index++;
-        //                            curTime = 0;
-        //                            isNotFindItem = false;
-        //                            return;
-        //                        }
-        //                        Debug.Log("asdasd");
-        //                    }
-        //                    else
-        //                    {
-        //                        target = spawnPos;
-        //                        if (item != null)
-        //                        {
-        //                            Debug.Log("판매");
-        //                            ArrivalItem?.Invoke();
-        //                        }
-        //                    }
-        //                }
-        //                else
-        //                {
-        //                    curTime += Time.deltaTime;
-        //                }
-        //            }
-        //    }
-        //}
     }
 }

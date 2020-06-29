@@ -67,10 +67,15 @@ public class TimeManager : MonoBehaviour
     IEnumerator SleepAniOff()
     {
         //Debug.Log("코루틴");
-
+        bool isOnce = true;
         while (anim.GetCurrentAnimatorStateInfo(0).normalizedTime < 1f)
         {
             //Debug.Log("플레이중");
+            if(anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.9f && isOnce)
+            {
+                EndDayTime?.Invoke(false);
+                isOnce = false;
+            }
             yield return null;
         }
 
@@ -79,7 +84,6 @@ public class TimeManager : MonoBehaviour
             isEndTime = false;
             hour = 7;
             min = 0;
-            EndDayTime?.Invoke(false);
             yield return null;
         
 }

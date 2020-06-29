@@ -8,7 +8,7 @@ public class NPCManager : MonoBehaviour
     public Action<ItemInfo> sellItem;
 
     [SerializeField]
-    GameObject Npcprefab;
+    GameObject[] Npcprefab;
     [SerializeField]
     Transform spanPos;
     [SerializeField]
@@ -44,9 +44,15 @@ public class NPCManager : MonoBehaviour
 
     void CreateNPC()
     {
+        int index = 1;
         for (int i = 0; i < maxNPCCount; i++)
         {
-            GameObject tempgo = Instantiate(Npcprefab);
+            if (i % 2 == 0)
+                index = 0;
+            else
+                index = 1;
+
+            GameObject tempgo = Instantiate(Npcprefab[index]);
             tempgo.transform.position = spanPos.transform.position;
             tempgo.GetComponent<NPCCtrl>().Initialization(spanPos, this, entrancePos, exitPos, i);
             tempgo.SetActive(false);

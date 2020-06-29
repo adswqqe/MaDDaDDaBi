@@ -10,8 +10,9 @@ public class SceneTransitionManager : MonoBehaviour
 
 
     public void OnStartSceneTransition(bool isEndDay)
-    {           
-        StartCoroutine(StartSceneTransition());
+    {
+        if (isEndDay)
+            StartCoroutine(StartSceneTransition());
     }
 
     IEnumerator StartSceneTransition()
@@ -19,7 +20,5 @@ public class SceneTransitionManager : MonoBehaviour
         transition.SetTrigger("Start");
 
         yield return new WaitForSeconds(transitionTime);
-
-
     }
 }
