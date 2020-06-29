@@ -160,7 +160,7 @@ public class BagManager : MonoBehaviour
     }
     void OnClickItem(ItemInfo item)
     {
-       description.text = item.AMOUNTNUMBER.ToString() + "개\n" + item.DESCRIPTION.ToString();
+       description.text = item.NAME + "\n" + item.AMOUNTNUMBER.ToString() + "개\n" + item.DESCRIPTION.ToString();
     }
 
     public void OnClickExitBtn()

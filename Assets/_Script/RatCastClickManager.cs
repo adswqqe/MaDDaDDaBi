@@ -38,6 +38,7 @@ public class RatCastClickManager : MonoBehaviour
                 {
                     GameObject.Find("GameManager").GetComponent<DataManager>().pickup = false;
                     GameObject.Find("GameManager").GetComponent<OrderMaterialManager>().BuyBtn();
+                    GameObject.Find("OrderboxBottom").GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0.5f);
                 }
             }
         }

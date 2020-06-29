@@ -180,7 +180,8 @@ public class DisPlayMenuManager : MonoBehaviour
                 goIndex = i;
             }
         }
-        var tempGo = Instantiate(displayItemObjs[goIndex]);
+        var tempGo = Instantiate(displayItemObjs[goIndex], displayItemObjs[goIndex].transform.position, displayItemObjs[goIndex].transform.rotation);
+        Debug.Log(displayItemObjs[goIndex].transform.position + " " + displayItemObjs[goIndex].transform.rotation);
         //Debug.Log(displayStandPos[curDisplayCount].position);
         tempGo.GetComponent<DisplayItemCtrl>().Initialization(seletingItem);
         curDisplayItemObjList.Add(tempGo);

@@ -6,6 +6,8 @@ public class OrderBoxManager : MonoBehaviour
 {
     [SerializeField]
     Renderer[] boxmaterials;
+    [SerializeField]
+    SpriteRenderer orderBoxBottom;
 
     List<Color32> colors = new List<Color32>();
     List<int> useIndex = new List<int>();
@@ -38,8 +40,6 @@ public class OrderBoxManager : MonoBehaviour
                     rand = Random.Range(0, 11);
             }
 
-
-
             //Debug.Log(colors[rand]);
             //boxmaterials[i].material.SetColor("_Color", colors[0]);
             boxmaterials[i].material.color = colors[rand];
@@ -48,5 +48,6 @@ public class OrderBoxManager : MonoBehaviour
         }
 
         useIndex.Clear();
+        orderBoxBottom.color = new Color(1, 1, 1, 1);
     }
 }

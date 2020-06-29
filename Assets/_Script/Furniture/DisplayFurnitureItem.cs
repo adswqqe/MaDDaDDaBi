@@ -49,7 +49,7 @@ public class DisplayFurnitureItem : MonoBehaviour
         isHasItem = true;
         itemList.Add(item);
         item.transform.position = itemPos[itemIndex++].position;
-
+        item.transform.SetParent(transform);
         Debug.Log(itemPos.Count);
         Debug.Log(itemIndex);
 
