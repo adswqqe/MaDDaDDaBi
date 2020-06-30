@@ -205,7 +205,17 @@ public class ProductionMenuManager : MonoBehaviour
             }
         }
         if (production != null)
-            haveProductionList.Add(production);
+        {
+            bool isHave = false;
+            foreach (var item in haveProductionList)
+            {
+                if (production.ITEMINFO.ID == item.ITEMINFO.ID)
+                    isHave = true;
+            }
+            if (!isHave)
+                haveProductionList.Add(production);
+        }
+
         if (production != null)
         {
             //GamasotInIcon.sprite = Resources.Load<Sprite>("ICON/" + production.ICON_INDEX);

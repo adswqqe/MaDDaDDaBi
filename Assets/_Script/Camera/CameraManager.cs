@@ -329,9 +329,17 @@ public class CameraManager : MonoBehaviour
         yield return new WaitForSeconds(0.45f);
 
         if (isEndDay)
+        {
             transform.position = EndDayCameraPos;
+            transform.eulerAngles = new Vector3(35.861f, 55.052f, -0.505f);
+            GetComponent<Camera>().fieldOfView = 30;
+        }
         else
+        {
             transform.position = dayCameraPos;
+            transform.eulerAngles = new Vector3(35.861f, 55.052f, -0.505f);
+            GetComponent<Camera>().fieldOfView = 30;
+        }
     }
 
     public void OnStartBuild(int temp)

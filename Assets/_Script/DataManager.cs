@@ -215,7 +215,8 @@ public class DataManager : MonoBehaviour
             //}
         }
 
-        data.BAGSPACE += 1;  //1인 이유는 현재 아이템이 하나씩 추가되서
+        if (!isWaste)
+            data.BAGSPACE += 1;  //1인 이유는 현재 아이템이 하나씩 추가되서
         Debug.Log("가방 수량 : " + data.BAGSPACE + data.CURPRODUCTIONITEMLIST.Count);
         changeData?.Invoke(data);
 

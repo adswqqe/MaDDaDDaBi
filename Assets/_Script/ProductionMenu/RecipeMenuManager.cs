@@ -7,6 +7,8 @@ public class RecipeMenuManager : MonoBehaviour
 {
     List<ProductionObjInfo> haveProductionList;
     List<ItemInfo> materialList;
+    List<ProductionObjInfo> curRecipe;
+
 
     [SerializeField]
     GameObject[] pagesGo;
@@ -24,7 +26,7 @@ public class RecipeMenuManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        curRecipe = new List<ProductionObjInfo>();
     }
 
     public void Initialization(List<ItemInfo> materialList)
@@ -42,14 +44,15 @@ public class RecipeMenuManager : MonoBehaviour
             materialOneTexts[i].enabled = true;
             materialTwoTexts[i].enabled = true;
 
-            Debug.Log(haveProductionList[i].COMBINATIONLIST.Count);
-            Debug.Log(haveProductionList[i].COMBINATIONLIST[combinationIndex + 1]);
+            //Debug.Log(haveProductionList[i].COMBINATIONLIST.Count);
+            //Debug.Log(haveProductionList[i].COMBINATIONLIST[combinationIndex + 1]);
 
             itemNames[i].text = haveProductionList[i].ITEMINFO.NAME;
             itemImages[i].sprite = Resources.Load<Sprite>("ICON/" + haveProductionList[i].ITEMINFO.ICON_INDEX);
             materialOneTexts[i].text = GetMaterialName(haveProductionList[i].COMBINATIONLIST[combinationIndex++]);
             materialTwoTexts[i].text = GetMaterialName(haveProductionList[i].COMBINATIONLIST[combinationIndex]);
 
+            curRecipe.Add(haveProductionList[i]);
         }
     }
 
