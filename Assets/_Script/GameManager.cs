@@ -45,6 +45,7 @@ public class GameManager : MonoBehaviour
     FurnitureDisplayManager furnitureDisplayManager;
     WasteMenu wasteManager;
     RecipeMenuManager recipeMenuManager;
+    RequestManager requestManager;
 
     // Start is called before the first frame update
     void Start()
@@ -62,12 +63,14 @@ public class GameManager : MonoBehaviour
         furnitureDisplayManager = GetComponent<FurnitureDisplayManager>();
         wasteManager = GetComponent<WasteMenu>();
         recipeMenuManager = GetComponent<RecipeMenuManager>();
+        requestManager = GetComponent<RequestManager>();
 
         orderMaterialManager.Initialization(UIitemPrefabs, contentTr, xmlManager.GetOrderMaterial("재료"), description, materialName, materialImage, buyBtn, shoppingBaskeContentTr, choiceBtn);
         productionMenuManager.Initialization(xmlManager.GetProductionObjInfo("물약"));
         dataManager.Initialization(xmlManager.GetOrderMaterial("제작"), xmlManager.GetProductionObjInfo("전체"));
         workstationManager.Initialization(xmlManager.GetProductionObjInfo("전체"), xmlManager.GetOrderMaterial("재료"));
         recipeMenuManager.Initialization(xmlManager.GetOrderMaterial("재료"));
+        requestManager.Initialization(xmlManager.GetRequstInfo(), xmlManager.GetAllItem());
 
         Bind();
     }
@@ -86,6 +89,7 @@ public class GameManager : MonoBehaviour
         dataManager.changeData += workstationManager.OnGetData;
         dataManager.changeData += npcManager.OnGetFurnitureItem;
         dataManager.changeData += wasteManager.OnGetData;
+        dataManager.changeData += requestManager.OnGetData;
 
         productionMenuManager.CreateProduction += dataManager.OnCreateProduction;
 
@@ -115,6 +119,8 @@ public class GameManager : MonoBehaviour
         furnitureDisplayManager.ThrowFurniteminfo += buildSystem.OnGetFurnitureInfo;
 
         wasteManager.WasteProcessing += dataManager.OnWasteProcessing;
+
+        requestManager.RequestSuccess += dataManager.OnRequestSuccess;
     }
 
     void UnBind()
@@ -131,6 +137,7 @@ public class GameManager : MonoBehaviour
         dataManager.changeData -= workstationManager.OnGetData;
         dataManager.changeData -= npcManager.OnGetFurnitureItem;
         dataManager.changeData -= wasteManager.OnGetData;
+        dataManager.changeData -= requestManager.OnGetData;
 
         productionMenuManager.CreateProduction -= dataManager.OnCreateProduction;
 
@@ -160,6 +167,9 @@ public class GameManager : MonoBehaviour
         furnitureDisplayManager.ThrowFurniteminfo -= buildSystem.OnGetFurnitureInfo;
 
         wasteManager.WasteProcessing -= dataManager.OnWasteProcessing;
+
+        requestManager.RequestSuccess -= dataManager.OnRequestSuccess;
+
     }
 
 

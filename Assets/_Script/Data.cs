@@ -16,6 +16,7 @@ public class Data
     List<FurnitureItem> curFurnitureItemItemList;
     List<GameObject> curDisplayFurnitureItemList;
     List<ProductionObjInfo> curWasteItemList;
+    List<RequestCount> requestCounts;
 
     public Data(int lever, int exp, int gold, int reputation, int bagSpace, int max_bagSpace, List<MaterialItemManager> curMaterialItemList)
     {
@@ -31,6 +32,7 @@ public class Data
         curFurnitureItemItemList = new List<FurnitureItem>();
         curDisplayFurnitureItemList = new List<GameObject>();
         curWasteItemList = new List<ProductionObjInfo>();
+        requestCounts = new List<RequestCount>();
     }
 
     public Data(Data data)
@@ -47,6 +49,7 @@ public class Data
         curFurnitureItemItemList = new List<FurnitureItem>();
         curDisplayFurnitureItemList = new List<GameObject>();
         curWasteItemList = new List<ProductionObjInfo>();
+        requestCounts = new List<RequestCount>();
     }
 
     public int Level
@@ -114,5 +117,9 @@ public class Data
     {
         get { return curWasteItemList; }
     }
-        
+
+    public List<RequestCount> REQUESTCOUNTS
+    {
+        get { return requestCounts; }
+    }
 }

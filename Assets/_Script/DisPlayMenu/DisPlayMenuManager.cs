@@ -49,10 +49,10 @@ public class DisPlayMenuManager : MonoBehaviour
 
         CreateContents();
 
-        for (int i = 0; i < displayItemObjs.Length; i++)
-        {
-            Debug.Log("ItemPos " + i + " : " + displayItemObjs[i].transform.position);
-        }
+        //for (int i = 0; i < displayItemObjs.Length; i++)
+        //{
+        //    Debug.Log("ItemPos " + i + " : " + displayItemObjs[i].transform.position);
+        //}
     }
 
     void CreateContents()

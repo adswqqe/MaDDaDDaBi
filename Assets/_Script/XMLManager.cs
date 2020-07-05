@@ -7,8 +7,10 @@ public class XMLManager : MonoBehaviour
 {
     string xmlFileName = "ITEMLIST_TEST";
     string productionObjXmlFileName = "CRAFTLIST_TEST";
+    string requestXmlFileName = "QuestList";
     XmlNodeList all_nodes;
     XmlNodeList productionAllnodes;
+    XmlNodeList requstAllNodes;
 
     void Start()
     {
@@ -43,7 +45,35 @@ public class XMLManager : MonoBehaviour
         //}
     }
 
-    public List<ItemInfo> GetOrderMaterial(string sortName)
+    public List<ItemInfo> GetAllItem()
+    {
+        TextAsset textAsset = (TextAsset)Resources.Load("XML/" + xmlFileName);
+        XmlDocument xmlDoc = new XmlDocument();
+        xmlDoc.LoadXml(textAsset.text);
+        all_nodes = xmlDoc.SelectNodes("ITEMLIST/text");
+
+        List<ItemInfo> materialItems = new List<ItemInfo>();
+
+        foreach (XmlNode node in all_nodes)
+        {
+            ItemInfo item = new ItemInfo(
+                int.Parse(node.SelectSingleNode("ID").InnerText),
+                node.SelectSingleNode("SORT").InnerText,
+                node.SelectSingleNode("NAME").InnerText,
+                node.SelectSingleNode("ICON").InnerText,
+                0,
+                0,
+                node.SelectSingleNode("DESCRIPTION").InnerText
+                );
+
+            materialItems.Add(item);
+
+        }
+
+        return materialItems;
+    }
+
+        public List<ItemInfo> GetOrderMaterial(string sortName)
     {
         TextAsset textAsset = (TextAsset)Resources.Load("XML/" + xmlFileName);
         XmlDocument xmlDoc = new XmlDocument();
@@ -197,5 +227,37 @@ public class XMLManager : MonoBehaviour
 
 
         return productionObjs;
+    }
+
+    public List<RequstInfo> GetRequstInfo()
+    {
+        TextAsset textAsset = (TextAsset)Resources.Load("XML/" + requestXmlFileName);
+        XmlDocument xmlDoc = new XmlDocument();
+        Debug.Log(textAsset.text);
+        xmlDoc.LoadXml(textAsset.text);
+        requstAllNodes = xmlDoc.SelectNodes("QuestList/text");
+
+        List<RequstInfo> requstInfos = new List<RequstInfo>();
+
+
+        foreach (XmlNode node in requstAllNodes)
+        {
+            RequstInfo item = new RequstInfo(
+                int.Parse(node.SelectSingleNode("ID").InnerText),
+                node.SelectSingleNode("NAME").InnerText,
+                int.Parse(node.SelectSingleNode("TYPE").InnerText),
+                node.SelectSingleNode("NEXTQUEST").InnerText,
+                int.Parse(node.SelectSingleNode("ONEDATE").InnerText),
+                int.Parse(node.SelectSingleNode("TWODATE").InnerText),
+                int.Parse(node.SelectSingleNode("GOLD").InnerText),
+                int.Parse(node.SelectSingleNode("REP").InnerText),
+                int.Parse(node.SelectSingleNode("EXP").InnerText),
+                node.SelectSingleNode("TEXT").InnerText
+                );
+
+            requstInfos.Add(item);
+        }
+
+        return requstInfos;
     }
 }

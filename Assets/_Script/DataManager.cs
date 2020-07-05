@@ -257,6 +257,18 @@ public class DataManager : MonoBehaviour
             }
         }
 
+        foreach (var item in data.REQUESTCOUNTS)
+        {
+            //Debug.Log(item.id + " id");
+            //Debug.Log(itemInfo.ID + " iteminfo id");
+            if(item.id == itemInfo.ID)
+            {
+                item.sellCount++;
+                //Debug.Log(item.sellCount);
+                break;
+            }
+        }
+
         if (data.EXP >= 15)
         {
             data.Level += 1;
@@ -424,6 +436,21 @@ public class DataManager : MonoBehaviour
         for (int i = 0; i < count; i++)
         {
             data.CURWASTEITEMLIST.RemoveAt(0);
+        }
+
+        changeData?.Invoke(data);
+    }
+
+    public void OnRequestSuccess(int gold, int rep, int exp)
+    {
+        data.GOLD += gold;
+        data.REPUTATION += rep;
+        data.EXP += exp;
+
+        if (data.EXP >= 15)
+        {
+            data.Level += 1;
+            data.EXP = 0;
         }
 
         changeData?.Invoke(data);
