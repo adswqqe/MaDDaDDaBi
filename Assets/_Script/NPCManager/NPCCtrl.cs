@@ -33,6 +33,13 @@ public class NPCCtrl : MonoBehaviour
 
     List<GameObject> furnitureList;
     Animator anim;
+    SpeechManager speech;
+    Data data;
+
+    List<string> speechListUnder50;
+    List<string> speechList50Morethan;
+    List<string> speechList100Morethan;
+    int speechIndex = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -40,15 +47,41 @@ public class NPCCtrl : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         obstacle = GetComponent<NavMeshObstacle>();
         anim = GetComponent<Animator>();
+
+        speechListUnder50 = new List<string>();
+        speechList50Morethan = new List<string>();
+        speechList100Morethan = new List<string>();
+
+        speechListUnder50.Add("요즘 날씨가 좋아요.");
+        speechListUnder50.Add("새로운 물약이 나왔으면 좋겠어요.");
+        speechListUnder50.Add("좋은 하루 입니다!");
+        speechListUnder50.Add("새로 시작한 잡화점인가요?");
+        speechListUnder50.Add("잡화점이 너무 횅해요!");
+        speechListUnder50.Add("상품이 없나요? 진열이 안 되어 있어요.");
+
+        speechList50Morethan.Add("요즘 날씨가 좋아요.");
+        speechList50Morethan.Add("새로운 물약이 나왔으면 좋겠어요.");
+        speechList50Morethan.Add("좋은 하루 입니다!");
+        speechList50Morethan.Add("안녕하세요! 소문 듣고 왔습니다.");
+        speechList50Morethan.Add("잡화점이 너무 횅해요!");
+        speechList50Morethan.Add("상품이 없나요? 진열이 안 되어 있어요.");
+
+        speechList100Morethan.Add("요즘 날씨가 좋아요.");
+        speechList100Morethan.Add("새로운 물약이 나왔으면 좋겠어요.");
+        speechList100Morethan.Add("좋은 하루 입니다!");
+        speechList100Morethan.Add("가구가 예쁜 것 같아요.");
+        speechList100Morethan.Add("안녕하세요! 소문 듣고 왔습니다.");
+        speechList100Morethan.Add("상품이 없나요? 진열이 안 되어 있어요.");
     }
 
     public void Initialization(Transform spawnPos, NPCManager npcManager,
-                            Transform entrancePos, Transform exitPos, int index)
+                            Transform entrancePos, Transform exitPos, int index, SpeechManager speech)
     {
         this.spawnPos = spawnPos;
         this.entrancePos = entrancePos;
         this.exitPos = exitPos;
         this.index = index;
+        this.speech = speech;
 
         this.npcManager = npcManager;
         furnitureList = new List<GameObject>();
@@ -68,6 +101,11 @@ public class NPCCtrl : MonoBehaviour
         //{
         //    this.target = target;
         //}
+    }
+
+    public void GetData(Data data)
+    {
+        this.data = data;
     }
 
     public void SetFurnitureList(List<GameObject> furnitureList)
@@ -94,6 +132,7 @@ public class NPCCtrl : MonoBehaviour
     public void OnStartNpc()
     {
         transform.position = spawnPos.position;
+        gameObject.layer = 11;
         isReturn = false;
         curTime = 0;
         roofIndex = 0;
@@ -134,6 +173,49 @@ public class NPCCtrl : MonoBehaviour
             return true;
         else
             return false;
+    }
+
+    void setStartSpeech(bool isHasItem)
+    {
+        if (isHasItem)
+        {
+            speechIndex = UnityEngine.Random.Range(0, speechListUnder50.Count - 1);
+
+            if (data.REPUTATION <= 49)
+            {
+                speech.OnStartSpeech(speechListUnder50[speechIndex], transform);
+            }
+            else if(data.REPUTATION >= 50 && data.REPUTATION <= 99)
+            {
+                speech.OnStartSpeech(speechList50Morethan[speechIndex], transform);
+            }
+            else if(data.REPUTATION >= 100)
+            {
+                speech.OnStartSpeech(speechList100Morethan[speechIndex], transform);
+            }
+        }
+        else
+        {
+            speechIndex = UnityEngine.Random.Range(0, speechListUnder50.Count);
+
+            if (data.REPUTATION <= 49)
+            {
+                speech.OnStartSpeech(speechListUnder50[speechIndex], transform);
+            }
+            else if (data.REPUTATION >= 50 && data.REPUTATION <= 99)
+            {
+                speech.OnStartSpeech(speechList50Morethan[speechIndex], transform);
+            }
+            else if (data.REPUTATION >= 100)
+            {
+                speech.OnStartSpeech(speechList100Morethan[speechIndex], transform);
+            }
+        }
+    }
+
+    public void OffSpeechActive()
+    {
+        speech.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -210,6 +292,7 @@ public class NPCCtrl : MonoBehaviour
                             }
                             agent.speed = 0;
                             anim.SetTrigger("Idle");
+                            speech.OnStartSpeech("상품을 보고 싶은데 진열대가 안보여요!", transform);
                             agent.enabled = false;
                             obstacle.enabled = true;
                             curTime += Time.deltaTime;
@@ -256,7 +339,7 @@ public class NPCCtrl : MonoBehaviour
                                     else
                                     {
                                         SetNpc();
-
+                                        setStartSpeech(true);
                                         //anim.SetTrigger("Idle");
                                         //agent.speed = 0;
                                         //agent.enabled = false;
@@ -266,7 +349,7 @@ public class NPCCtrl : MonoBehaviour
                                 else
                                 {
                                     SetNpc();
-
+                                    setStartSpeech(false);
                                     //agent.speed = 0;
                                     //agent.enabled = false;
                                     //obstacle.enabled = true;

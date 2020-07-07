@@ -424,7 +424,6 @@ public class DataManager : MonoBehaviour
 
         data.CURDISPLAYFURNITUREITEMLIST.Add(furnitureGo);
 
-        Debug.Log(data.CURDISPLAYFURNITUREITEMLIST[0].name);
 
         changeData?.Invoke(data);
     }

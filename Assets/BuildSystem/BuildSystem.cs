@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class BuildSystem : MonoBehaviour
 {
@@ -13,7 +15,12 @@ public class BuildSystem : MonoBehaviour
     GameObject[] furniturePrefabs;
     [SerializeField]
     GameObject[] furniturePreviewPrefabs;
-
+    [SerializeField]
+    GameObject FurnitureSelection;
+    [SerializeField]
+    GameObject FurnitureDisplayMenu;
+    [SerializeField]
+    GameManager gm;
     public LayerMask layer;
 
     public BuildSelector selector;
@@ -22,10 +29,26 @@ public class BuildSystem : MonoBehaviour
     private PreviewObj previewScript;//this is the script that is sitting on that object
     private ItemInfo furnitureInfo;
     public GameObject curfurnGo;
+    private int SatisfactionLevel;
 
     private bool isBuilding = false;
     //public GameObject 가구1;
     //public GameObject 가구2;
+
+    public bool Relocation; // 재배치버튼
+    public GameObject CancelBtn;
+    public Sprite deletebtn;
+    public Sprite CancelBtnspt;
+
+    public void isBuildStartOn()
+    {
+        CancelBtn.GetComponent<Image>().sprite = deletebtn;
+        gm.GetComponent<UIManager>().OnStartBuild(0);
+        SatisfactionLevel -= 10;
+        selector.isBuildStart = true;
+        FurnitureSelection.SetActive(true);
+        Relocation = true;
+    }
 
     public bool IsPointerOverUIObject(Vector2 touchPos)
     {
@@ -36,7 +59,6 @@ public class BuildSystem : MonoBehaviour
 
         List<RaycastResult> results = new List<RaycastResult>();
 
-
         EventSystem.current
         .RaycastAll(eventDataCurrentPosition, results);
 
@@ -45,10 +67,14 @@ public class BuildSystem : MonoBehaviour
 
     private void Update()
     {
+        int mask = 1 << LayerMask.NameToLayer("FurniturePrefabs");
+
         if (!IsPointerOverUIObject(Input.mousePosition))
         {
             if (selector.isBuildStart == false)
+            {
                 return;
+            }
 
             if (Input.GetMouseButtonDown(0) && isBuilding && previewScript.CanBuild())//pressing LMB, and isBuiding = true, and the Preview Script -> canBuild = true
             {
@@ -65,15 +91,15 @@ public class BuildSystem : MonoBehaviour
             {
                 RaycastHit hit;
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                Physics.Raycast(ray, out hit);
+                Physics.Raycast(ray, out hit, 9999f, mask);
+
                 if (!isBuilding)
                 {
-                    if (hit.collider.gameObject.name.Contains(selector.furnitureId.ToString()))
+                    if (hit.collider.CompareTag("Furniture") && Relocation)
                     {
-                        isBuilding = true;//we can now build
-                        //selector.TogglePanel();
+                        selector.furnitureId = int.Parse(hit.collider.name.Substring(0, 3));
                         Destroy(hit.collider.gameObject);
-
+                        isBuilding = true;
                         GameObject go = null;
                         foreach (var item in furniturePreviewPrefabs)
                         {
@@ -83,16 +109,7 @@ public class BuildSystem : MonoBehaviour
                         if (go != null)
                             NewBuild(go);
 
-                        Debug.Log(go.name);
                     }
-
-                    //if (hit.collider.gameObject.name == "2x2_Prefab(Clone)")
-                    //{
-                    //    isBuilding = true;//we can now build
-                    //    selector.TogglePanel();
-                    //    Destroy(hit.collider.gameObject);
-                    //    NewBuild(가구2);
-                    //}
                 }
             }
         }
@@ -124,7 +141,7 @@ public class BuildSystem : MonoBehaviour
         previewScript = null;//
         selector.TogglePanel();
         isBuilding = false;
-
+        FurnitureSelection.SetActive(false);
         if (curfurnGo != null)
             Destroy(curfurnGo);
     }
@@ -168,7 +185,6 @@ public class BuildSystem : MonoBehaviour
     {
         return isBuilding;
     }
-
     public void Rotation()
     {
         if (isBuilding)//for rotation
@@ -183,20 +199,31 @@ public class BuildSystem : MonoBehaviour
 
         if (previewScript.CanBuild())
         {
+            SatisfactionLevel += 10;
             BuildIt();
             //selector.TogglePanel();
             ConfirmationFurniture?.Invoke(selector.furnitureId);
             selector.isBuildStart = false;
+
         }
     }
 
     public void Cancel()
     {
+        if (!Relocation)
+        {
+            SatisfactionLevel -= 10;
+        }
         StopBuild();
+        Relocation = false;
+
+        CancelBtn.GetComponent<Image>().sprite = CancelBtnspt;
     }
 
     public void OnGetFurnitureInfo(ItemInfo itemInfo)
     {
         furnitureInfo = new ItemInfo(itemInfo);
     }
+
+
 }

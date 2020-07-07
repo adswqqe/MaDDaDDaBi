@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8086659780382155189}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ItemPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 2430899130653069332}
   - component: {fileID: 7838585710635519382}
   - component: {fileID: 1500461507824203316}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: 508
   m_TagString: Furniture
   m_Icon: {fileID: 0}

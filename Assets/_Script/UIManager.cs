@@ -26,6 +26,10 @@ public class UIManager : MonoBehaviour
     GameObject[] CanvasUIs;
     [SerializeField]
     GameObject furnitureDisplayMenuGo;
+    [SerializeField]
+    GameObject FurnitureSelection;
+    [SerializeField]
+    GameObject todaySales;
 
     // Start is called before the first frame update
     void Start()
@@ -45,17 +49,19 @@ public class UIManager : MonoBehaviour
     {
         if (isEndDay)
         {
-            orderBtn.GetComponent<Button>().enabled = true;
-            displayBtn.GetComponent<Button>().enabled = false;
-            furnitureDisplaybtn.GetComponent<Button>().enabled = false;
+            orderBtn.GetComponent<Button>().interactable = true;
+            displayBtn.GetComponent<Button>().interactable = false;
+            furnitureDisplaybtn.GetComponent<Button>().interactable = false;
             openStoreBtn.SetActive(true);
+            todaySales.SetActive(false);
         }
         else
         {
-            orderBtn.GetComponent<Button>().enabled = false;
-            displayBtn.GetComponent<Button>().enabled = true;
-            furnitureDisplaybtn.GetComponent<Button>().enabled = true;
+            orderBtn.GetComponent<Button>().interactable = false;
+            displayBtn.GetComponent<Button>().interactable = true;
+            furnitureDisplaybtn.GetComponent<Button>().interactable = true;
             openStoreBtn.SetActive(false);
+            todaySales.SetActive(true);
         }
     }
 

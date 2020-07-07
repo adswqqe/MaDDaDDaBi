@@ -17,6 +17,8 @@ public class NPCManager : MonoBehaviour
     Transform entrancePos;
     [SerializeField]
     Transform exitPos;
+    [SerializeField]
+    SpeechManager[] speechmanagers;
 
     bool isEndDay;
     bool isItemOn = false;
@@ -54,7 +56,7 @@ public class NPCManager : MonoBehaviour
 
             GameObject tempgo = Instantiate(Npcprefab[index]);
             tempgo.transform.position = spanPos.transform.position;
-            tempgo.GetComponent<NPCCtrl>().Initialization(spanPos, this, entrancePos, exitPos, i);
+            tempgo.GetComponent<NPCCtrl>().Initialization(spanPos, this, entrancePos, exitPos, i, speechmanagers[i]);
             tempgo.SetActive(false);
             npcs.Add(tempgo);
         }
@@ -77,6 +79,12 @@ public class NPCManager : MonoBehaviour
             spawnCoolTime = 16;
         else if (wasteCount >= 20)
             spawnCoolTime = 18;
+
+        foreach (var item in npcs)
+        {
+            item.GetComponent<NPCCtrl>().GetData(data);
+        }
+
     }
 
     public void OnDisableNPC(GameObject npcGO)
@@ -126,6 +134,7 @@ public class NPCManager : MonoBehaviour
             if (npcs != null)
                 for (int i = 0; i < npcs.Count; i++)
                 {
+                    npcs[i].GetComponent<NPCCtrl>().OffSpeechActive();
                     npcs[i].SetActive(false);
                 }
         }

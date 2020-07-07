@@ -20,7 +20,7 @@ public class TimeManager : MonoBehaviour
     bool isEndTime = true;
 
     [SerializeField]
-    new Light light;
+    Light light;
     GameObject SleepAni;
     [SerializeField]
     Animator anim;
@@ -44,6 +44,7 @@ public class TimeManager : MonoBehaviour
                 hour = 19;
                 min = 0;
                 EndDayTime?.Invoke(true);
+                light.intensity = 0;
             }
 
             timeText.text = hour.ToString("00") + ":" + min.ToString("00");
