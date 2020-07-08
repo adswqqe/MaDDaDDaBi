@@ -213,8 +213,8 @@ public class CameraManager : MonoBehaviour
                 //Finger0Position = GetWorldPositionOfFinger(0);
             }
 
-            if (isRotating)
-                RotateCamera();
+            //if (isRotating)
+            //    RotateCamera();
             //else if (isZooming)
                 //ZoomCamera();
 
@@ -347,7 +347,7 @@ public class CameraManager : MonoBehaviour
         isBuilding = true;
     }
 
-    public void OnEndBuild(int temp)
+    public void OnEndBuild(int temp, int temp2)
     {
         isBuilding = false;
 

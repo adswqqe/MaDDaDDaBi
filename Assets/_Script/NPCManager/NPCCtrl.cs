@@ -26,6 +26,7 @@ public class NPCCtrl : MonoBehaviour
     int index = 0;
     bool isNotFindItem = true;
     bool isReturn = false;
+    bool isSatisfactionLevel = false;
 
 
     [SerializeField]
@@ -69,9 +70,11 @@ public class NPCCtrl : MonoBehaviour
         speechList100Morethan.Add("요즘 날씨가 좋아요.");
         speechList100Morethan.Add("새로운 물약이 나왔으면 좋겠어요.");
         speechList100Morethan.Add("좋은 하루 입니다!");
-        speechList100Morethan.Add("가구가 예쁜 것 같아요.");
         speechList100Morethan.Add("안녕하세요! 소문 듣고 왔습니다.");
+        speechList100Morethan.Add("잡화점이 너무 횅해요!");
         speechList100Morethan.Add("상품이 없나요? 진열이 안 되어 있어요.");
+
+        //speechList100Morethan.Add("가구가 예쁜 것 같아요.");
     }
 
     public void Initialization(Transform spawnPos, NPCManager npcManager,
@@ -177,6 +180,19 @@ public class NPCCtrl : MonoBehaviour
 
     void setStartSpeech(bool isHasItem)
     {
+        if(isSatisfactionLevel == false && data.SATISFACTIONLEVEL >= 100)
+        {
+            speechListUnder50.Remove("잡화점이 너무 횅해요!");
+            speechList50Morethan.Remove("잡화점이 너무 횅해요!");
+            speechList100Morethan.Remove("잡화점이 너무 횅해요!");
+
+            speechListUnder50.Add("가구가 예쁜 것 같아요.");
+            speechList50Morethan.Add("가구가 예쁜 것 같아요.");
+            speechList100Morethan.Add("가구가 예쁜 것 같아요.");
+
+            isSatisfactionLevel = true;
+        }
+
         if (isHasItem)
         {
             speechIndex = UnityEngine.Random.Range(0, speechListUnder50.Count - 1);

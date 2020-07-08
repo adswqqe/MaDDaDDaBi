@@ -31,6 +31,10 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     GameObject todaySales;
 
+    int todayGold = 0;
+
+    Data data;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,10 +43,12 @@ public class UIManager : MonoBehaviour
 
     public void OnChangeValueUI(Data data)
     {
+        this.data = data;
         levelText.text = "레벨 : " + data.Level.ToString();
         goldText.text = data.GOLD.ToString();
         reputationText.text = data.REPUTATION.ToString();
         bagSpaceText.text = "공간 : " + data.BAGSPACE + "/" + " " + data.MAX_BAGSPCE;
+        todaySales.GetComponentInChildren<Text>().text = "금일 판매량 \n" + data.TODAYGOLD + "골드";
     }
 
     public void OnEndDay(bool isEndDay)
@@ -54,6 +60,11 @@ public class UIManager : MonoBehaviour
             furnitureDisplaybtn.GetComponent<Button>().interactable = false;
             openStoreBtn.SetActive(true);
             todaySales.SetActive(false);
+            if (data != null)
+            {
+                data.TODAYGOLD = 0;
+                todaySales.GetComponentInChildren<Text>().text = "금일 판매량 \n" + data.TODAYGOLD + "골드";
+            }
         }
         else
         {
@@ -75,7 +86,7 @@ public class UIManager : MonoBehaviour
         furnitureDisplayMenuGo.SetActive(false);
     }
 
-    public void OnEndBuild(int temp)
+    public void OnEndBuild(int temp, int temp2)
     {
         for (int i = 0; i < CanvasUIs.Length; i++)
         {

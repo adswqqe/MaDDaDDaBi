@@ -251,6 +251,7 @@ public class DataManager : MonoBehaviour
             {
                 Debug.Log("판매");
                 data.GOLD += item.SELLCOST;
+                data.TODAYGOLD += item.SELLCOST;
                 data.EXP += 5;
                 GoldPoping.SetTrigger("Trigger");
                 break;
@@ -372,10 +373,11 @@ public class DataManager : MonoBehaviour
         changeData?.Invoke(data);
     }
 
-    public void OnConfirmationFurniture(int id)
+    public void OnConfirmationFurniture(int id, int satisfactionLevel)
     {
         int index = 0;
         bool isFind = false;
+        data.SATISFACTIONLEVEL = satisfactionLevel;
         for (int i = 0; i < data.CURFURNITUREITEMLIST.Count; i++)
         {
             if(data.CURFURNITUREITEMLIST[i].ITEMINFO.ID == id)

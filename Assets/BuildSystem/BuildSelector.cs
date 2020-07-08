@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class BuildSelector : MonoBehaviour
 {
-    public Action<int> cancelBuild;
+    public Action<int, int> cancelBuild;
 
     [SerializeField]
     GameObject[] furniturePrefabs;
@@ -49,7 +49,7 @@ public class BuildSelector : MonoBehaviour
     {
         FurnitureSelectionState = !FurnitureSelectionState;
         FurnitureSelection.SetActive(FurnitureSelectionState);
-        cancelBuild?.Invoke(0);
+        cancelBuild?.Invoke(0, 0);
     }
 
 }

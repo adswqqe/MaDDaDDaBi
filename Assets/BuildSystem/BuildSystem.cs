@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 public class BuildSystem : MonoBehaviour
 {
-    public Action<int> ConfirmationFurniture;
+    public Action<int, int> ConfirmationFurniture;
     public Action<GameObject> DisplayFurniture;
 
     [SerializeField]
@@ -202,7 +202,7 @@ public class BuildSystem : MonoBehaviour
             SatisfactionLevel += 10;
             BuildIt();
             //selector.TogglePanel();
-            ConfirmationFurniture?.Invoke(selector.furnitureId);
+            ConfirmationFurniture?.Invoke(selector.furnitureId, SatisfactionLevel);
             selector.isBuildStart = false;
 
         }

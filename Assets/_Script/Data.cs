@@ -10,6 +10,8 @@ public class Data
     int reputation;
     int bagSpace;
     int max_bagSpace;
+    int satisfactionLevel;
+    int todayGold;
     List<MaterialItemManager> curMaterialItmList;
     List<MaterialItemManager> addMaterialItmList;
     List<ProductionObjInfo> curProductionItemList;
@@ -86,6 +88,18 @@ public class Data
     {
         set { max_bagSpace = value; }
         get { return max_bagSpace; }
+    }
+
+    public int SATISFACTIONLEVEL
+    {
+        get { return satisfactionLevel; }
+        set { satisfactionLevel = value; }
+    }
+
+    public int TODAYGOLD
+    {
+        get { return todayGold; }
+        set { todayGold = value; }
     }
 
     public List<MaterialItemManager> CURMATERIALITELIST

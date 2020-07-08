@@ -28,7 +28,8 @@ public class SpeechManager : MonoBehaviour
         gameObject.SetActive(true);
         this.text.text = text;
         Vector3 pos = tr.position;
-        pos.y += Mathf.Abs(pos.y / 2);
+        pos.x += Mathf.Abs(pos.x / 20f);
+        pos.y += Mathf.Abs(pos.y / 2f);
         transform.position = Camera.main.WorldToScreenPoint(pos);
         StartCoroutine(Speech());
     }
