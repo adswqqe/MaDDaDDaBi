@@ -67,6 +67,12 @@ public class DisplayFurnitureItem : MonoBehaviour
             item.transform.localEulerAngles = new Vector3(26.597f, 0, 0);
             item.transform.localScale = new Vector3(0.065764f, 0.065764f, 0.065764f);
         }
+        else if(item.gameObject.name.Contains("300"))
+        {
+            item.transform.localPosition = new Vector3(-5.122515e-08f, 1.423192f, 0.004494124f);
+            item.transform.localEulerAngles = new Vector3(26.597f, 0, 0);
+            item.transform.localScale = new Vector3(1, 1, 1);
+        }
         else
         {
             item.transform.position = itemPos[itemIndex].position;

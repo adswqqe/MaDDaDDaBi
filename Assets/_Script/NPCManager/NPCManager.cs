@@ -136,7 +136,8 @@ public class NPCManager : MonoBehaviour
                     npcs[i].SetActive(false);
                 }
 
-            randIndex.Clear();
+            if (randIndex != null)
+                randIndex.Clear();
         }
     }
 

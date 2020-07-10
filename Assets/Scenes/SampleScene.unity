@@ -1996,6 +1996,7 @@ MonoBehaviour:
   - {fileID: 6236279567054514111, guid: 7dd9aa303719d634ea7a518dd681301c, type: 3}
   - {fileID: 6587105578662134156, guid: b390917a4f8769f4a80078d8ab2fbfc5, type: 3}
   - {fileID: 4994052382170336372, guid: c6baa917d0b70e44184eea16f04b59bc, type: 3}
+  - {fileID: 5942783025448086010, guid: 38ac6f096e437f044ab1babbbe76426f, type: 3}
   itemPrefab: {fileID: 6548868846175568154, guid: 6d5782c07d7254c4ab5116e2a0559a1a,
     type: 3}
   potionViewPort: {fileID: 1471474473}
@@ -17758,7 +17759,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 6e-45, y: 0, z: 1e-45, w: 2.5869352e+21}
+  m_BoundingSphereOverride: {x: 0, y: 3.7616967e-37, z: 2.92008e-40, w: 3.8205e-41}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -29778,8 +29779,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 470, y: -103}
-  m_SizeDelta: {x: 800, y: 800}
+  m_AnchoredPosition: {x: 446, y: -103}
+  m_SizeDelta: {x: 600, y: 800}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1203755012
 MonoBehaviour:
