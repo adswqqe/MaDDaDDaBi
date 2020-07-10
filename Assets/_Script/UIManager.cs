@@ -30,6 +30,8 @@ public class UIManager : MonoBehaviour
     GameObject FurnitureSelection;
     [SerializeField]
     GameObject todaySales;
+    [SerializeField]
+    GameObject buildUi;
 
     int todayGold = 0;
 
@@ -60,6 +62,8 @@ public class UIManager : MonoBehaviour
             furnitureDisplaybtn.GetComponent<Button>().interactable = false;
             openStoreBtn.SetActive(true);
             todaySales.SetActive(false);
+            //OnEndBuild(0, 0);
+            //buildUi.SetActive(false);
             if (data != null)
             {
                 data.TODAYGOLD = 0;

@@ -71,6 +71,7 @@ public class SoundManager : MonoBehaviour
     void Start()
     {
         BGMSoundEvent = FMODUnity.RuntimeManager.CreateInstance(BGMSounds[(int)BGMSound.BGM_inUnderG]);
+        FMODUnity.RuntimeManager.AttachInstanceToGameObject(BGMSoundEvent, GetComponent<Transform>(), GetComponent<Rigidbody>());
         BGMSoundEvent.start();
         BGMEffSoundEvent = FMODUnity.RuntimeManager.CreateInstance(BGMEffSounds[(int)BGMEffSound.AMB_UnderG]);
         BGMEffSoundEvent.start();
@@ -84,6 +85,7 @@ public class SoundManager : MonoBehaviour
     {
         BGMSoundEvent.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         BGMSoundEvent = FMODUnity.RuntimeManager.CreateInstance(BGMSounds[(int)bgm]);
+        FMODUnity.RuntimeManager.AttachInstanceToGameObject(BGMSoundEvent, GetComponent<Transform>(), GetComponent<Rigidbody>());
         BGMSoundEvent.start();
     }
 
@@ -91,6 +93,7 @@ public class SoundManager : MonoBehaviour
     {
         BGMSoundEvent.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         BGMSoundEvent = FMODUnity.RuntimeManager.CreateInstance(BGMSounds[(int)bgm]);
+        FMODUnity.RuntimeManager.AttachInstanceToGameObject(BGMSoundEvent, GetComponent<Transform>(), GetComponent<Rigidbody>());
         BGMSoundEvent.start();
     }
 

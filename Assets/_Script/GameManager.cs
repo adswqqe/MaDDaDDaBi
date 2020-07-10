@@ -115,6 +115,8 @@ public class GameManager : MonoBehaviour
         buildSystem.ConfirmationFurniture += cameraManager.OnEndBuild;
 
         buildSystem.DisplayFurniture += dataManager.OnDisplayFurniture;
+        buildSystem.building += timeManager.OnStartBuilding;
+        buildSelector.building += timeManager.OnStartBuilding;
 
         furnitureDisplayManager.ThrowFurniteminfo += buildSystem.OnGetFurnitureInfo;
 
@@ -163,7 +165,8 @@ public class GameManager : MonoBehaviour
         buildSystem.ConfirmationFurniture -= cameraManager.OnEndBuild;
 
         buildSystem.DisplayFurniture -= dataManager.OnDisplayFurniture;
-
+        buildSystem.building -= timeManager.OnStartBuilding;
+        buildSelector.building -= timeManager.OnStartBuilding;
         furnitureDisplayManager.ThrowFurniteminfo -= buildSystem.OnGetFurnitureInfo;
 
         wasteManager.WasteProcessing -= dataManager.OnWasteProcessing;

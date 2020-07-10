@@ -402,7 +402,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 189194639}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 9097a519b46863f41adb5967f0d43c34, type: 3}
@@ -1175,7 +1175,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 3.826e-42, y: 1.05e-43, z: 7.78e-43, w: 0}
+  m_BoundingSphereOverride: {x: 8.1e-43, y: -4.6837002e+30, z: 8.1e-43, w: NaN}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -2301,7 +2301,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3d4ebc1b8cc63c49962eeacc1872bbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BGMSound: event:/BGM/BGM_Title
+  BGMSound: event:/BGM/BGM_TITLE
   EffSound: event:/SFX/UI/Common/SFX_UI_start
 --- !u!4 &766368385
 Transform:
@@ -4088,14 +4088,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &1814093451
-AudioListener:
+--- !u!114 &1814093451
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1814093450}
   m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attenuationObject: {fileID: 0}
+  ListenerNumber: -1
 --- !u!20 &1814093452
 Camera:
   m_ObjectHideFlags: 0

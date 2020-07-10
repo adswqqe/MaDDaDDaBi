@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="AudioFile" id="{7ebebe0f-e428-4ca7-a4b4-987f3d937a0e}">
+		<property name="assetPath">
+			<value>SFX/doorOpen_2.ogg</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>1.4133125</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{f4e6d99c-285d-4c95-9776-b9123c3884ae}</destination>
+		</relationship>
+	</object>
+</objects>

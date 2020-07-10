@@ -6,6 +6,7 @@ using UnityEngine;
 public class BuildSelector : MonoBehaviour
 {
     public Action<int, int> cancelBuild;
+    public Action<bool> building;
 
     [SerializeField]
     GameObject[] furniturePrefabs;
@@ -39,6 +40,7 @@ public class BuildSelector : MonoBehaviour
         {
             buildSystem.curfurnGo = Instantiate(go, new Vector3(0, -6f, 0), transform.rotation);
             TogglePanel();
+            building?.Invoke(true);
         }
 
         isBuildStart = true;

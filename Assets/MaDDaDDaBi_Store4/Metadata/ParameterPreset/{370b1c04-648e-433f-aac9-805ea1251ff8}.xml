@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="ParameterPreset" id="{370b1c04-648e-433f-aac9-805ea1251ff8}">
+		<property name="name">
+			<value>Day</value>
+		</property>
+		<relationship name="folder">
+			<destination>{48582a1f-721c-4bea-8610-fe48fbcb11d8}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{1c8d7a93-580c-4f1b-84fd-29561258923e}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{1c8d7a93-580c-4f1b-84fd-29561258923e}">
+		<property name="maximum">
+			<value>24</value>
+		</property>
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+		<property name="seekSpeed">
+			<value>0.80000001192092896</value>
+		</property>
+	</object>
+</objects>

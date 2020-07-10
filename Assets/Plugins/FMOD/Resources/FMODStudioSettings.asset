@@ -15,8 +15,8 @@ MonoBehaviour:
   SwitchSettingsMigration: 1
   HasSourceProject: 1
   HasPlatforms: 1
-  sourceProjectPath: Assets/MaDDaDDaBi_Store/MaDDaDDaBi_Store.fspro
-  sourceBankPath: Assets\MaDDaDDaBi_Store\Build
+  sourceProjectPath: Assets/MaDDaDDaBi_Store_inproject/MaDDaDDaBi_Store.fspro
+  sourceBankPath: Assets\MaDDaDDaBi_Store_inproject\Build
   SourceBankPathUnformatted: 
   AutomaticEventLoading: 1
   BankLoadType: 0

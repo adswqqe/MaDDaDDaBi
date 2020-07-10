@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="AudioFile" id="{9f2a62cf-2891-491e-a4ad-534a42d4a551}">
+		<property name="assetPath">
+			<value>SFX/page-flip-3.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>0.91733333333333333</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{f4e6d99c-285d-4c95-9776-b9123c3884ae}</destination>
+		</relationship>
+	</object>
+</objects>

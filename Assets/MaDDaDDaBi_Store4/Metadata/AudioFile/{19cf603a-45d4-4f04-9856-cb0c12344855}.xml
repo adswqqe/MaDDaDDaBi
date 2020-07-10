@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="AudioFile" id="{19cf603a-45d4-4f04-9856-cb0c12344855}">
+		<property name="assetPath">
+			<value>SFX/137229__xenognosis__boiling-water.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>96</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>12.440020833333334</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{f4e6d99c-285d-4c95-9776-b9123c3884ae}</destination>
+		</relationship>
+	</object>
+</objects>

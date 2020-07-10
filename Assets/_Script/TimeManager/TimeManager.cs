@@ -18,6 +18,7 @@ public class TimeManager : MonoBehaviour
     float sec = 0;
 
     bool isEndTime = true;
+    bool isBuilding = false;    
 
     [SerializeField]
     Light light;
@@ -49,8 +50,11 @@ public class TimeManager : MonoBehaviour
                 light.intensity = 0;
             }
 
-            timeText.text = hour.ToString("00") + ":" + min.ToString("00");
-            min += Time.deltaTime * increaseTime;   // * (144 / 60)
+            if (isBuilding == false)
+            {
+                timeText.text = hour.ToString("00") + ":" + min.ToString("00");
+                min += Time.deltaTime * increaseTime;   // * (144 / 60)
+            }
 
             if (min >= 60.0f)
             {
@@ -58,6 +62,11 @@ public class TimeManager : MonoBehaviour
                 hour++;
             }
         }
+    }
+
+    public void OnStartBuilding(bool isBuilding)
+    {
+        this.isBuilding = isBuilding;
     }
 
     public void StartDay()

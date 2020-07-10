@@ -10,6 +10,7 @@ public class BuildSystem : MonoBehaviour
 {
     public Action<int, int> ConfirmationFurniture;
     public Action<GameObject> DisplayFurniture;
+    public Action<bool> building;
 
     [SerializeField]
     GameObject[] furniturePrefabs;
@@ -48,6 +49,7 @@ public class BuildSystem : MonoBehaviour
         selector.isBuildStart = true;
         FurnitureSelection.SetActive(true);
         Relocation = true;
+        building?.Invoke(true);
     }
 
     public bool IsPointerOverUIObject(Vector2 touchPos)
@@ -142,6 +144,7 @@ public class BuildSystem : MonoBehaviour
         selector.TogglePanel();
         isBuilding = false;
         FurnitureSelection.SetActive(false);
+        building?.Invoke(false);
         if (curfurnGo != null)
             Destroy(curfurnGo);
     }
@@ -204,7 +207,7 @@ public class BuildSystem : MonoBehaviour
             //selector.TogglePanel();
             ConfirmationFurniture?.Invoke(selector.furnitureId, SatisfactionLevel);
             selector.isBuildStart = false;
-
+            building?.Invoke(false);
         }
     }
 

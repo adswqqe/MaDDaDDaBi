@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="EventFolder" id="{92c2ec58-5e23-4ebd-bfcc-486d36f65dd1}">
+		<property name="name">
+			<value>추가자료</value>
+		</property>
+		<relationship name="folder">
+			<destination>{ad38b222-6f47-48b8-b633-086640ef8653}</destination>
+		</relationship>
+	</object>
+</objects>
