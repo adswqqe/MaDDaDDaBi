@@ -29,11 +29,20 @@ public class RatCastClickManager : MonoBehaviour
             if (hit.collider != null)
             {
                 if (hit.collider.tag == "Production")
+                {
                     productionMenuObj?.SetActive(true);
+                    SoundManager.instance.PlayEff(EffSound.SFX_UI_okay);
+                }
                 else if (hit.collider.tag == "Workstation")
+                {
                     workstationMenuObj?.SetActive(true);
+                    SoundManager.instance.PlayEff(EffSound.SFX_UI_okay);
+                }
                 else if (hit.collider.tag == "Waste")
+                {
                     wasteMenuObj?.SetActive(true);
+                    SoundManager.instance.PlayEff(EffSound.SFX_UI_okay);
+                }
                 else if (hit.collider.tag == "OrderBox")
                 {
                     GameObject.Find("GameManager").GetComponent<DataManager>().pickup = false;

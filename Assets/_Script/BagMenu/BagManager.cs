@@ -161,6 +161,7 @@ public class BagManager : MonoBehaviour
     void OnClickItem(ItemInfo item)
     {
        description.text = item.NAME + "\n" + item.AMOUNTNUMBER.ToString() + "개\n" + item.DESCRIPTION.ToString();
+        SoundManager.instance.PlayEff(EffSound.SFX_UI_button);
     }
 
     public void OnClickExitBtn()

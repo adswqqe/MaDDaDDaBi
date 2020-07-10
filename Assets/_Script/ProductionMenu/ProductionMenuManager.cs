@@ -79,13 +79,17 @@ public class ProductionMenuManager : MonoBehaviour
     {
         if (curSelectIndex >= 6)
             return;
-
+        if (selectObj.Count == 0)
+            SoundManager.instance.PlayProductionEff();
         slot[curSelectIndex].sprite = Resources.Load<Sprite>("ICON/" + item.ICON_INDEX);
         selectObj.Add(item);
 
         curSelectIndex += 1;
 
         CheckGamasotInIcon();
+
+        SoundManager.instance.PlayEff(EffSound.SFX_UI_C_M);
+
     }
 
     void CheckGamasotInIcon()
@@ -158,6 +162,7 @@ public class ProductionMenuManager : MonoBehaviour
 
         GamasotInIcon.color = new Color(GamasotInIcon.color.r, GamasotInIcon.color.g, GamasotInIcon.color.b, 0);
         GamasotInIconOnItem.color = new Color(GamasotInIcon.color.r, GamasotInIcon.color.g, GamasotInIcon.color.b, 0);
+        SoundManager.instance.StopProductionEff();
     }
 
     public void OnClickCreateProduction()
@@ -272,5 +277,8 @@ public class ProductionMenuManager : MonoBehaviour
 
         curSelectIndex -= 1;
         ClickSlot?.Invoke(id);
+
+        if (selectObj.Count == 0)
+            SoundManager.instance.StopProductionEff();
     }
 }

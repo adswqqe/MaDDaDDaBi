@@ -93,6 +93,7 @@ public class DisplayFurnitureItem : MonoBehaviour
             isHasItem = false;
         }
 
+        SoundManager.instance.PlayEff(EffSound.SFX_UI_handleCoin);
         return temp;
     }
 

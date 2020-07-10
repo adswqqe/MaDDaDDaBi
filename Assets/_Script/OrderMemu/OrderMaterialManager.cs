@@ -87,6 +87,8 @@ public class OrderMaterialManager : MonoBehaviour
         materialImage.sprite = Resources.Load<Sprite>("ICON/" + item.ICON_INDEX.ToString());
         materialName.text = item.NAME;
         materialDescription.text = item.DESCRIPTION;
+
+        SoundManager.instance.PlayEff(EffSound.SFX_UI_button);
     }
 
     public void OnAddShoppingBaskeBtn(int number)
@@ -148,6 +150,7 @@ public class OrderMaterialManager : MonoBehaviour
                 Destroy(item.gameObject);
             }
             curShoppingBaskeList.Clear();
+            SoundManager.instance.PlayEff(EffSound.SFX_UI_order);
         }
 
         Debug.Log("isResult : " + isResult);

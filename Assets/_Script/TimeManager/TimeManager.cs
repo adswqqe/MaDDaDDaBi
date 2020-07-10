@@ -41,6 +41,8 @@ public class TimeManager : MonoBehaviour
             if (hour >= 19)
             {
                 isEndTime = true;
+                SoundManager.instance.PlayBGM(BGMSound.BGM_inUnderG);
+                SoundManager.instance.PlayEffBgm(BGMEffSound.AMB_UnderG);
                 hour = 19;
                 min = 0;
                 EndDayTime?.Invoke(true);
@@ -68,6 +70,7 @@ public class TimeManager : MonoBehaviour
     IEnumerator SleepAniOff()
     {
         //Debug.Log("코루틴");
+        SoundManager.instance.PlayEff(EffSound.SFX_UI_sleep);
         bool isOnce = true;
         while (anim.GetCurrentAnimatorStateInfo(0).normalizedTime < 1f)
         {
@@ -85,7 +88,10 @@ public class TimeManager : MonoBehaviour
             isEndTime = false;
             hour = 7;
             min = 0;
-            yield return null;
+
+        SoundManager.instance.PlayBGM(BGMSound.BGM_inStore);
+        SoundManager.instance.PlayEffBgm(BGMEffSound.AMB_Forest);
+        yield return null;
         
 }
 

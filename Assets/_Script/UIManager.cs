@@ -97,6 +97,7 @@ public class UIManager : MonoBehaviour
     public void OnClickResetBtn()
     {
         SceneManager.LoadScene(0);
+        SoundManager.instance.StopBGM();
     }
 
     //public void OnStartDay()

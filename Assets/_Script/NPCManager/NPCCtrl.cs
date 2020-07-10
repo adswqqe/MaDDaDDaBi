@@ -390,7 +390,6 @@ public class NPCCtrl : MonoBehaviour
                             obstacle.enabled = true;
                             transform.LookAt(target);
                             curTime += Time.deltaTime;
-                            Debug.Log("asdasd");
                             anim.SetTrigger("Idle");
                         }
                     }

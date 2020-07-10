@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="AudioFile" id="{c8a89eef-5855-4313-a3ac-7297953c0e97}">
+		<property name="assetPath">
+			<value>BGM/Pond.mp3</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>152.39836734693878</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{f4e6d99c-285d-4c95-9776-b9123c3884ae}</destination>
+		</relationship>
+	</object>
+</objects>

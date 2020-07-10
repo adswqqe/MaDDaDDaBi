@@ -64,6 +64,7 @@ public class FurnitureDisplayManager : MonoBehaviour
         selectIteminfo = item;
         StartBuild?.Invoke(selectIteminfo.ID);
         ThrowFurniteminfo?.Invoke(item);
+        SoundManager.instance.PlayEff(EffSound.SFX_UI_B_pos);
         //description.text = item.AMOUNTNUMBER.ToString() + "개\n" + item.DESCRIPTION.ToString();
     }
 

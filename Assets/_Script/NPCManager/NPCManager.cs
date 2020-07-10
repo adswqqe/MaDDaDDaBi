@@ -34,6 +34,7 @@ public class NPCManager : MonoBehaviour
 
     List<GameObject> items;
     List<GameObject> furnitureitemList;
+    List<int> randIndex;
     
     // Start is called before the first frame update
     void Start()
@@ -41,6 +42,7 @@ public class NPCManager : MonoBehaviour
         npcs = new List<GameObject>();
         targets = new List<Transform>();
         items = new List<GameObject>();
+        randIndex = new List<int>();
         CreateNPC();
     }
 
@@ -48,13 +50,9 @@ public class NPCManager : MonoBehaviour
     {
         int index = 1;
         for (int i = 0; i < maxNPCCount; i++)
-        {
-            if (i % 2 == 0)
-                index = 0;
-            else
-                index = 1;
+        { 
 
-            GameObject tempgo = Instantiate(Npcprefab[index]);
+            GameObject tempgo = Instantiate(Npcprefab[i]);
             tempgo.transform.position = spanPos.transform.position;
             tempgo.GetComponent<NPCCtrl>().Initialization(spanPos, this, entrancePos, exitPos, i, speechmanagers[i]);
             tempgo.SetActive(false);
@@ -137,6 +135,8 @@ public class NPCManager : MonoBehaviour
                     npcs[i].GetComponent<NPCCtrl>().OffSpeechActive();
                     npcs[i].SetActive(false);
                 }
+
+            randIndex.Clear();
         }
     }
 
@@ -168,26 +168,49 @@ public class NPCManager : MonoBehaviour
             return true;
     }
 
+    int RandNpcIndex()
+    {
+        bool isFind = true;
+        int rand = 0;
+
+
+        while (isFind)
+        {
+            rand = UnityEngine.Random.Range(0, 4);
+            if (randIndex.Contains(rand))
+                continue;
+            else
+            {
+                isFind = false;
+            }
+        }
+        Debug.Log(rand);
+        return rand;
+    }
+
     IEnumerator StartNPCSpawn()
     {
         curNpcCount = 0;
-        
+        int index = 0;
         while (!isEndDay)
         {
             if(curNpcCount < npcs.Count)
             {
                 if (CheckActiveNpc())
                 {
-                    npcs[curNpcCount].SetActive(true);
-                    npcs[curNpcCount].GetComponent<NPCCtrl>().OnStartNpc();
+                    index = RandNpcIndex();
+                    npcs[index].SetActive(true);
+                    npcs[index].GetComponent<NPCCtrl>().OnStartNpc();
                     curNpcCount++;
                 }
             }
             else
             {
                 curNpcCount = 0;
+                randIndex.Clear();
             }
 
+            yield return new WaitForSeconds(spawnCoolTime);
 
             //if (isEndDay)
             //    break;
@@ -235,7 +258,6 @@ public class NPCManager : MonoBehaviour
             //{
             //    curNpcCount = 0;
             //}
-            yield return new WaitForSeconds(spawnCoolTime);
 
         }
     }

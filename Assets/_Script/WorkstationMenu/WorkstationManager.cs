@@ -203,6 +203,7 @@ public class WorkstationManager : MonoBehaviour
     void OnClickItem(ProductionObjInfo item)
     {
         setActiveUI(true);
+        SoundManager.instance.PlayEff(EffSound.SFX_UI_button);
         selectItem = item;
         itemImage.sprite = Resources.Load<Sprite>("ICON/" + item.ICON_INDEX);
         itemNameText.text = item.NAME;

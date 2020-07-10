@@ -25,6 +25,11 @@ public class RequestManager : MonoBehaviour
     Text popRequestReward;
     [SerializeField]
     GameObject popRequest;
+    [SerializeField]
+    GameObject completion;
+    [SerializeField]
+    Text completionText;
+
     ///
 
     List<RequstInfo> requestInfos;
@@ -125,6 +130,7 @@ public class RequestManager : MonoBehaviour
             popRequestReward.text = "보상 - " + "골드 " + requestInfos[requestIndex].GOLD + " / " +
                 "평판 " + requestInfos[requestIndex].REP + " / " +
                 "경험치 " + requestInfos[requestIndex].EXP;
+            completionText.text = popRequestReward.text;
         }
     }
 
@@ -255,6 +261,8 @@ public class RequestManager : MonoBehaviour
         if (isSuccess)
         {
             popRequest.SetActive(false);
+            completion.SetActive(true);
+            SoundManager.instance.PlayEff(EffSound.SFX_UI_C_suc);
             RequestSuccess?.Invoke(requestInfos[requestIndex].GOLD, requestInfos[requestIndex].REP, requestInfos[requestIndex].EXP);
             SetRequest(requestIndex);
         }

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="EncodingSetting" id="{cfa90940-ca04-4ff8-bee1-3f1e70325a19}">
+		<property name="encodingFormat">
+			<value>3</value>
+		</property>
+		<property name="quality">
+			<value>29</value>
+		</property>
+		<property name="sampleRate">
+			<value>23500</value>
+		</property>
+		<relationship name="platform">
+			<destination>{01fe1475-c550-4dc8-ab79-dab498efdd11}</destination>
+		</relationship>
+		<relationship name="encodable">
+			<destination>{9d0e54ed-8a0b-4ce8-8bc0-8f7830904bcc}</destination>
+		</relationship>
+	</object>
+</objects>

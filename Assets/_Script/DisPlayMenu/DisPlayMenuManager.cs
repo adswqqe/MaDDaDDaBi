@@ -129,6 +129,7 @@ public class DisPlayMenuManager : MonoBehaviour
         description.text = item.NAME + "\n" + item.DESCRIPTION + "\n" + item.AMOUNTNUMBER + "개";
         seletingItem = new ItemInfo(item);
         displayBtn.gameObject.SetActive(true);
+        SoundManager.instance.PlayEff(EffSound.SFX_UI_button);
     }
 
     public void OnClickDisplayBtn()
@@ -138,6 +139,13 @@ public class DisPlayMenuManager : MonoBehaviour
         int fullCounter = 0;
         if (seletingItem == null)
             return;
+
+        if (seletingItem.SORT == "물약")
+            SoundManager.instance.PlayEff(EffSound.SFX_UI_D_potion);
+        else if(seletingItem.SORT == "도구")
+            SoundManager.instance.PlayEff(EffSound.SFX_UI_D_arm);
+        else if (seletingItem.SORT == "장비")
+            SoundManager.instance.PlayEff(EffSound.SFX_UI_D_acc);
 
         //if (curDisplayCount >= displayStandPos.Length)
         //    curDisplayCount = 0;
