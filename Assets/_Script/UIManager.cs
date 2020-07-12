@@ -50,7 +50,7 @@ public class UIManager : MonoBehaviour
         goldText.text = data.GOLD.ToString();
         reputationText.text = data.REPUTATION.ToString();
         bagSpaceText.text = "공간 : " + data.BAGSPACE + "/" + " " + data.MAX_BAGSPCE;
-        todaySales.GetComponentInChildren<Text>().text = "금일 판매량 \n" + data.TODAYGOLD + "골드";
+        todaySales.GetComponentInChildren<Text>().text = data.TODAYGOLD + "골드";
     }
 
     public void OnEndDay(bool isEndDay)
@@ -67,7 +67,7 @@ public class UIManager : MonoBehaviour
             if (data != null)
             {
                 data.TODAYGOLD = 0;
-                todaySales.GetComponentInChildren<Text>().text = "금일 판매량 \n" + data.TODAYGOLD + "골드";
+                todaySales.GetComponentInChildren<Text>().text = data.TODAYGOLD + "골드";
             }
         }
         else
