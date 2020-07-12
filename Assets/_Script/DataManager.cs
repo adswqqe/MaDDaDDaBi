@@ -32,7 +32,7 @@ public class DataManager : MonoBehaviour
 
     void dataSet()
     {
-        data = new Data(1, 0, 100, 0, 0, 10, new List<MaterialItemManager>());
+        data = new Data(1, 0, 100, 0, 0, 20, new List<MaterialItemManager>());
     }
 
     public void Initialization(List<ItemInfo> createItem, List<ProductionObjInfo> workStationItemList)
