@@ -55,8 +55,6 @@ public class SoundManager : MonoBehaviour
     FMOD.Studio.EventInstance BGMEffSoundEvent;
     FMOD.Studio.EventInstance EffEvent;
     FMOD.Studio.EventInstance ProEvent;
-    
-
     [SerializeField]
     Text timeText;
 
