@@ -7,6 +7,7 @@ public class SpeechManager : MonoBehaviour
 {
     Text text;
     bool isActive = false;
+    Transform target;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,6 +32,7 @@ public class SpeechManager : MonoBehaviour
         pos.x += Mathf.Abs(pos.x / 20f);
         pos.y += Mathf.Abs(pos.y / 2f);
         transform.position = Camera.main.WorldToScreenPoint(pos);
+        target = tr;
         StartCoroutine(Speech());
     }
 
@@ -42,6 +44,11 @@ public class SpeechManager : MonoBehaviour
         while(true)
         {
             timer += Time.deltaTime;
+
+            Vector3 pos = target.position;
+            pos.x += Mathf.Abs(pos.x / 20f);
+            pos.y += Mathf.Abs(pos.y / 2f);
+            transform.position = Camera.main.WorldToScreenPoint(pos);
 
             if (timer >= 1.5f)
             {

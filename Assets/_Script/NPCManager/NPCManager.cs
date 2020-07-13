@@ -178,7 +178,7 @@ public class NPCManager : MonoBehaviour
         while (isFind)
         {
             rand = UnityEngine.Random.Range(0, 4);
-            if (randIndex.Contains(rand))
+            if (randIndex.Contains(rand) && npcs[rand].activeSelf == true)
                 continue;
             else
             {
