@@ -332,13 +332,13 @@ public class CameraManager : MonoBehaviour
         {
             transform.position = EndDayCameraPos;
             transform.eulerAngles = new Vector3(35.861f, 55.052f, -0.505f);
-            GetComponent<Camera>().fieldOfView = 30;
+            GetComponent<Camera>().fieldOfView = 20;
         }
         else
         {
             transform.position = dayCameraPos;
             transform.eulerAngles = new Vector3(35.861f, 55.052f, -0.505f);
-            GetComponent<Camera>().fieldOfView = 30;
+            GetComponent<Camera>().fieldOfView = 20;
         }
     }
 

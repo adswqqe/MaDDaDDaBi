@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public enum BGMSound
@@ -54,6 +55,10 @@ public class SoundManager : MonoBehaviour
     FMOD.Studio.EventInstance BGMEffSoundEvent;
     FMOD.Studio.EventInstance EffEvent;
     FMOD.Studio.EventInstance ProEvent;
+    
+
+    [SerializeField]
+    Text timeText;
 
     private void Awake()
     {
@@ -67,6 +72,11 @@ public class SoundManager : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -75,10 +85,6 @@ public class SoundManager : MonoBehaviour
         BGMSoundEvent.start();
         BGMEffSoundEvent = FMODUnity.RuntimeManager.CreateInstance(BGMEffSounds[(int)BGMEffSound.AMB_UnderG]);
         BGMEffSoundEvent.start();
-    }
-
-    private void Update()
-    {
     }
 
     public void PlayBGM(BGMSound bgm)
@@ -101,6 +107,7 @@ public class SoundManager : MonoBehaviour
     {
         BGMEffSoundEvent.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         BGMEffSoundEvent = FMODUnity.RuntimeManager.CreateInstance(BGMEffSounds[(int)bgmeff]);
+        FMODUnity.RuntimeManager.AttachInstanceToGameObject(BGMEffSoundEvent, GetComponent<Transform>(), GetComponent<Rigidbody>());
         BGMEffSoundEvent.start();
     }
 
@@ -108,6 +115,7 @@ public class SoundManager : MonoBehaviour
     {
         BGMEffSoundEvent.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         BGMEffSoundEvent = FMODUnity.RuntimeManager.CreateInstance(BGMEffSounds[(int)bgmeff]);
+        FMODUnity.RuntimeManager.AttachInstanceToGameObject(BGMEffSoundEvent, GetComponent<Transform>(), GetComponent<Rigidbody>());
         BGMEffSoundEvent.start();
     }
 

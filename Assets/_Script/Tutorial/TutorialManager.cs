@@ -7,10 +7,19 @@ public class TutorialManager : MonoBehaviour
 {
     [SerializeField]
     Button[] CanvasUIs;
+    [SerializeField]
+    GameObject RaycastBlocking;
+    [SerializeField]
+    Button SettingBtn;
 
     private void Start()
     {
+        SettingBtn.onClick.AddListener(SettingBtnClick);
         AllOff();
+    }
+    void SettingBtnClick()
+    {
+        RaycastBlocking.SetActive(false);
     }
 
     public void AllOff()
@@ -19,6 +28,7 @@ public class TutorialManager : MonoBehaviour
         {
             CanvasUIs[i].interactable = false;
         }
+        CanvasUIs[5].interactable = true;
     }
         
 
