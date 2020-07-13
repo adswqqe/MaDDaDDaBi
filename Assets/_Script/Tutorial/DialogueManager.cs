@@ -35,7 +35,6 @@ public class DialogueManager : MonoBehaviour
         if(RequestNum==1)
         {
             FingerMove.SetActive(true);
-
         }
     }
 

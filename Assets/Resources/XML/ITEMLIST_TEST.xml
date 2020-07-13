@@ -7,7 +7,7 @@
 		<ICON>100</ICON>
 		<BUYCOST>#</BUYCOST>
 		<SELLCOST>100</SELLCOST>
-		<DESCRIPTION> 체력이 회복되는 물약이다.</DESCRIPTION>
+		<DESCRIPTION>마시면 체력이 회복된다. 보기와 다르게 딸기 맛은 나지 않는다.</DESCRIPTION>
 	</text>
 	<text>
 		<ID>101</ID>
@@ -16,7 +16,7 @@
 		<ICON>101</ICON>
 		<BUYCOST>#</BUYCOST>
 		<SELLCOST>100</SELLCOST>
-		<DESCRIPTION> 체력이 많이 회복되는 물약이다.</DESCRIPTION>
+		<DESCRIPTION>마시면 시원해질 것 같다.</DESCRIPTION>
 	</text>
 	<text>
 		<ID>102</ID>
@@ -25,7 +25,7 @@
 		<ICON>102</ICON>
 		<BUYCOST>#</BUYCOST>
 		<SELLCOST>100</SELLCOST>
-		<DESCRIPTION> 체력이 더 많이 회복되는 물약이다.</DESCRIPTION>
+		<DESCRIPTION>금으로 만든 물약은 아니다.</DESCRIPTION>
 	</text>
 	<text>
 		<ID>103</ID>
@@ -34,7 +34,7 @@
 		<ICON>103</ICON>
 		<BUYCOST>#</BUYCOST>
 		<SELLCOST>100</SELLCOST>
-		<DESCRIPTION> 체력이 매우 많이 회복되는 물약이다.</DESCRIPTION>
+		<DESCRIPTION>매우 쓴 맛이 날 것 같다.</DESCRIPTION>
 	</text>
 	<text>
 		<ID>104</ID>
@@ -43,7 +43,7 @@
 		<ICON>104</ICON>
 		<BUYCOST>#</BUYCOST>
 		<SELLCOST>100</SELLCOST>
-		<DESCRIPTION> 체력이 엄청나게 회복되는 물약이다.</DESCRIPTION>
+		<DESCRIPTION>보라색 맛이 날 것 같은 물약이다.</DESCRIPTION>
 	</text>
 	<text>
 		<ID>105</ID>
@@ -52,7 +52,7 @@
 		<ICON>105</ICON>
 		<BUYCOST>#</BUYCOST>
 		<SELLCOST>100</SELLCOST>
-		<DESCRIPTION> 마나가 회복되는 물약이다.</DESCRIPTION>
+		<DESCRIPTION> 마나가 회복되는 물약이다. 위험하지는 않다.</DESCRIPTION>
 	</text>
 	<text>
 		<ID>106</ID>
@@ -61,7 +61,7 @@
 		<ICON>106</ICON>
 		<BUYCOST>#</BUYCOST>
 		<SELLCOST>100</SELLCOST>
-		<DESCRIPTION> 마나가 많이 회복되는 물약이다.</DESCRIPTION>
+		<DESCRIPTION>맛있을 것 같다. (먹어볼까?)</DESCRIPTION>
 	</text>
 	<text>
 		<ID>107</ID>
@@ -70,7 +70,7 @@
 		<ICON>107</ICON>
 		<BUYCOST>#</BUYCOST>
 		<SELLCOST>100</SELLCOST>
-		<DESCRIPTION> 마나가 더 많이 회복되는 물약이다.</DESCRIPTION>
+		<DESCRIPTION>금으로 만들었다고 하면 더 비싸게 팔 수 있으려나?</DESCRIPTION>
 	</text>
 	<text>
 		<ID>108</ID>
@@ -79,7 +79,7 @@
 		<ICON>108</ICON>
 		<BUYCOST>#</BUYCOST>
 		<SELLCOST>100</SELLCOST>
-		<DESCRIPTION> 마나가 매우 많이 회복되는 물약이다.</DESCRIPTION>
+		<DESCRIPTION> 색깔이 맛없어 보인다.</DESCRIPTION>
 	</text>
 	<text>
 		<ID>109</ID>
@@ -88,7 +88,7 @@
 		<ICON>109</ICON>
 		<BUYCOST>#</BUYCOST>
 		<SELLCOST>100</SELLCOST>
-		<DESCRIPTION> 마나가 엄청나게 회복되는 물약이다.</DESCRIPTION>
+		<DESCRIPTION>보라색 엘릭서다. 위험해 보인다</DESCRIPTION>
 	</text>
 	<text>
 		<ID>110</ID>
@@ -97,7 +97,7 @@
 		<ICON>110</ICON>
 		<BUYCOST>#</BUYCOST>
 		<SELLCOST>100</SELLCOST>
-		<DESCRIPTION>병이 깨지면 근처에 불이난다.</DESCRIPTION>
+		<DESCRIPTION>병이 깨지면 근처에 불이 난다. 조심하자</DESCRIPTION>
 	</text>
 	<text>
 		<ID>111</ID>
@@ -106,7 +106,7 @@
 		<ICON>111</ICON>
 		<BUYCOST>#</BUYCOST>
 		<SELLCOST>100</SELLCOST>
-		<DESCRIPTION>마시면 힘이 강해진다.</DESCRIPTION>
+		<DESCRIPTION>마시면 힘이 강해진다. 그렇다고 사고는 치지 말자</DESCRIPTION>
 	</text>
 	<text>
 		<ID>200</ID>
@@ -115,7 +115,7 @@
 		<ICON>200</ICON>
 		<BUYCOST>#</BUYCOST>
 		<SELLCOST>100</SELLCOST>
-		<DESCRIPTION>들고 있으면 강해지는 것 같다.</DESCRIPTION>
+		<DESCRIPTION>들고 있으면 마법사가 된 기분을 느끼게 해준다.</DESCRIPTION>
 	</text>
 	<text>
 		<ID>201</ID>
@@ -124,7 +124,7 @@
 		<ICON>201</ICON>
 		<BUYCOST>#</BUYCOST>
 		<SELLCOST>100</SELLCOST>
-		<DESCRIPTION>들고만 있어도 고양이가 모여든다.</DESCRIPTION>
+		<DESCRIPTION>들고 있으면 고양이가 모여든다. 친구가 많아질 수 있다.</DESCRIPTION>
 	</text>
 	<text>
 		<ID>202</ID>
@@ -169,7 +169,7 @@
 		<ICON>206</ICON>
 		<BUYCOST>#</BUYCOST>
 		<SELLCOST>100</SELLCOST>
-		<DESCRIPTION>주변을 불태운다. 일회용</DESCRIPTION>
+		<DESCRIPTION>주변을 불태운다. 일회용 (조심해서 다룰 것!)</DESCRIPTION>
 	</text>
 	<text>
 		<ID>207</ID>
@@ -178,7 +178,7 @@
 		<ICON>207</ICON>
 		<BUYCOST>#</BUYCOST>
 		<SELLCOST>100</SELLCOST>
-		<DESCRIPTION>주변을 얼려버린다. 일회용 </DESCRIPTION>
+		<DESCRIPTION>주변을 얼려버린다. 일회용 (여름에 쓰면 좋다)</DESCRIPTION>
 	</text>
 	<text>
 		<ID>208</ID>
@@ -214,7 +214,7 @@
 		<ICON>303</ICON>
 		<BUYCOST>#</BUYCOST>
 		<SELLCOST>100</SELLCOST>
-		<DESCRIPTION>보호를 받는다.</DESCRIPTION>
+		<DESCRIPTION>왠지 공격을 받아도 다치지 않을 것 같은 귀걸이다.</DESCRIPTION>
 	</text>
 	<text>
 		<ID>304</ID>
@@ -223,7 +223,7 @@
 		<ICON>304</ICON>
 		<BUYCOST>#</BUYCOST>
 		<SELLCOST>100</SELLCOST>
-		<DESCRIPTION>똑똑해진다.</DESCRIPTION>
+		<DESCRIPTION>차고만 있어도 똑똑해지는 것 같다! 시험공부 할 때 유용할 펜던트다.</DESCRIPTION>
 	</text>
 	<text>
 		<ID>400</ID>
@@ -232,7 +232,7 @@
 		<ICON>400</ICON>
 		<BUYCOST>10</BUYCOST>
 		<SELLCOST>#</SELLCOST>
-		<DESCRIPTION>물약을 만들 때 사용되는 병이다.</DESCRIPTION>
+		<DESCRIPTION>물약을 담는 유리병이다. 연금술에서 매우 중요하다</DESCRIPTION>
 	</text>
 	<text>
 		<ID>401</ID>
@@ -241,7 +241,7 @@
 		<ICON>401</ICON>
 		<BUYCOST>10</BUYCOST>
 		<SELLCOST>#</SELLCOST>
-		<DESCRIPTION>부드럽다.</DESCRIPTION>
+		<DESCRIPTION>부드럽다. 잘 만든 섬유다.</DESCRIPTION>
 	</text>
 	<text>
 		<ID>402</ID>
@@ -259,7 +259,7 @@
 		<ICON>403</ICON>
 		<BUYCOST>#</BUYCOST>
 		<SELLCOST>#</SELLCOST>
-		<DESCRIPTION>마법의 힘이 깃든 돌이다.</DESCRIPTION>
+		<DESCRIPTION>마법의 힘이 조금 더 깃든 돌이다. 비싸니 조심히 다루자</DESCRIPTION>
 	</text>
 	<text>
 		<ID>404</ID>
@@ -268,7 +268,7 @@
 		<ICON>404</ICON>
 		<BUYCOST>#</BUYCOST>
 		<SELLCOST>#</SELLCOST>
-		<DESCRIPTION>마법의 힘이 깃든 돌이다.</DESCRIPTION>
+		<DESCRIPTION>마법의 힘이 조금 더 깃든 돌이다. 완전 비싸니 조심히 다루자</DESCRIPTION>
 	</text>
 	<text>
 		<ID>405</ID>
@@ -277,7 +277,7 @@
 		<ICON>405</ICON>
 		<BUYCOST>10</BUYCOST>
 		<SELLCOST>#</SELLCOST>
-		<DESCRIPTION>화염의 힘이 깃든 돌이다.</DESCRIPTION>
+		<DESCRIPTION>뜨거운 불의 힘이 깃든 돌이다. (뜨거울까?)</DESCRIPTION>
 	</text>
 	<text>
 		<ID>406</ID>
@@ -286,7 +286,7 @@
 		<ICON>406</ICON>
 		<BUYCOST>10</BUYCOST>
 		<SELLCOST>#</SELLCOST>
-		<DESCRIPTION>냉기의 힘이 깃든 돌이다.</DESCRIPTION>
+		<DESCRIPTION> 들고 있으면 왠지 차가운 느낌이 든다… (앗 차가..)</DESCRIPTION>
 	</text>
 	<text>
 		<ID>407</ID>
@@ -313,7 +313,7 @@
 		<ICON>409</ICON>
 		<BUYCOST>10</BUYCOST>
 		<SELLCOST>#</SELLCOST>
-		<DESCRIPTION>보호의 힘이 깃든 돌이다.</DESCRIPTION>
+		<DESCRIPTION> 들고 있으면 든든한 기운이 느껴진다.</DESCRIPTION>
 	</text>
 	<text>
 		<ID>410</ID>
@@ -322,7 +322,7 @@
 		<ICON>410</ICON>
 		<BUYCOST>10</BUYCOST>
 		<SELLCOST>#</SELLCOST>
-		<DESCRIPTION>지혜의 힘이 깃든 돌이다.</DESCRIPTION>
+		<DESCRIPTION>들고 있으면 똑똑해지는 느낌이 든다.</DESCRIPTION>
 	</text>
 	<text>
 		<ID>411</ID>
@@ -340,7 +340,7 @@
 		<ICON>412</ICON>
 		<BUYCOST>10</BUYCOST>
 		<SELLCOST>#</SELLCOST>
-		<DESCRIPTION>제작에 많이 쓰이는 재료</DESCRIPTION>
+		<DESCRIPTION>튼튼한 나무로 만들었다.</DESCRIPTION>
 	</text>
 	<text>
 		<ID>413</ID>
@@ -349,7 +349,7 @@
 		<ICON>413</ICON>
 		<BUYCOST>10</BUYCOST>
 		<SELLCOST>#</SELLCOST>
-		<DESCRIPTION>종이로 만든 종이다.</DESCRIPTION>
+		<DESCRIPTION>좋은 나무로 만들었다.</DESCRIPTION>
 	</text>
 	<text>
 		<ID>414</ID>
@@ -367,7 +367,7 @@
 		<ICON>415</ICON>
 		<BUYCOST>10</BUYCOST>
 		<SELLCOST>#</SELLCOST>
-		<DESCRIPTION>포션의 재료</DESCRIPTION>
+		<DESCRIPTION>빨간색 버섯이다. 먹으면 체력이 회복될 것 같다.</DESCRIPTION>
 	</text>
 	<text>
 		<ID>416</ID>
@@ -376,7 +376,7 @@
 		<ICON>416</ICON>
 		<BUYCOST>10</BUYCOST>
 		<SELLCOST>#</SELLCOST>
-		<DESCRIPTION>포션의 재료</DESCRIPTION>
+		<DESCRIPTION>파란색 버섯이다.</DESCRIPTION>
 	</text>
 	<text>
 		<ID>417</ID>
@@ -385,7 +385,7 @@
 		<ICON>417</ICON>
 		<BUYCOST>10</BUYCOST>
 		<SELLCOST>#</SELLCOST>
-		<DESCRIPTION>포션의 재료</DESCRIPTION>
+		<DESCRIPTION>노란색 버섯이다.</DESCRIPTION>
 	</text>
 	<text>
 		<ID>418</ID>
@@ -394,7 +394,7 @@
 		<ICON>418</ICON>
 		<BUYCOST>10</BUYCOST>
 		<SELLCOST>#</SELLCOST>
-		<DESCRIPTION>포션의 재료</DESCRIPTION>
+		<DESCRIPTION>초록색 버섯이다.</DESCRIPTION>
 	</text>
 	<text>
 		<ID>419</ID>
@@ -403,7 +403,7 @@
 		<ICON>419</ICON>
 		<BUYCOST>10</BUYCOST>
 		<SELLCOST>#</SELLCOST>
-		<DESCRIPTION>포션의 재료</DESCRIPTION>
+		<DESCRIPTION>보라색 버섯이다.</DESCRIPTION>
 	</text>
 	<text>
 		<ID>420</ID>
@@ -412,7 +412,7 @@
 		<ICON>420</ICON>
 		<BUYCOST>10</BUYCOST>
 		<SELLCOST>#</SELLCOST>
-		<DESCRIPTION>엘릭서재료</DESCRIPTION>
+		<DESCRIPTION>빨간색 약초다. 먹으면 마나가 회복될 것 같다.</DESCRIPTION>
 	</text>
 	<text>
 		<ID>421</ID>
@@ -421,7 +421,7 @@
 		<ICON>421</ICON>
 		<BUYCOST>10</BUYCOST>
 		<SELLCOST>#</SELLCOST>
-		<DESCRIPTION>엘릭서재료</DESCRIPTION>
+		<DESCRIPTION>파란색 약초다.</DESCRIPTION>
 	</text>
 	<text>
 		<ID>422</ID>
@@ -430,7 +430,7 @@
 		<ICON>422</ICON>
 		<BUYCOST>10</BUYCOST>
 		<SELLCOST>#</SELLCOST>
-		<DESCRIPTION>엘릭서재료</DESCRIPTION>
+		<DESCRIPTION>노란색 약초다.</DESCRIPTION>
 	</text>
 	<text>
 		<ID>423</ID>
@@ -439,7 +439,7 @@
 		<ICON>423</ICON>
 		<BUYCOST>10</BUYCOST>
 		<SELLCOST>#</SELLCOST>
-		<DESCRIPTION>엘릭서재료</DESCRIPTION>
+		<DESCRIPTION>초록색 약초다.</DESCRIPTION>
 	</text>
 	<text>
 		<ID>424</ID>
@@ -448,7 +448,7 @@
 		<ICON>424</ICON>
 		<BUYCOST>10</BUYCOST>
 		<SELLCOST>#</SELLCOST>
-		<DESCRIPTION>엘릭서재료</DESCRIPTION>
+		<DESCRIPTION>보라색 약초다.</DESCRIPTION>
 	</text>
 	<text>
 		<ID>425</ID>
@@ -457,7 +457,7 @@
 		<ICON>425</ICON>
 		<BUYCOST>10</BUYCOST>
 		<SELLCOST>#</SELLCOST>
-		<DESCRIPTION>힘 관련 아이템</DESCRIPTION>
+		<DESCRIPTION>먹으면 힘이 세질 것 같은 약초다.</DESCRIPTION>
 	</text>
 	<text>
 		<ID>426</ID>
@@ -466,7 +466,7 @@
 		<ICON>426</ICON>
 		<BUYCOST>10</BUYCOST>
 		<SELLCOST>#</SELLCOST>
-		<DESCRIPTION>화염 관련 아이템</DESCRIPTION>
+		<DESCRIPTION>밟으면 불이 날 것 같은 약초다.</DESCRIPTION>
 	</text>
 	<text>
 		<ID>427</ID>
@@ -475,7 +475,7 @@
 		<ICON>427</ICON>
 		<BUYCOST>10</BUYCOST>
 		<SELLCOST>#</SELLCOST>
-		<DESCRIPTION>제작에 많이 쓰이는 재료</DESCRIPTION>
+		<DESCRIPTION>품질 좋은 철로 만들었다.</DESCRIPTION>
 	</text>
 	<text>
 		<ID>428</ID>
@@ -484,7 +484,7 @@
 		<ICON>428</ICON>
 		<BUYCOST>10</BUYCOST>
 		<SELLCOST>#</SELLCOST>
-		<DESCRIPTION>제작에 많이 쓰이는 재료</DESCRIPTION>
+		<DESCRIPTION>비싼 금으로 만들었다.</DESCRIPTION>
 	</text>
 	<text>
 		<ID>500</ID>
@@ -511,7 +511,7 @@
 		<ICON>502</ICON>
 		<BUYCOST>#</BUYCOST>
 		<SELLCOST>#</SELLCOST>
-		<DESCRIPTION>물약만 진열된다. 최대 1개 까지 진열할 수 있다.</DESCRIPTION>
+		<DESCRIPTION>물약만 진열된다. 최대 1개까지 진열할 수 있다.</DESCRIPTION>
 	</text>
 	<text>
 		<ID>503</ID>
@@ -520,7 +520,7 @@
 		<ICON>503</ICON>
 		<BUYCOST>#</BUYCOST>
 		<SELLCOST>#</SELLCOST>
-		<DESCRIPTION>물약만 진열된다. 최대 2개 까지 진열할 수 있다.</DESCRIPTION>
+		<DESCRIPTION>물약만 진열된다. 최대 2개까지 진열할 수 있다.</DESCRIPTION>
 	</text>
 	<text>
 		<ID>504</ID>
@@ -529,7 +529,7 @@
 		<ICON>504</ICON>
 		<BUYCOST>#</BUYCOST>
 		<SELLCOST>#</SELLCOST>
-		<DESCRIPTION>물약만 진열된다. 최대 4개 까지 진열할 수 있다.</DESCRIPTION>
+		<DESCRIPTION>물약만 진열된다. 최대 4개까지 진열할 수 있다.</DESCRIPTION>
 	</text>
 	<text>
 		<ID>505</ID>
@@ -538,7 +538,7 @@
 		<ICON>505</ICON>
 		<BUYCOST>#</BUYCOST>
 		<SELLCOST>#</SELLCOST>
-		<DESCRIPTION>도구만 진열된다. 최대 1개 까지 진열할 수 있다.</DESCRIPTION>
+		<DESCRIPTION>도구만 진열된다. 최대 1개까지 진열할 수 있다.</DESCRIPTION>
 	</text>
 	<text>
 		<ID>506</ID>
@@ -547,7 +547,7 @@
 		<ICON>506</ICON>
 		<BUYCOST>#</BUYCOST>
 		<SELLCOST>#</SELLCOST>
-		<DESCRIPTION>도구만 진열된다. 최대 2개 까지 진열할 수 있다.</DESCRIPTION>
+		<DESCRIPTION>도구만 진열된다. 최대 2개까지 진열할 수 있다.</DESCRIPTION>
 	</text>
 	<text>
 		<ID>507</ID>
@@ -556,7 +556,7 @@
 		<ICON>507</ICON>
 		<BUYCOST>#</BUYCOST>
 		<SELLCOST>#</SELLCOST>
-		<DESCRIPTION>도구만 진열된다. 최대 4개 까지 진열할 수 있다.</DESCRIPTION>
+		<DESCRIPTION>도구만 진열된다. 최대 4개까지 진열할 수 있다.</DESCRIPTION>
 	</text>
 	<text>
 		<ID>508</ID>
@@ -565,7 +565,7 @@
 		<ICON>508</ICON>
 		<BUYCOST>#</BUYCOST>
 		<SELLCOST>#</SELLCOST>
-		<DESCRIPTION>장비만 진열된다. 최대 1개 까지 진열할 수 있다.</DESCRIPTION>
+		<DESCRIPTION>장비만 진열된다. 최대 1개까지 진열할 수 있다.</DESCRIPTION>
 	</text>
 	<text>
 		<ID>511</ID>
@@ -574,7 +574,7 @@
 		<ICON>511</ICON>
 		<BUYCOST>#</BUYCOST>
 		<SELLCOST>#</SELLCOST>
-		<DESCRIPTION>가방공간확장</DESCRIPTION>
+		<DESCRIPTION>설치하면 가방의 공간이 확장된다.</DESCRIPTION>
 	</text>
 	<text>
 		<ID>512</ID>
@@ -592,7 +592,7 @@
 		<ICON>513</ICON>
 		<BUYCOST>#</BUYCOST>
 		<SELLCOST>#</SELLCOST>
-		<DESCRIPTION>폭신폭신폭신해보이는 러그다.</DESCRIPTION>
+		<DESCRIPTION>폭신 폭신해 보이는 러그다.</DESCRIPTION>
 	</text>
 	<text>
 		<ID>514</ID>
@@ -601,25 +601,7 @@
 		<ICON>514</ICON>
 		<BUYCOST>#</BUYCOST>
 		<SELLCOST>#</SELLCOST>
-		<DESCRIPTION>따뜻해보이는 러그다.</DESCRIPTION>
-	</text>
-	<text>
-		<ID>515</ID>
-		<SORT>가구</SORT>
-		<NAME>예쁜캣타워</NAME>
-		<ICON>515</ICON>
-		<BUYCOST>#</BUYCOST>
-		<SELLCOST>#</SELLCOST>
-		<DESCRIPTION>캣타워</DESCRIPTION>
-	</text>
-	<text>
-		<ID>516</ID>
-		<SORT>가구</SORT>
-		<NAME>좋은캣타워</NAME>
-		<ICON>516</ICON>
-		<BUYCOST>#</BUYCOST>
-		<SELLCOST>#</SELLCOST>
-		<DESCRIPTION>캣캣타타워워</DESCRIPTION>
+		<DESCRIPTION>따뜻해 보이는 러그다.</DESCRIPTION>
 	</text>
 	<text>
 		<ID>517</ID>
@@ -628,7 +610,7 @@
 		<ICON>517</ICON>
 		<BUYCOST>#</BUYCOST>
 		<SELLCOST>#</SELLCOST>
-		<DESCRIPTION>화분</DESCRIPTION>
+		<DESCRIPTION>보라색 화분이다.</DESCRIPTION>
 	</text>
 	<text>
 		<ID>518</ID>
@@ -637,6 +619,6 @@
 		<ICON>518</ICON>
 		<BUYCOST>#</BUYCOST>
 		<SELLCOST>#</SELLCOST>
-		<DESCRIPTION>화화분분</DESCRIPTION>
+		<DESCRIPTION>파란색 화분이다.</DESCRIPTION>
 	</text>
 </ITEMLIST>

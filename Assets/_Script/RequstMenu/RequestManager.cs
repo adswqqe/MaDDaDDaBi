@@ -116,11 +116,15 @@ public class RequestManager : MonoBehaviour
                 GoalNumber = findOneData(requestInfos[requestIndex].ONNDATA);
                 goalRequestNumber = requestInfos[requestIndex].TWODATA;
 
-                if (requestInfos[requestIndex].ONNDATA == 10)   //골드 일 경우
-                    GoalNumber = curData.GOLD;
-
                 if (requestInfos[requestIndex].TWODATA >= 10000)
                     goalRequestNumber = requestInfos[requestIndex].ONNDATA;
+
+                if (requestInfos[requestIndex].ONNDATA == 10)   //골드 일 경우
+                {
+                    GoalNumber = curData.GOLD;
+                    goalRequestNumber = 100;
+                }
+
             }
 
             popRequestTitle.text = requestInfos[requestIndex].NAME;
@@ -235,9 +239,9 @@ public class RequestManager : MonoBehaviour
         {
             if (requestInfos[requestIndex].ONNDATA == 10)   //골드 일 경우
             {
-                if (curData.GOLD >= requestInfos[requestIndex].ONNDATA)
+                if (curData.GOLD >= 100)//requestInfos[requestIndex].ONNDATA)
                 {
-                    curData.GOLD -= requestInfos[requestIndex].ONNDATA;
+                    curData.GOLD -= 100;//requestInfos[requestIndex].ONNDATA;
                     isSuccess = true;
                 }
             }
@@ -247,7 +251,9 @@ public class RequestManager : MonoBehaviour
                 if (GoalNumber >= requestInfos[requestIndex].TWODATA)
                 {
                     int index = 9999;
-                    bool isZero = false;
+                    bool isMaterialZero = false;
+                    bool isProductionZero = false;
+
                     for (int i = 0; i < curData.CURMATERIALITELIST.Count; i++)
                     {
                         if(requestInfos[requestIndex].ONNDATA == curData.CURMATERIALITELIST[i].ITEMINFO.ID)
@@ -256,13 +262,35 @@ public class RequestManager : MonoBehaviour
                             curData.BAGSPACE -= requestInfos[requestIndex].TWODATA;
                             isSuccess = true;
                             if (curData.CURMATERIALITELIST[i].ITEMINFO.AMOUNTNUMBER <= 0)
+                            {
                                 index = i;
+                                isMaterialZero = true;
+                            }
                             break;
                         }
                     }
 
-                    if (index != 9999)
+                    for (int i = 0; i < curData.CURPRODUCTIONITEMLIST.Count; i++)
+                    {
+                        Debug.Log(curData.CURPRODUCTIONITEMLIST[i].ITEMINFO.ID);
+                        if (requestInfos[requestIndex].ONNDATA == curData.CURPRODUCTIONITEMLIST[i].ITEMINFO.ID)
+                        {
+                            curData.CURPRODUCTIONITEMLIST[i].ITEMINFO.AMOUNTNUMBER -= requestInfos[requestIndex].TWODATA;
+                            curData.BAGSPACE -= requestInfos[requestIndex].TWODATA;
+                            isSuccess = true;
+                            if (curData.CURPRODUCTIONITEMLIST[i].ITEMINFO.AMOUNTNUMBER <= 0)
+                            {
+                                index = i;
+                                isProductionZero = true;
+                            }
+                            break;
+                        }
+                    }
+
+                    if (isMaterialZero)
                         curData.CURMATERIALITELIST.RemoveAt(index);
+                    else if(isProductionZero)
+                        curData.CURPRODUCTIONITEMLIST.RemoveAt(index);
                 }
             }
                 

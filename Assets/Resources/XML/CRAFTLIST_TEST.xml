@@ -5,7 +5,7 @@
 		<SORT>물약</SORT>
 		<NAME>빨간물약</NAME>
 		<ICON>100</ICON>
-		<DESCRIPTION> 체력이 회복되는 물약이다.</DESCRIPTION>
+		<DESCRIPTION>마시면 체력이 회복된다. 보기와 다르게 딸기 맛은 나지 않는다.</DESCRIPTION>
 		<needMaterial>415,400</needMaterial>
 	</text>
 	<text>
@@ -13,7 +13,7 @@
 		<SORT>물약</SORT>
 		<NAME>파란물약</NAME>
 		<ICON>101</ICON>
-		<DESCRIPTION> 체력이 많이 회복되는 물약이다.</DESCRIPTION>
+		<DESCRIPTION>마시면 시원해질 것 같다.</DESCRIPTION>
 		<needMaterial>416,400</needMaterial>
 	</text>
 	<text>
@@ -21,7 +21,7 @@
 		<SORT>물약</SORT>
 		<NAME>노란물약</NAME>
 		<ICON>102</ICON>
-		<DESCRIPTION> 체력이 더 많이 회복되는 물약이다.</DESCRIPTION>
+		<DESCRIPTION>금으로 만든 물약은 아니다.</DESCRIPTION>
 		<needMaterial>417,400</needMaterial>
 	</text>
 	<text>
@@ -29,7 +29,7 @@
 		<SORT>물약</SORT>
 		<NAME>초록물약</NAME>
 		<ICON>103</ICON>
-		<DESCRIPTION> 체력이 매우 많이 회복되는 물약이다.</DESCRIPTION>
+		<DESCRIPTION>매우 쓴 맛이 날 것 같다.</DESCRIPTION>
 		<needMaterial>418,400</needMaterial>
 	</text>
 	<text>
@@ -37,7 +37,7 @@
 		<SORT>물약</SORT>
 		<NAME>보라물약</NAME>
 		<ICON>104</ICON>
-		<DESCRIPTION> 체력이 엄청나게 회복되는 물약이다.</DESCRIPTION>
+		<DESCRIPTION>보라색 맛이 날 것 같은 물약이다.</DESCRIPTION>
 		<needMaterial>419,400</needMaterial>
 	</text>
 	<text>
@@ -45,7 +45,7 @@
 		<SORT>물약</SORT>
 		<NAME>빨간엘릭서</NAME>
 		<ICON>105</ICON>
-		<DESCRIPTION> 마나가 회복되는 물약이다.</DESCRIPTION>
+		<DESCRIPTION> 마나가 회복되는 물약이다. 위험하지는 않다.</DESCRIPTION>
 		<needMaterial>420,400</needMaterial>
 	</text>
 	<text>
@@ -53,7 +53,7 @@
 		<SORT>물약</SORT>
 		<NAME>파란엘릭서</NAME>
 		<ICON>106</ICON>
-		<DESCRIPTION> 마나가 많이 회복되는 물약이다.</DESCRIPTION>
+		<DESCRIPTION>맛있을 것 같다. (먹어볼까?)</DESCRIPTION>
 		<needMaterial>421,400</needMaterial>
 	</text>
 	<text>
@@ -61,7 +61,7 @@
 		<SORT>물약</SORT>
 		<NAME>노란엘릭서</NAME>
 		<ICON>107</ICON>
-		<DESCRIPTION> 마나가 더 많이 회복되는 물약이다.</DESCRIPTION>
+		<DESCRIPTION>금으로 만들었다고 하면 더 비싸게 팔 수 있으려나?</DESCRIPTION>
 		<needMaterial>422,400</needMaterial>
 	</text>
 	<text>
@@ -69,7 +69,7 @@
 		<SORT>물약</SORT>
 		<NAME>초록엘릭서</NAME>
 		<ICON>108</ICON>
-		<DESCRIPTION> 마나가 매우 많이 회복되는 물약이다.</DESCRIPTION>
+		<DESCRIPTION> 색깔이 맛없어 보인다.</DESCRIPTION>
 		<needMaterial>423,400</needMaterial>
 	</text>
 	<text>
@@ -77,7 +77,7 @@
 		<SORT>물약</SORT>
 		<NAME>보라엘릭서</NAME>
 		<ICON>109</ICON>
-		<DESCRIPTION> 마나가 엄청나게 회복되는 물약이다.</DESCRIPTION>
+		<DESCRIPTION>보라색 엘릭서다. 위험해 보인다</DESCRIPTION>
 		<needMaterial>424,400</needMaterial>
 	</text>
 	<text>
@@ -85,7 +85,7 @@
 		<SORT>물약</SORT>
 		<NAME>화염폭탄</NAME>
 		<ICON>110</ICON>
-		<DESCRIPTION>병이 깨지면 근처에 불이난다.</DESCRIPTION>
+		<DESCRIPTION>병이 깨지면 근처에 불이 난다. 조심하자</DESCRIPTION>
 		<needMaterial>426,400</needMaterial>
 	</text>
 	<text>
@@ -93,7 +93,7 @@
 		<SORT>물약</SORT>
 		<NAME>힘의약</NAME>
 		<ICON>111</ICON>
-		<DESCRIPTION>마시면 힘이 강해진다.</DESCRIPTION>
+		<DESCRIPTION>마시면 힘이 강해진다. 그렇다고 사고는 치지 말자</DESCRIPTION>
 		<needMaterial>425,400</needMaterial>
 	</text>
 	<text>
@@ -101,7 +101,7 @@
 		<SORT>도구</SORT>
 		<NAME>나무지팡이</NAME>
 		<ICON>200</ICON>
-		<DESCRIPTION>들고 있으면 강해지는 것 같다.</DESCRIPTION>
+		<DESCRIPTION>들고 있으면 마법사가 된 기분을 느끼게 해준다.</DESCRIPTION>
 		<needMaterial>402,412</needMaterial>
 	</text>
 	<text>
@@ -109,7 +109,7 @@
 		<SORT>도구</SORT>
 		<NAME>마따따비지팡이</NAME>
 		<ICON>201</ICON>
-		<DESCRIPTION>들고만 있어도 고양이가 모여든다.</DESCRIPTION>
+		<DESCRIPTION>들고 있으면 고양이가 모여든다. 친구가 많아질 수 있다.</DESCRIPTION>
 		<needMaterial>402,411</needMaterial>
 	</text>
 	<text>
@@ -149,7 +149,7 @@
 		<SORT>도구</SORT>
 		<NAME>화염의두루마리</NAME>
 		<ICON>206</ICON>
-		<DESCRIPTION>주변을 불태운다. 일회용</DESCRIPTION>
+		<DESCRIPTION>주변을 불태운다. 일회용 (조심해서 다룰 것!)</DESCRIPTION>
 		<needMaterial>405,413</needMaterial>
 	</text>
 	<text>
@@ -157,7 +157,7 @@
 		<SORT>도구</SORT>
 		<NAME>냉기의두루마리</NAME>
 		<ICON>207</ICON>
-		<DESCRIPTION>주변을 얼려버린다. 일회용 </DESCRIPTION>
+		<DESCRIPTION>주변을 얼려버린다. 일회용 (여름에 쓰면 좋다)</DESCRIPTION>
 		<needMaterial>406,413</needMaterial>
 	</text>
 	<text>
@@ -189,7 +189,7 @@
 		<SORT>장비</SORT>
 		<NAME>보호의귀걸이</NAME>
 		<ICON>303</ICON>
-		<DESCRIPTION>보호를 받는다.</DESCRIPTION>
+		<DESCRIPTION>왠지 공격을 받아도 다치지 않을 것 같은 귀걸이다.</DESCRIPTION>
 		<needMaterial>409,427</needMaterial>
 	</text>
 	<text>
@@ -197,7 +197,7 @@
 		<SORT>장비</SORT>
 		<NAME>지혜의펜던트</NAME>
 		<ICON>304</ICON>
-		<DESCRIPTION>똑똑해진다.</DESCRIPTION>
+		<DESCRIPTION>차고만 있어도 똑똑해지는 것 같다! 시험공부 할 때 유용할 펜던트다.</DESCRIPTION>
 		<needMaterial>410,427</needMaterial>
 	</text>
 	<text>
@@ -205,7 +205,7 @@
 		<SORT>재료</SORT>
 		<NAME>중급마법의돌</NAME>
 		<ICON>403</ICON>
-		<DESCRIPTION>마법의 힘이 깃든 중급돌이다.</DESCRIPTION>
+		<DESCRIPTION>마법의 힘이 조금 더 깃든 돌이다. 비싸니 조심히 다루자</DESCRIPTION>
 		<needMaterial>402,402</needMaterial>
 	</text>
 	<text>
@@ -213,7 +213,7 @@
 		<SORT>재료</SORT>
 		<NAME>고급마법의돌</NAME>
 		<ICON>404</ICON>
-		<DESCRIPTION>마법의 힘이 깃든 고급돌이다.</DESCRIPTION>
+		<DESCRIPTION>마법의 힘이 조금 더 깃든 돌이다. 완전 비싸니 조심히 다루자</DESCRIPTION>
 		<needMaterial>403,403</needMaterial>
 	</text>
 	<text>
@@ -221,7 +221,7 @@
 		<SORT>가구</SORT>
 		<NAME>소형 물약진열대</NAME>
 		<ICON>502</ICON>
-		<DESCRIPTION>물약만 진열된다. 최대 1개 까지 진열할 수 있다.</DESCRIPTION>
+		<DESCRIPTION>물약만 진열된다. 최대 1개까지 진열할 수 있다.</DESCRIPTION>
 		<needMaterial>412,412,427</needMaterial>
 	</text>
 	<text>
@@ -229,7 +229,7 @@
 		<SORT>가구</SORT>
 		<NAME>중형 물약진열대</NAME>
 		<ICON>503</ICON>
-		<DESCRIPTION>물약만 진열된다. 최대 2개 까지 진열할 수 있다.</DESCRIPTION>
+		<DESCRIPTION>물약만 진열된다. 최대 2개까지 진열할 수 있다.</DESCRIPTION>
 		<needMaterial>412,412,412,427,427</needMaterial>
 	</text>
 	<text>
@@ -237,7 +237,7 @@
 		<SORT>가구</SORT>
 		<NAME>대형 물약진열대</NAME>
 		<ICON>504</ICON>
-		<DESCRIPTION>물약만 진열된다. 최대 4개 까지 진열할 수 있다.</DESCRIPTION>
+		<DESCRIPTION>물약만 진열된다. 최대 4개까지 진열할 수 있다.</DESCRIPTION>
 		<needMaterial>412,412,412,412,427,427,427</needMaterial>
 	</text>
 	<text>
@@ -245,7 +245,7 @@
 		<SORT>가구</SORT>
 		<NAME>소형 도구진열대</NAME>
 		<ICON>505</ICON>
-		<DESCRIPTION>도구만 진열된다. 최대 1개 까지 진열할 수 있다.</DESCRIPTION>
+		<DESCRIPTION>도구만 진열된다. 최대 1개까지 진열할 수 있다.</DESCRIPTION>
 		<needMaterial>412,412,427</needMaterial>
 	</text>
 	<text>
@@ -253,7 +253,7 @@
 		<SORT>가구</SORT>
 		<NAME>중형 도구진열대</NAME>
 		<ICON>506</ICON>
-		<DESCRIPTION>도구만 진열된다. 최대 2개 까지 진열할 수 있다.</DESCRIPTION>
+		<DESCRIPTION>도구만 진열된다. 최대 2개까지 진열할 수 있다.</DESCRIPTION>
 		<needMaterial>412,412,412,427,427</needMaterial>
 	</text>
 	<text>
@@ -261,7 +261,7 @@
 		<SORT>가구</SORT>
 		<NAME>대형 도구진열대</NAME>
 		<ICON>507</ICON>
-		<DESCRIPTION>도구만 진열된다. 최대 4개 까지 진열할 수 있다.</DESCRIPTION>
+		<DESCRIPTION>도구만 진열된다. 최대 4개까지 진열할 수 있다.</DESCRIPTION>
 		<needMaterial>412,412,412,412,427,427,427</needMaterial>
 	</text>
 	<text>
@@ -269,7 +269,7 @@
 		<SORT>가구</SORT>
 		<NAME>장비진열대</NAME>
 		<ICON>508</ICON>
-		<DESCRIPTION>장비만 진열된다. 최대 1개 까지 진열할 수 있다.</DESCRIPTION>
+		<DESCRIPTION>장비만 진열된다. 최대 1개까지 진열할 수 있다.</DESCRIPTION>
 		<needMaterial>412,412,427</needMaterial>
 	</text>
 	<text>
@@ -277,7 +277,7 @@
 		<SORT>가구</SORT>
 		<NAME>창고</NAME>
 		<ICON>511</ICON>
-		<DESCRIPTION>가방공간확장</DESCRIPTION>
+		<DESCRIPTION>설치하면 가방의 공간이 확장된다.</DESCRIPTION>
 		<needMaterial>412,412,427</needMaterial>
 	</text>
 	<text>
@@ -293,7 +293,7 @@
 		<SORT>가구</SORT>
 		<NAME>민트러그</NAME>
 		<ICON>513</ICON>
-		<DESCRIPTION>폭신폭신폭신해보이는 러그다.</DESCRIPTION>
+		<DESCRIPTION>폭신 폭신해 보이는 러그다.</DESCRIPTION>
 		<needMaterial>401,401,401,401,418</needMaterial>
 	</text>
 	<text>
@@ -301,31 +301,15 @@
 		<SORT>가구</SORT>
 		<NAME>빨간러그</NAME>
 		<ICON>514</ICON>
-		<DESCRIPTION>따뜻해보이는 러그다.</DESCRIPTION>
+		<DESCRIPTION>따뜻해 보이는 러그다.</DESCRIPTION>
 		<needMaterial>401,401,401,401,420</needMaterial>
-	</text>
-	<text>
-		<ID>515</ID>
-		<SORT>가구</SORT>
-		<NAME>예쁜캣타워</NAME>
-		<ICON>515</ICON>
-		<DESCRIPTION>캣타워</DESCRIPTION>
-		<needMaterial>412,412,401,401,427</needMaterial>
-	</text>
-	<text>
-		<ID>516</ID>
-		<SORT>가구</SORT>
-		<NAME>좋은캣타워</NAME>
-		<ICON>516</ICON>
-		<DESCRIPTION>캣캣타타워워</DESCRIPTION>
-		<needMaterial>412,412,401,427</needMaterial>
 	</text>
 	<text>
 		<ID>517</ID>
 		<SORT>가구</SORT>
 		<NAME>보라화분</NAME>
 		<ICON>517</ICON>
-		<DESCRIPTION>화분</DESCRIPTION>
+		<DESCRIPTION>보라색 화분이다.</DESCRIPTION>
 		<needMaterial>414,419,424</needMaterial>
 	</text>
 	<text>
@@ -333,7 +317,7 @@
 		<SORT>가구</SORT>
 		<NAME>파란화분</NAME>
 		<ICON>518</ICON>
-		<DESCRIPTION>화화분분</DESCRIPTION>
+		<DESCRIPTION>파란색 화분이다.</DESCRIPTION>
 		<needMaterial>414,416,421</needMaterial>
 	</text>
 </CRAFTLIST>
