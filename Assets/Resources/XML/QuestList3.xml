@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<QuestList xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<text>
+		<ID>0</ID>
+		<NAME>초보심마니</NAME>
+		<TYPE>0</TYPE>
+		<NEXTQUEST>10000</NEXTQUEST>
+		<ONEDATE>415</ONEDATE>
+		<TWODATE>5</TWODATE>
+		<GOLD>100</GOLD>
+		<REP>10</REP>
+		<EXP>10</EXP>
+		<TEXT>상점을 운영하려면 판매할 물건을 만들어야해. 우선 내가 자신있는 빨간 물약부터 만들어보자. 먼저 빨간 버섯이 필요해. 5개만 주문해보자.</TEXT>
+	</text>
+	<text>
+		<ID>1</ID>
+		<NAME>초보심마니2</NAME>
+		<TYPE>0</TYPE>
+		<NEXTQUEST>10000</NEXTQUEST>
+		<ONEDATE>420</ONEDATE>
+		<TWODATE>5</TWODATE>
+		<GOLD>100</GOLD>
+		<REP>10</REP>
+		<EXP>10</EXP>
+		<TEXT>만드는김에 빨간 엘릭서도 만들어보자. 재료는 빨간 약초가 필요했어. 이것도 5개만 주문해보자.</TEXT>
+	</text>
+	<text>
+		<ID>2</ID>
+		<NAME>공예가</NAME>
+		<TYPE>0</TYPE>
+		<NEXTQUEST>3,4</NEXTQUEST>
+		<ONEDATE>400</ONEDATE>
+		<TWODATE>10</TWODATE>
+		<GOLD>0</GOLD>
+		<REP>10</REP>
+		<EXP>10</EXP>
+		<TEXT>좋아! 그 다음에는 물약을 담을 물약병이 필요해. 10개를 주문해보자.</TEXT>
+	</text>
+	<text>
+		<ID>3</ID>
+		<NAME>연금술사</NAME>
+		<TYPE>0</TYPE>
+		<NEXTQUEST>10000</NEXTQUEST>
+		<ONEDATE>100</ONEDATE>
+		<TWODATE>5</TWODATE>
+		<GOLD>10</GOLD>
+		<REP>10</REP>
+		<EXP>10</EXP>
+		<TEXT>이제 연금솥에서 빨간 버섯을 끓여서 빨간 물약 5개를 만들어보자.</TEXT>
+	</text>
+	<text>
+		<ID>4</ID>
+		<NAME>연금술사2</NAME>
+		<TYPE>0</TYPE>
+		<NEXTQUEST>5</NEXTQUEST>
+		<ONEDATE>105</ONEDATE>
+		<TWODATE>5</TWODATE>
+		<GOLD>50</GOLD>
+		<REP>10</REP>
+		<EXP>10</EXP>
+		<TEXT>만드는김에 빨간 엘릭서도 5개를 만들어보자. 빨간 약초를 끓이면 될거야</TEXT>
+	</text>
+	<text>
+		<ID>5</ID>
+		<NAME>목수</NAME>
+		<TYPE>0</TYPE>
+		<NEXTQUEST>6</NEXTQUEST>
+		<ONEDATE>502</ONEDATE>
+		<TWODATE>2</TWODATE>
+		<GOLD>10</GOLD>
+		<REP>10</REP>
+		<EXP>10</EXP>
+		<TEXT>완벽해! 내가 만든 첫번째 물약이야. 이제 제작대에서 소형 물약 진열대를 2개 만들어보자</TEXT>
+	</text>
+	<text>
+		<ID>6</ID>
+		<NAME>상인</NAME>
+		<TYPE>1</TYPE>
+		<NEXTQUEST>7</NEXTQUEST>
+		<ONEDATE>100</ONEDATE>
+		<TWODATE>5</TWODATE>
+		<GOLD>10</GOLD>
+		<REP>10</REP>
+		<EXP>10</EXP>
+		<TEXT>준비가 끝났어 ! 이제 의뢰창을 닫고 상점 열기 버튼을 눌러 사람들한테 팔아보자. 엄청 잘 팔리겠지??</TEXT>
+	</text>
+	<text>
+		<ID>7</ID>
+		<NAME>세금</NAME>
+		<TYPE>2</TYPE>
+		<NEXTQUEST>10000</NEXTQUEST>
+		<ONEDATE>10</ONEDATE>
+		<TWODATE>10000</TWODATE>
+		<GOLD>0</GOLD>
+		<REP>10</REP>
+		<EXP>10</EXP>
+		<TEXT>으아.. 생각보다 잘 팔리지가 않네 T-T 게다가 세금을 내야한다고?</TEXT>
+	</text>
+	<text>
+		<ID>8</ID>
+		<NAME>납품</NAME>
+		<TYPE>2</TYPE>
+		<NEXTQUEST>7</NEXTQUEST>
+		<ONEDATE>101</ONEDATE>
+		<TWODATE>5</TWODATE>
+		<GOLD>10</GOLD>
+		<REP>10</REP>
+		<EXP>10</EXP>
+		<TEXT>따비님 도와주세요!! T-T 제 친구가 많이 다쳤어요. 급하게 파란 물약이 5개 필요한데 만들어주실 수 있나요?</TEXT>
+	</text>
+	<text>
+		<ID>9</ID>
+		<NAME>추가예정</NAME>
+		<TYPE>0</TYPE>
+		<NEXTQUEST>10000</NEXTQUEST>
+		<ONEDATE>415</ONEDATE>
+		<TWODATE>5</TWODATE>
+		<GOLD>10</GOLD>
+		<REP>10</REP>
+		<EXP>10</EXP>
+		<TEXT>추가예정</TEXT>
+	</text>
+</QuestList>

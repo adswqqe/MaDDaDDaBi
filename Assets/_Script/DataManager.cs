@@ -423,7 +423,20 @@ public class DataManager : MonoBehaviour
     {
         if (furnitureGo.name.Contains(511.ToString()))
             return;
-
+        else if (furnitureGo.name.Contains(512.ToString()))
+            return;
+        else if (furnitureGo.name.Contains(513.ToString()))
+            return;
+        else if (furnitureGo.name.Contains(514.ToString()))
+            return;
+        else if (furnitureGo.name.Contains(517.ToString()))
+            return;
+        else if (furnitureGo.name.Contains(518.ToString()))
+            return;
+        else if (furnitureGo.name.Contains(516.ToString()))
+            return;
+        else if (furnitureGo.name.Contains(515.ToString()))
+            return;
         data.CURDISPLAYFURNITUREITEMLIST.Add(furnitureGo);
 
 

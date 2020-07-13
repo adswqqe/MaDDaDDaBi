@@ -36,6 +36,9 @@ public class DisplayFurnitureItem : MonoBehaviour
         }
         itemList = new List<GameObject>();
         Debug.Log("가구 배치 : " + itemInfo.ID);
+
+        if (gameObject.name.Contains("512") || gameObject.name.Contains("513") || gameObject.name.Contains("514"))
+            transform.position = new Vector3(transform.position.x, -6.2f, transform.position.z);
     }
 
     public bool OnDisplayItem(GameObject item)

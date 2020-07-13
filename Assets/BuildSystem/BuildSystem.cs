@@ -132,7 +132,10 @@ public class BuildSystem : MonoBehaviour
     {
         preview = Instantiate(_go, Vector3.zero, Quaternion.identity);//set the preview = to something
         previewScript = preview.GetComponent<PreviewObj>();//grab the script that is sitting on the preview
-        preview.transform.position = new Vector3(0, -6f, 0);
+        if (_go.name.Contains("512") || _go.name.Contains("513") || _go.name.Contains("514"))
+            preview.transform.position = new Vector3(0, -6.2f, 0);
+        else
+            preview.transform.position = new Vector3(0, -6f, 0);
         //isBuilding = true;//we can now build
     }
 
@@ -166,7 +169,13 @@ public class BuildSystem : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit, Mathf.Infinity, layer))//notice there is a layer that we are worried about
             {
-                PositionObj(hit.point);
+                if (hit.collider.name.Contains("512") || hit.collider.name.Contains("513") || hit.collider.name.Contains("514"))
+                {
+                    PositionObj2(hit.point);
+                    UnityEngine.Debug.Log("호출");
+                }
+                else
+                    PositionObj(hit.point);
             }
         }
 
@@ -180,6 +189,16 @@ public class BuildSystem : MonoBehaviour
         int z = Mathf.RoundToInt(_pos.z);
 
         preview.transform.position = new Vector3(x, -6f, z);//set the previews transform postion to a new Vector3 made up of the x,y,z that you roundedToInt
+
+    }
+
+    private void PositionObj2(Vector3 _pos)
+    {
+        int x = Mathf.RoundToInt(_pos.x);//just round the x,y,z values to the nearest int
+        //int y = Mathf.RoundToInt(_pos.y);//personal preferance to comment this out. I hard coded in my y value
+        int z = Mathf.RoundToInt(_pos.z);
+
+        preview.transform.position = new Vector3(x, -6.2f, z);//set the previews transform postion to a new Vector3 made up of the x,y,z that you roundedToInt
 
     }
 

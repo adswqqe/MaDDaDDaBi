@@ -38,7 +38,10 @@ public class BuildSelector : MonoBehaviour
 
         if (go != null)
         {
-            buildSystem.curfurnGo = Instantiate(go, new Vector3(0, -6f, 0), transform.rotation);
+            if (go.name.Contains("512") || go.name.Contains("513") || go.name.Contains("514"))
+                buildSystem.curfurnGo = Instantiate(go, new Vector3(0, -6.2f, 0), transform.rotation);
+            else
+                buildSystem.curfurnGo = Instantiate(go, new Vector3(0, -6f, 0), transform.rotation);
             TogglePanel();
             building?.Invoke(true);
         }

@@ -183,6 +183,7 @@ public class NPCManager : MonoBehaviour
             else
             {
                 isFind = false;
+                randIndex.Add(rand);
             }
         }
         Debug.Log(rand);

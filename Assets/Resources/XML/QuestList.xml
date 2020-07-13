@@ -7,7 +7,7 @@
 		<NEXTQUEST>10000</NEXTQUEST>
 		<ONEDATE>415</ONEDATE>
 		<TWODATE>5</TWODATE>
-		<GOLD>100</GOLD>
+		<GOLD>0</GOLD>
 		<REP>10</REP>
 		<EXP>10</EXP>
 		<TEXT>상점을 운영하려면 판매할 물건을 만들어야해. 우선 내가 자신있는 빨간 물약부터 만들어보자. 먼저 빨간 버섯이 필요해. 5개만 주문해보자.</TEXT>
@@ -55,7 +55,7 @@
 		<NEXTQUEST>5</NEXTQUEST>
 		<ONEDATE>105</ONEDATE>
 		<TWODATE>5</TWODATE>
-		<GOLD>50</GOLD>
+		<GOLD>70</GOLD>
 		<REP>10</REP>
 		<EXP>10</EXP>
 		<TEXT>만드는김에 빨간 엘릭서도 5개를 만들어보자. 빨간 약초를 끓이면 될거야</TEXT>
@@ -65,12 +65,12 @@
 		<NAME>목수</NAME>
 		<TYPE>0</TYPE>
 		<NEXTQUEST>6</NEXTQUEST>
-		<ONEDATE>502</ONEDATE>
-		<TWODATE>2</TWODATE>
+		<ONEDATE>427</ONEDATE>
+		<TWODATE>1</TWODATE>
 		<GOLD>10</GOLD>
 		<REP>10</REP>
 		<EXP>10</EXP>
-		<TEXT>완벽해! 내가 만든 첫번째 물약이야. 이제 제작대에서 소형 물약 진열대를 2개 만들어보자</TEXT>
+		<TEXT>완벽해! 내가 만든 첫번째 물약이야. 이제 제작대에서 소형 물약 진열대 레시피를 확인하고 재료를 주문해서 2개 만들어보자</TEXT>
 	</text>
 	<text>
 		<ID>6</ID>

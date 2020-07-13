@@ -10,11 +10,17 @@ public class TutorialManager : MonoBehaviour
 
     private void Start()
     {
+        AllOff();
+    }
+
+    public void AllOff()
+    {
         for (int i = 0; i < CanvasUIs.Length; i++)
         {
             CanvasUIs[i].interactable = false;
         }
     }
+        
 
     public void RequestOn()
     {

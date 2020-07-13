@@ -26,6 +26,9 @@ public class TimeManager : MonoBehaviour
     [SerializeField]
     Animator anim;
 
+    [SerializeField]
+    GameObject UnderFloor, FirstFloor; //튜토리얼에서 지하 튜토리얼/ 1층 튜토리얼 바뀌는 타이밍 확인
+
     // Start is called before the first frame update
     void Start()
     {
@@ -71,6 +74,7 @@ public class TimeManager : MonoBehaviour
 
     public void StartDay()
     {
+        UnderFloor.SetActive(false);
         SleepAni.SetActive(true);
         light.intensity = 1;
         StartCoroutine("SleepAniOff");
@@ -100,6 +104,7 @@ public class TimeManager : MonoBehaviour
 
         SoundManager.instance.PlayBGM(BGMSound.BGM_inStore);
         SoundManager.instance.PlayEffBgm(BGMEffSound.AMB_Forest);
+        FirstFloor.SetActive(true);
         yield return null;
         
 }

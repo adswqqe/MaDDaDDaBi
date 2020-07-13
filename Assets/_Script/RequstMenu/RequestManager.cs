@@ -275,6 +275,8 @@ public class RequestManager : MonoBehaviour
             SoundManager.instance.PlayEff(EffSound.SFX_UI_C_suc);
             RequestSuccess?.Invoke(requestInfos[requestIndex].GOLD, requestInfos[requestIndex].REP, requestInfos[requestIndex].EXP);
             SetRequest(requestIndex);
+
+            DialogueManager.RequestNum++; //튜토리얼에서 의뢰 깬 횟수 확인용
         }
         else
         {
