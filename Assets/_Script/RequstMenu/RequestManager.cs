@@ -174,6 +174,16 @@ public class RequestManager : MonoBehaviour
             }
         }
 
+        foreach (var item in curData.CURFURNITUREITEMLIST)
+        {
+            if (id == item.ITEMINFO.ID)
+            {
+                amo = item.ITEMINFO.AMOUNTNUMBER;
+                isFind = true;
+                break;
+            }
+        }
+
         if (isFind)
             return amo;
         else
@@ -316,15 +326,24 @@ public class RequestManager : MonoBehaviour
         else
         {
             int index = 0;
+            int max_index = nextQuests.Count - 1;
             for (int i = 0; i < MAXREQUST; i++)
             {
+                if(index == nextQuests.Count)
+                {
+                    requstTitle[i].text = "";
+                    break;
+                }
+
                 if(requstTitle[i].text == requestInfos[requestIndex].NAME)
                 {
+                    Debug.Log(index + "index");
+                    Debug.Log(nextQuests.Count + "count");
                     requstTitle[i].text = requestInfos[nextQuests[index]].NAME;
                     if(requestInfos[nextQuests[index]].TYPE == 1)
                         curData.REQUESTCOUNTS.Add(new RequestCount(requestInfos[nextQuests[index]].ONNDATA));
 
-                    index++;
+                        index++;
                 }
                 else if(requstTitle[i].text.Length == 0)
                 {
@@ -332,7 +351,7 @@ public class RequestManager : MonoBehaviour
                     if (requestInfos[nextQuests[index]].TYPE == 1)
                         curData.REQUESTCOUNTS.Add(new RequestCount(requestInfos[nextQuests[index]].ONNDATA));
 
-                    index++;
+                        index++;
                 }
             }
         }
